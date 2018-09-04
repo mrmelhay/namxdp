@@ -1,0 +1,2 @@
+# namxdp
+Namangan XDP Project
