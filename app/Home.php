@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Home extends Model
 {
-    //
+
     protected $table='assets';
 
 
-    public function getAllMenus(){
-        return self::all();
+    public static function getAllMenus(){
+        return self::where(['active'=>1])->orderBy("ordering")->get();
     }
 }

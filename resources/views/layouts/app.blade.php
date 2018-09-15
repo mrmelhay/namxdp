@@ -27,7 +27,8 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('fonts/material-design/material-design.min.css') }}">
     <link rel="stylesheet" href="{{ asset('fonts/brand-icons/brand-icons.min.css') }}">
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic&subset=latin,cyrillic'>
+    <link rel='stylesheet'
+          href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic&subset=latin,cyrillic'>
     <!--[if lt IE 9]>
     <script src="{{ asset('vendor/html5shiv/html5shiv.min.js') }}"></script>
     <![endif]-->
@@ -42,15 +43,16 @@
         Breakpoints();
     </script>
 </head>
-<body class="@if (Auth::guest())  page-login-v2 layout-full page-dark @else site-navbar-small dashboard @endif ">
+<body class="@if (!route("home"))  page-login-v1 layout-full page-dark @else site-navbar-small dashboard @endif ">
 
 <!--[if lt IE 8]>
-<p class="browserupgrade">Вы используюте <strong>устаревший</strong> браузер. Обновите <a href="http://browsehappy.com/">Ваш браузер</a> для лучшей работы сайта.</p>
+<p class="browserupgrade">Вы используюте <strong>устаревший</strong> браузер. Обновите <a
+        href="http://browsehappy.com/">Ваш браузер</a> для лучшей работы сайта.</p>
 <![endif]-->
 
-        @yield('nav')
-        @yield('content')
-        @yield('footer')
+@yield('nav')
+@yield('content')
+@yield('footer')
 
 
 <script src="{{ asset('vendor/jquery/jquery.js') }}"></script>
@@ -83,10 +85,10 @@
 <script src="{{ asset('js/components/jquery-placeholder.js') }}"></script>
 <script src="{{ asset('js/components/material.js') }}"></script>
 <script>
-    (function(document, window, $) {
+    (function (document, window, $) {
         'use strict';
         var Site = window.Site;
-        $(document).ready(function() {
+        $(document).ready(function () {
             Site.run();
         });
     })(document, window, jQuery);

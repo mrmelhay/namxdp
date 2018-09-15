@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
 
 Auth::routes();
+Route::get('/', 'HomeController@index');
+
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/preferences', 'PreferencesController@index');
+Route::get('/province', 'PreferencesController@province');
