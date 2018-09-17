@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.login')
 
 @section('content')
     <div class="page animsition" data-animsition-in="fade-in" data-animsition-out="fade-out">

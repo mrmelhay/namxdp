@@ -12,9 +12,19 @@
 */
 
 
-Auth::routes();
-Route::get('/', 'HomeController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/preferences', 'PreferencesController@index');
-Route::get('/province', 'PreferencesController@province');
+Route::group(['middleware'=>'web'],function (){
+
+    Route::match(['get','post'],'/',['uses'=>'HomeController@index','as'=>'home']);
+
+    Auth::routes();
+//    Route::get('/', 'HomeController@index');
+
+//    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/preferences', 'PreferencesController@index');
+    Route::get('/province', 'PreferencesController@province');
+
+});
+
+
+
