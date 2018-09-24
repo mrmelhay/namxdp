@@ -15,7 +15,7 @@ class CreatePartyBindTable extends Migration
     {
         Schema::create('party_bind', function (Blueprint $table) {
             $table->increments('party_bind_id');
-            $table->integer("party_id");
+            $table->integer("party_id")->index();
             $table->date("party_date");
             $table->double("party_price");
             $table->timestamps();
