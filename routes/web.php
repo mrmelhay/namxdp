@@ -24,6 +24,10 @@ Route::group(['middleware'=>'web'],function (){
     Route::get('/councils','PreferencesController@index')->name('councils');
     Route::get('/users','PreferencesController@index')->name('users');
 
+
+    Route::get('/reports','PreferencesController@index')->name('reports');
+    Route::get('/membership','PreferencesController@index')->name('membership');
+
 });
 
 

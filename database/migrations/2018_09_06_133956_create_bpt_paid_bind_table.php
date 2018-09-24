@@ -15,6 +15,8 @@ class CreateBptPaidBindTable extends Migration
     {
         Schema::create('bpt_paid_bind', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('bpt_is_paid')->index();
+            $table->date('bpt_is_paid_date');
             $table->timestamps();
         });
     }

@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d6ede6a6-a681-4b10-9e45-c85067e37e70" name="Default" comment="Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Province.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Province.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2018_09_06_133956_create_bpt_paid_bind_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2018_09_06_133956_create_bpt_paid_bind_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/commons/navigation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/commons/navigation.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,19 +55,19 @@
           <entry key="html" value="1" />
           <entry key="js" value="9" />
           <entry key="json" value="5" />
-          <entry key="php" value="162" />
+          <entry key="php" value="166" />
           <entry key="sql" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="4" />
-          <entry key="Blade" value="51" />
+          <entry key="Blade" value="53" />
           <entry key="CSS" value="2" />
           <entry key="HTML" value="1" />
           <entry key="JSON" value="5" />
           <entry key="JavaScript" value="9" />
-          <entry key="PHP" value="111" />
+          <entry key="PHP" value="113" />
           <entry key="SQL" value="1" />
           <entry key="Scratch" value="1" />
           <entry key="htaccess" value="2" />
@@ -79,18 +80,18 @@
           <entry key="env" value="70" />
           <entry key="htaccess" value="2" />
           <entry key="json" value="16" />
-          <entry key="php" value="8223" />
+          <entry key="php" value="8435" />
           <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="70" />
-          <entry key="Blade" value="3373" />
+          <entry key="Blade" value="3482" />
           <entry key="CSS" value="2" />
           <entry key="HTML" value="1" />
           <entry key="JSON" value="16" />
-          <entry key="PHP" value="4849" />
+          <entry key="PHP" value="4952" />
           <entry key="PLAIN_TEXT" value="16" />
           <entry key="htaccess" value="2" />
         </counts>
@@ -105,18 +106,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProvinceController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
-              <folding>
-                <element signature="e#40#57#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/BaseController.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -139,31 +128,46 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DistrictController.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/preferences/district.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
-              <caret line="50" column="23" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="26" />
-              <folding>
-                <element signature="e#40#57#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="360">
+              <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/preferences/district.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/commons/navigation.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="49" lean-forward="true" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
+            <state relative-caret-position="295">
+              <caret line="193" selection-start-line="193" selection-end-line="193" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/commons/navigation.blade.php">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2018_09_06_133956_create_bpt_paid_bind_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="303" column="82" selection-start-line="303" selection-start-column="82" selection-end-line="303" selection-end-column="82" />
+            <state relative-caret-position="225">
+              <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="28" column="77" selection-start-line="28" selection-start-column="77" selection-end-line="28" selection-end-column="77" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/preferences/assets.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -182,15 +186,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
               <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="20" column="17" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -247,7 +242,6 @@
         <option value="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/main.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/preferences/assets.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PreferencesController.php" />
         <option value="$PROJECT_DIR$/resources/views/preferences/addprovince.php" />
         <option value="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
@@ -255,7 +249,6 @@
         <option value="$PROJECT_DIR$/resources/views/preferences/editprovince.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/preferences/province.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/preferences/editdistrict.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/preferences/addddistrict.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProvinceController.php" />
@@ -267,7 +260,10 @@
         <option value="$PROJECT_DIR$/app/District.php" />
         <option value="$PROJECT_DIR$/app/Province.php" />
         <option value="$PROJECT_DIR$/resources/views/preferences/district.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/preferences/assets.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/commons/navigation.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2018_09_06_133956_create_bpt_paid_bind_table.php" />
       </list>
     </option>
   </component>
@@ -375,7 +371,13 @@
             <path>
               <item name="namxdp" type="b2602c69:ProjectViewProjectNode" />
               <item name="namxdp" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="namxdp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="namxdp" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="namxdp" type="b2602c69:ProjectViewProjectNode" />
@@ -393,7 +395,12 @@
               <item name="namxdp" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="commons" type="462c0819:PsiDirectoryNode" />
+              <item name="preferences" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="namxdp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="namxdp" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -487,7 +494,7 @@
       <workItem from="1537607281049" duration="8927000" />
       <workItem from="1537691101270" duration="1000" />
       <workItem from="1537773412199" duration="6000" />
-      <workItem from="1537786452084" duration="2491000" />
+      <workItem from="1537786452084" duration="3647000" />
     </task>
     <task id="LOCAL-00001" summary="Commit">
       <created>1536938493461</created>
@@ -545,11 +552,25 @@
       <option name="project" value="LOCAL" />
       <updated>1537786570118</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Commit">
+      <created>1537791228540</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1537791228540</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Commit">
+      <created>1537791571273</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1537791571273</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55755000" />
+    <option name="totallyTimeSpent" value="56911000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -599,9 +620,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Commit" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/pages/login-v2.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -619,20 +637,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/preferences/assets.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -792,13 +800,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="70" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/preferences/province.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -902,14 +903,38 @@
     <entry file="file://$PROJECT_DIR$/resources/views/preferences/district.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="24" column="49" lean-forward="true" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
+          <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/preferences/assets.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/welcome.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="77" selection-start-line="28" selection-start-column="77" selection-end-line="28" selection-end-column="77" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/commons/navigation.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="303" column="82" selection-start-line="303" selection-start-column="82" selection-end-line="303" selection-end-column="82" />
+        <state relative-caret-position="295">
+          <caret line="193" selection-start-line="193" selection-end-line="193" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2018_09_06_133956_create_bpt_paid_bind_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
         </state>
       </provider>
     </entry>
