@@ -270,40 +270,37 @@
                                                 </a>
                                             </li>
                                             <li class="site-menu-item">
-                                                <a class="animsition-link" href="{{ route('district') }}">
+                                                <a class="animsition-link" href="{{ route('sex') }}">
                                                     <span class="site-menu-title">Жинси</span>
                                                 </a>
                                             </li>
+
                                             <li class="site-menu-item">
-                                                <a class="animsition-link" href="{{ route('district') }}">
-                                                    <span class="site-menu-title">Жинси</span>
-                                                </a>
-                                            </li>
-                                            <li class="site-menu-item">
-                                                <a class="animsition-link" href="{{ route('district') }}">
+                                                <a class="animsition-link" href="{{ route('nation') }}">
                                                     <span class="site-menu-title">Миллат</span>
                                                 </a>
                                             </li>
                                             <li class="site-menu-item">
-                                                <a class="animsition-link" href="{{ route('district') }}">
+                                                <a class="animsition-link" href="{{ route('community') }}">
                                                     <span class="site-menu-title">Ижтимоий тоифа </span>
                                                 </a>
                                             </li>
                                             <li class="site-menu-item">
-                                                <a class="animsition-link" href="{{ route('district') }}">
+                                                <a class="animsition-link" href="{{ route('bts') }}">
                                                     <span class="site-menu-title">БПТлар</span>
                                                 </a>
                                             </li>
                                             <li class="site-menu-item">
-                                                <a class="animsition-link" href="{{ route('district') }}">
-                                                    <span class="site-menu-title">Фойдаланувчилар яратиш</span>
+                                                <a class="animsition-link" href="{{ route('councils') }}">
+                                                    <span class="site-menu-title">Кенгашлар</span>
                                                 </a>
                                             </li>
                                             <li class="site-menu-item">
-                                                <a class="animsition-link" href="{{ route('district') }}">
-                                                    <span class="site-menu-title">Кенгашлар </span>
+                                                <a class="animsition-link" href="{{ route('users') }}">
+                                                    <span class="site-menu-title">Фойдаланувчилар яратиш</span>
                                                 </a>
                                             </li>
+
                                         </ul>
                                     </div>
                                 </div>

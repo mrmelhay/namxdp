@@ -15,6 +15,15 @@ Route::group(['middleware'=>'web'],function (){
     Route::get('/district/action/{action}', 'DistrictController@action');
 
 
+
+    Route::get('/sex','PreferencesController@index')->name('sex');
+    Route::get('/nation','PreferencesController@index')->name('nation');
+    Route::get('/community','PreferencesController@index')->name('community');
+    Route::get('/community','PreferencesController@index')->name('community');
+    Route::get('/bts','PreferencesController@index')->name('bts');
+    Route::get('/councils','PreferencesController@index')->name('councils');
+    Route::get('/users','PreferencesController@index')->name('users');
+
 });
 
 
