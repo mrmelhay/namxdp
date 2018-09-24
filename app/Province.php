@@ -13,4 +13,8 @@ class Province extends Model
     protected $fillable = [
         'region_id', 'region_name',
     ];
+
+    public function districts(){
+        $this->belongsTo('App\District','region_id');
+    }
 }

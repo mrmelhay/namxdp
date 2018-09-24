@@ -172,10 +172,16 @@
         <div>
             <div>
                 <ul class="site-menu">
-                    @foreach($menus as $menu)
+                    <li class="dropdown site-menu-item has-sub">
+                        <a class="dropdown-toggle" href="#" data-dropdown-toggle="false">
+                            <span class="site-menu-title">Асосий</span>
+
+                        </a>
+                    </li>
+
                         <li class="dropdown site-menu-item has-sub">
                             <a class="dropdown-toggle" href="#" data-dropdown-toggle="false">
-                                <span class="site-menu-title"> {{ $menu->name }}</span>
+                                <span class="site-menu-title">Аъзолик</span>
                                 <span class="site-menu-arrow"></span>
                             </a>
 
@@ -189,53 +195,121 @@
                                                         <span class="site-menu-title">Сетка Bootstrap</span>
                                                     </a>
                                                 </li>
-                                                <li class="site-menu-item">
-                                                    <a class="animsition-link" href="layout-grid.html">
-                                                        <span class="site-menu-title">Сетка Layout</span>
-                                                    </a>
-                                                </li>
-                                                <li class="site-menu-item">
-                                                    <a class="animsition-link" href="headers.html">
-                                                        <span class="site-menu-title">Выбор Заголовка</span>
-                                                    </a>
-                                                </li>
-                                                <li class="site-menu-item">
-                                                    <a class="animsition-link" href="panel-transition.html">
-                                                        <span class="site-menu-title">Управляемые панели</span>
-                                                    </a>
-                                                </li>
-                                                <li class="site-menu-item">
-                                                    <a class="animsition-link" href="wide.html">
-                                                        <span class="site-menu-title">Широкий Макет</span>
-                                                    </a>
-                                                </li>
-                                                <li class="site-menu-item">
-                                                    <a class="animsition-link" href="two-columns.html">
-                                                        <span class="site-menu-title">Две колонки</span>
-                                                    </a>
-                                                </li>
-                                                <li class="site-menu-item">
-                                                    <a class="animsition-link" href="bordered-header.html">
-                                                        <span class="site-menu-title">Выделенный Заголовок</span>
-                                                    </a>
-                                                </li>
-                                                <li class="site-menu-item">
-                                                    <a class="animsition-link" href="bordered-header.html">
-                                                        <span class="site-menu-title">Выделенный Заголовок</span>
-                                                    </a>
-                                                </li>
-                                                <li class="site-menu-item">
-                                                    <a class="animsition-link" href="page-aside-fixed.html">
-                                                        <span class="site-menu-title">Фиксированный сайдбар</span>
-                                                    </a>
-                                                </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                    @endforeach
+
+                    <li class="dropdown site-menu-item has-sub">
+                        <a class="dropdown-toggle" href="#" data-dropdown-toggle="false">
+                            <span class="site-menu-title">БПТлар</span>
+                            <span class="site-menu-arrow"></span>
+                        </a>
+
+                        <div class="dropdown-menu">
+                            <div class="site-menu-scroll-wrap is-list">
+                                <div>
+                                    <div>
+                                        <ul class="site-menu-sub site-menu-normal-list">
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="grids.html">
+                                                    <span class="site-menu-title">Сетка Bootstrap</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="dropdown site-menu-item has-sub">
+                        <a class="dropdown-toggle" href="#" data-dropdown-toggle="false">
+                            <span class="site-menu-title">Хисоботлар</span>
+                            <span class="site-menu-arrow"></span>
+                        </a>
+
+                        <div class="dropdown-menu">
+                            <div class="site-menu-scroll-wrap is-list">
+                                <div>
+                                    <div>
+                                        <ul class="site-menu-sub site-menu-normal-list">
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="grids.html">
+                                                    <span class="site-menu-title">Сетка Bootstrap</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown site-menu-item has-sub">
+                        <a class="dropdown-toggle" href="#" data-dropdown-toggle="false">
+                            <span class="site-menu-title">Маъулмотнома</span>
+                            <span class="site-menu-arrow"></span>
+                        </a>
+
+                        <div class="dropdown-menu">
+                            <div class="site-menu-scroll-wrap is-list">
+                                <div>
+                                    <div>
+                                        <ul class="site-menu-sub site-menu-normal-list">
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="{{ route('province') }}">
+                                                    <span class="site-menu-title">Вилоятлар</span>
+                                                </a>
+                                            </li>
+
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="{{ route('district') }}">
+                                                    <span class="site-menu-title">Туман/шахар</span>
+                                                </a>
+                                            </li>
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="{{ route('district') }}">
+                                                    <span class="site-menu-title">Жинси</span>
+                                                </a>
+                                            </li>
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="{{ route('district') }}">
+                                                    <span class="site-menu-title">Жинси</span>
+                                                </a>
+                                            </li>
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="{{ route('district') }}">
+                                                    <span class="site-menu-title">Миллат</span>
+                                                </a>
+                                            </li>
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="{{ route('district') }}">
+                                                    <span class="site-menu-title">Ижтимоий тоифа </span>
+                                                </a>
+                                            </li>
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="{{ route('district') }}">
+                                                    <span class="site-menu-title">БПТлар</span>
+                                                </a>
+                                            </li>
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="{{ route('district') }}">
+                                                    <span class="site-menu-title">Фойдаланувчилар яратиш</span>
+                                                </a>
+                                            </li>
+                                            <li class="site-menu-item">
+                                                <a class="animsition-link" href="{{ route('district') }}">
+                                                    <span class="site-menu-title">Кенгашлар </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
