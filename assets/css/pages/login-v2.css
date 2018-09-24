@@ -2,7 +2,7 @@
   height: 100%;
 }
 .page-login-v2:before {
-  background-image: url("../../images/login.jpg");
+  /*background-image: url("../../images/login.jpg");*/
 }
 .page-login-v2.page-dark.layout-full:after {
   background-color: rgba(33, 33, 33, .6);

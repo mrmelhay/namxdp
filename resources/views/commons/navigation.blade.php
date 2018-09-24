@@ -10,10 +10,10 @@
                 data-toggle="collapse">
             <i class="icon md-more" aria-hidden="true"></i>
         </button>
-        <a class="navbar-brand navbar-brand-center" href="index.html">
-            <img class="navbar-brand-logo navbar-brand-logo-normal" src="images/logo.png"
+        <a class="navbar-brand navbar-brand-center" href="/">
+            <img class="navbar-brand-logo navbar-brand-logo-normal" src="{!! asset('assets/images/logo.png') !!}"
                  title="Material">
-            <img class="navbar-brand-logo navbar-brand-logo-special" src="images/logo-blue.png"
+            <img class="navbar-brand-logo navbar-brand-logo-special" src="{!! asset('images/logo-blue.png') !!}"
                  title="Material">
             <span class="navbar-brand-text hidden-xs"> Material</span>
         </a>
@@ -58,7 +58,7 @@
                     <a class="navbar-avatar dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
                        data-animation="scale-up" role="button">
               <span class="avatar avatar-online">
-                <img src="{{ asset('images/5.jpg') }}">
+                <img src="{{ asset('assets/images/5.jpg') }}">
                 <i></i>
               </span>
                     </a>
@@ -174,7 +174,7 @@
                 <ul class="site-menu">
                     @foreach($menus as $menu)
                         <li class="dropdown site-menu-item has-sub">
-                            <a class="dropdown-toggle" href="{{ $menu->slug }}" data-dropdown-toggle="false">
+                            <a class="dropdown-toggle" href="#" data-dropdown-toggle="false">
                                 <span class="site-menu-title"> {{ $menu->name }}</span>
                                 <span class="site-menu-arrow"></span>
                             </a>

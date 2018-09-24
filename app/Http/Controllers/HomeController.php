@@ -5,20 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Home;
 
-class HomeController  extends Controller
+class HomeController  extends BaseController
 {
 
 
-    private $data=[];
+
     public function __construct()
     {
-        $this->data['menus']=Home::getAllMenus();
+        parent::__construct();
         $this->middleware('auth');
     }
 
 
     public function index()
     {
-        return view('home',$this->data);
+        return view('/home',$this->data);
     }
 }

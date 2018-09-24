@@ -5,7 +5,7 @@
         <div class="page-content">
             <div class="page-brand-info">
                 <div class="brand">
-                    <img class="brand-img" src="{{ asset('images/logo@2x.png') }}" alt="...">
+                    <img class="brand-img" src="{{ asset('assets/images/logo@2x.png') }}" alt="...">
                     <h2 class="brand-text font-size-40">Material</h2>
                 </div>
                 <p class="font-size-20">Вы хотите создать свой магазин?</p>
@@ -13,7 +13,7 @@
             </div>
             <div class="page-login-main">
                 <div class="brand visible-xs">
-                    <img class="brand-img" src="{{ asset('images/logo-blue@2x.png') }}" alt="...">
+                    <img class="brand-img" src="{{ asset('assets/images/logo-blue@2x.png') }}" alt="...">
                     <h3 class="brand-text font-size-40">Material</h3>
                 </div>
                 <h3 class="font-size-24">Тизимга кириш</h3>
@@ -40,31 +40,11 @@
                                     </span>
                         @endif
                     </div>
-                    <div class="form-group clearfix">
-                        <div class="checkbox-custom checkbox-inline checkbox-primary pull-left">
-                            <input type="checkbox" id="remember" name="checkbox">
-                            <label for="inputCheckbox">Запомнить меня</label>
-                        </div>
-                        <a class="pull-right" href="forgot-password.html">Забыли пароль?</a>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Войти</button>
+
+                    <button type="submit" class="btn btn-primary btn-block">Кириш</button>
                 </form>
-                <p>Нет аккаунта? <a href="register-v2.html">Создайте</a></p>
-                <footer class="page-copyright">
-                    <p>Сделано на FriendlyCMS</p>
-                    <p>© 2016. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</p>
-                    <div class="social">
-                        <a class="btn btn-icon btn-round social-twitter" href="javascript:void(0)">
-                            <i class="icon bd-twitter" aria-hidden="true"></i>
-                        </a>
-                        <a class="btn btn-icon btn-round social-facebook" href="javascript:void(0)">
-                            <i class="icon bd-facebook" aria-hidden="true"></i>
-                        </a>
-                        <a class="btn btn-icon btn-round social-google-plus" href="javascript:void(0)">
-                            <i class="icon bd-google-plus" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </footer>
+
+
             </div>
         </div>
     </div>

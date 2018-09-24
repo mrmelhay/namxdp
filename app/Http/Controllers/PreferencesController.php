@@ -6,31 +6,30 @@ use App\Home;
 use App\Preferences;
 use Illuminate\Http\Request;
 
-class PreferencesController extends Controller
+class PreferencesController extends BaseController
 {
 
-    private $data=[];
 
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->data['menus'] = Home::getAllMenus();
+        parent::__construct();
     }
 
     public function index()
     {
-        $this->data['assets'] = Preferences::getAssets();
+       $this->data['assets'] = Preferences::getAssets();
        return view('preferences.assets', $this->data);
     }
 
-    public function province(){
+    public function getProvince(){
 
         $this->data['title']="Вилоятлар";
+        $this->data['regions']=$this->region;
         return view('preferences.province', $this->data);
 
     }
 
-    public function district(){
+    public function getDistrict(){
         $this->data['title']="Туман/Шахар";
         return view('preferences.district', $this->data);
     }
