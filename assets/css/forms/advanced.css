@@ -15,6 +15,33 @@
   line-height: 40px;
   text-align: center;
 }
+
+.sex_p_tag{
+  padding: 0 2em;
+}
+
+.sex_p_tag>input{
+  margin-right: 3em;
+}
+
+.sex_p_tag>label{
+  margin-right: 10px;
+}
+
+div.submitButton{
+  text-align: right;
+}
+
+p#xdpMemberArea{
+  display: none;
+}
+
+div.row>div.col-md-8.col-md-offset-2{
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  padding: 2em 4em;
+}
+
 @media (max-width: 1360px) {
   .input-daterange-wrap,
   .input-daterange-to {

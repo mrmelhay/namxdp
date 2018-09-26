@@ -88,3 +88,17 @@
         });
     })(document, window, jQuery);
 </script>
+<script>
+    var phoneMask = new IMask(
+            document.getElementById('passInfo'), {
+                mask: '[aa]  000 000 0',
+                prepare: function (str) {
+                    return str.toUpperCase();
+                }
+            });
+
+    var phoneMask1 = new IMask(
+            document.getElementById('phoneNumber'), {
+                mask: '+ {998} (00) 000-00-00',
+            });
+</script>

@@ -180,7 +180,7 @@
                     </li>
 
                         <li class="dropdown site-menu-item has-sub">
-                            <a  href="{{ route('membership') }}" >
+                            <a  href="{{ url('membership') }}" >
                                 <span class="site-menu-title">Аъзолик</span>
 
                             </a>

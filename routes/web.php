@@ -1,5 +1,7 @@
 <?php
 
+use App\User;
+
 Route::group(['middleware'=>'web'],function (){
     Route::match(['get','post'],'/',['uses'=>'HomeController@index','as'=>'home']);
     Auth::routes();
@@ -26,9 +28,7 @@ Route::group(['middleware'=>'web'],function (){
 
 
     Route::get('/reports','PreferencesController@index')->name('reports');
-    Route::get('/membership','PreferencesController@index')->name('membership');
+    Route::resource('/membership','PreferencesController');
+
 
 });
-
-
-
