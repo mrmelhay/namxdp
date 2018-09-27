@@ -28,7 +28,7 @@ Route::group(['middleware'=>'web'],function (){
 
 
     Route::get('/reports','PreferencesController@index')->name('reports');
-    Route::resource('/membership','PreferencesController');
+    Route::resource('/membership','MemberController');
 
 
 });

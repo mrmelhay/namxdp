@@ -79,6 +79,8 @@
 <script src="{{ asset('assets/js/components/multi-select.js') }}"></script>
 <script src="{{ asset('assets/js/components/jquery-placeholder.js') }}"></script>
 <script src="{{ asset('assets/js/forms/advanced.js') }}"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+
 <script>
     (function(document, window, $) {
         'use strict';
@@ -90,7 +92,7 @@
 </script>
 <script>
     var phoneMask = new IMask(
-            document.getElementById('passInfo'), {
+            document.getElementById('passSerial'), {
                 mask: '[aa]  000 000 0',
                 prepare: function (str) {
                     return str.toUpperCase();
@@ -101,4 +103,45 @@
             document.getElementById('phoneNumber'), {
                 mask: '+ {998} (00) 000-00-00',
             });
+</script>
+
+<script type="text/javascript">
+    window.onload = function() {
+        document.getElementById('count_records').style.display = 'none';
+        document.getElementById('editBtn').addEventListener('click' , function(e){
+            e.preventDefault()
+            if(data.length < 1){
+                toastr.warning('Iltimos r\'oyhatdagilardan birini tanlang!')
+            }if(data.length > 1){
+                toastr.warning('Iltimos r\'oyhatdagilardan faqat bittasini tanlang!')
+            }if(data.length == 1){
+                var idd = data[0];
+                var ids = idd.split("contacts_");
+                window.location = '{{url('/membership')}}'+'/'+ids[1]+'/edit';
+            }
+        })
+        var selectors = document.getElementsByClassName('contacts-checkbox');
+        var editButton = document.getElementsByClassName('contacts-checkbox');
+        var data = [];
+        for (var i = 0; i < selectors.length; i++) {
+            selectors[i].addEventListener('change', ggg);
+        }
+
+        function ggg(e) {
+            if (e.target.checked) {
+                data.push(e.target.id)
+                console.log(data.length)
+            } else {
+                data.splice(data.indexOf(e.target.id), 1)
+                console.log(data.length)
+            }
+            if(data.length){
+                document.getElementById('count_records').style.display = 'block';
+                document.getElementById('coun').innerHTML = data.length
+            }else{
+                document.getElementById('count_records').style.display = 'none';
+                document.getElementById('coun').innerHTML = ''
+            }
+        }
+    }
 </script>

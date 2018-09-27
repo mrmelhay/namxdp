@@ -54,6 +54,7 @@
     <link rel="stylesheet" href="{{ asset('assets/fonts/octicons/octicons.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fonts/material-design/material-design.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/fonts/brand-icons/brand-icons.min.css') }}">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic&subset=latin,cyrillic'>
     <script src="https://unpkg.com/imask"></script>
     <!--[if lt IE 9]>
