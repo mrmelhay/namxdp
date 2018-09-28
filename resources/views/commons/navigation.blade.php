@@ -194,13 +194,13 @@
 
                     <li class="dropdown site-menu-item has-sub">
                         <a  href="{{ url('reports') }}" >
-                            <span class="site-menu-title">Хисоботлар</span>
+                            <span class="site-menu-title">Ҳисоботлар</span>
                         </a>
                     </li>
 
                     <li class="dropdown site-menu-item has-sub">
                         <a class="dropdown-toggle" data-dropdown-toggle="false">
-                            <span class="site-menu-title">Маъулмотнома</span>
+                            <span class="site-menu-title">Маълумотнома</span>
                             <span class="site-menu-arrow"></span>
                         </a>
 
@@ -217,7 +217,7 @@
 
                                             <li class="site-menu-item">
                                                 <a class="animsition-link" href="{{ url('district') }}">
-                                                    <span class="site-menu-title">Туман/шахар</span>
+                                                    <span class="site-menu-title">Туман/шаҳар</span>
                                                 </a>
                                             </li>
                                             <li class="site-menu-item">
