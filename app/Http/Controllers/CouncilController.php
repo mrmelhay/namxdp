@@ -9,8 +9,9 @@ class CouncilController extends BaseController
 {
 
     public function index(){
-//        $this->data["councils"]=$this->council;
-//        return view('preferences.district.district',$this->data);
+        $this->data["title"]="Partiyalar";
+        $this->data["parties"]=$this->council;
+        return view('preferences.council.index',$this->data);
     }
 
     public function create()

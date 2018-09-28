@@ -16,11 +16,6 @@ class MemberController extends BaseController
         return view('preferences.membership.index', $this->data);
     }
 
-
-
-
-
-
     public function store(Request $request)
     {
         if($this->customValidate($request)){

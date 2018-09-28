@@ -23,7 +23,7 @@ class BaseController extends Controller
     public $data=[];
     public $valid=[];
     public $menus=[];
-//    public $council=[];
+    public $council=[];
     public $users=[];
     public $sex=[];
     public $region=[];
@@ -39,7 +39,7 @@ class BaseController extends Controller
         $this->region=$this->getAllRegions();
         $this->bpt=$this->getAllBpt();
         $this->users=$this->getAllUsers();
-//        $this->council=$this->getAllCouncils();
+        $this->council=$this->getAllCouncils();
         $this->sex=$this->getAllSexes();
         $this->nation=$this->getAllnations();
         $this->soc_cats=$this->getSocialCategories();
@@ -48,9 +48,9 @@ class BaseController extends Controller
         $this->district=$this->getAllDistricts();
     }
 
-//    public function getAllCouncils(){
-//        return Council::all();
-//    }
+    public function getAllCouncils(){
+        return Council::all();
+    }
 
     public function getAllUsers(){
         return User::all();

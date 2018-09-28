@@ -36,7 +36,6 @@ Route::group(['middleware'=>'web'],function (){
     Route::resource('/district', 'DistrictController');
     Route::resource('/bpt','BptController');
     Route::resource('/users','UserController');
-    Route::resource('/coucils','CouncilController');
-
+    Route::resource('/council','CouncilController');
 
 });

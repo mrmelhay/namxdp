@@ -242,7 +242,7 @@
                                                 </a>
                                             </li>
                                             <li class="site-menu-item">
-                                                <a class="animsition-link">
+                                                <a class="animsition-link" href="{{url('council')}}">
                                                     <span class="site-menu-title">Кенгашлар</span>
                                                 </a>
                                             </li>

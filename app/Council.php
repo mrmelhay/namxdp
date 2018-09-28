@@ -6,5 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Council extends Model
 {
+    protected $fillable = [
+        'party_id',
+        'party_name',
+        'party_address',
+        'party_director',
+        'party_phone',
+        'party_region_id',
+        'party_distirict_id',
+    ];
 
+    protected $table = 'party';
+
+    public function region(){
+       return $this->hasOne('App\Province', 'region_id', 'party_region_id');
+    }
+
+    public function district(){
+        return $this->hasOne('App\District', 'district_id', 'party_distirict_id');
+    }
 }
