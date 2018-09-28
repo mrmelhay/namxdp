@@ -6,12 +6,12 @@
         <div class="page-header">
             <div>
                 <div class="btn-group" role="group" aria-label="...">
-                    <button class="btn btn-primary btn-md" onclick="window.location='{{url('membership/create')}}';">+ A'zo Qo'shish</button>
-                    <button class="btn btn-warning btn-md" id="editBtn"> <span id="countt"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-pencil"></span> O'zgartirish</button>
-                    <button class="btn btn-default btn-md">Pensiya</button>
-                    <button class="btn btn-default btn-md">Badal</button>
-                    <button class="btn btn-danger btn-md" id="deleteBpt"><span id="count"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-trash"></span> O'chirish</button>
-                    <button class="btn btn-info btn-md" id="count_records"> <span id="coun"></span> ta tanlandi</button>
+                    <button class="btn btn-primary btn-md" onclick="window.location='{{url('membership/create')}}';">+ Аъзо қўшиш</button>
+                    <button class="btn btn-warning btn-md" id="editBtn"> <span id="countt"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-pencil"></span> Ўзгартириш</button>
+                    <button class="btn btn-default btn-md">Пенсия</button>
+                    <button class="btn btn-default btn-md">Бадал</button>
+                    <button class="btn btn-danger btn-md" id="deleteBpt"><span id="count"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-trash"></span> Ўчириш</button>
+                    <button class="btn btn-info btn-md" id="count_records"> <span id="coun"></span> та танланди</button>
                 </div>
             </div>
             <div class="page-header-actions">
@@ -32,11 +32,11 @@
                     <th class="pre-cell"></th>
                     <th class="cell-30" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                     </th>
-                    <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">Ismi</th>
-                    <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">BPT Nomi</th>
-                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">A'zo bo'lgan sana</th>
-                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Tug'ilgan sana</th>
-                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Badal</th>
+                    <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">Ф.И.О</th>
+                    <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">БПТ номи</th>
+                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Аъзолик санаси</th>
+                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Туғилган санаси</th>
+                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Бадал</th>
                     <th class="suf-cell"></th>
                 </tr>
                 </thead>
@@ -66,4 +66,6 @@
             <div class="text-center">{{$members->links()}}</div>
         </div>
     </div>
+
+
 @endsection
