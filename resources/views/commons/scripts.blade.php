@@ -107,7 +107,6 @@
 
 <script type="text/javascript">
     window.onload = function() {
-        document.getElementById('count_records').style.display = 'none';
         document.getElementById('editBtn').addEventListener('click' , function(e){
             e.preventDefault()
             if(data.length < 1){
@@ -127,6 +126,47 @@
             selectors[i].addEventListener('change', ggg);
         }
 
+        document.getElementById('count_records').style.display = 'none';
+        document.getElementById('deleteBpt').addEventListener('click',function(e){
+            e.preventDefault()
+            var bool = confirm('Qaydlarni o\'chirmoqchimisiz?')
+            if(bool){
+                var data1=[];
+                if(data.length > 0){
+                    for(var i=0;i<data.length;++i){
+                        var element = data[i];
+                        var id = element.split("contacts_");
+                        data1.push(parseInt(id[1]))
+                        console.log(data1);
+                    }
+                    $.ajax({
+                        url:'{{url('api/deleteMember')}}',
+                        type: 'POST',
+                        dataType:'json',
+                        contentType: 'json',
+                        data: JSON.stringify(data1),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function(data11){
+                            if(!data11.error){
+                                toastr.success('O\'CHIRILDI!')
+                                for(var t=0;t<data.length;++t){
+                                    console.log(data[t])
+                                    var l = document.getElementById(data[t]).parentNode.parentNode.parentNode;
+                                    console.log(l.parentNode.removeChild(l));
+                                }
+                                data = [];
+                            }else{
+                                toastr.warning('Texnik xatolik!')
+                            }
+                        }
+                    });
+
+                }else{
+                    toastr.warning('O\'chirish uchun qaydlardan birini yoki bir nechtasini tanlang!')
+                }
+            }
+        })
+
         function ggg(e) {
             if (e.target.checked) {
                 data.push(e.target.id)
@@ -137,10 +177,14 @@
             }
             if(data.length){
                 document.getElementById('count_records').style.display = 'block';
+                document.getElementById('count').innerHTML = '('+data.length+')'
+                document.getElementById('countt').innerHTML = '('+data.length+')'
                 document.getElementById('coun').innerHTML = data.length
             }else{
                 document.getElementById('count_records').style.display = 'none';
                 document.getElementById('coun').innerHTML = ''
+                document.getElementById('count').innerHTML = ''
+                document.getElementById('countt').innerHTML = ''
             }
         }
     }

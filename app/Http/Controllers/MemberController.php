@@ -12,13 +12,17 @@ class MemberController extends BaseController
     public function index()
     {
         $this->data['assets'] = Preferences::getAssets();
-        $this->data['members'] = Members::all();
-        return view('preferences.asset.assets', $this->data);
+        $this->data['members'] = Members::where('is_deleted',0)->get();
+        return view('preferences.membership.index', $this->data);
     }
 
     public function store(Request $request)
     {
-        if($this->customValidate($request)){ return $this->index();}else{abort(404);}
+        if($this->customValidate($request)){
+            return $this->index();
+        }else{
+            return redirect()->back()->withErrors($this->valid)->withInput();
+        }
     }
 
     public function create()
@@ -26,8 +30,9 @@ class MemberController extends BaseController
         $this->data['title']="Азоларни руйхатга олиш";
         $this->data['regions']=$this->region;
         $this->data['nations']=$this->nation;
-        return view('preferences.asset.store_assets', $this->data);
-
+        $this->data['bpts']=$this->bpt;
+        $this->data['soc_cats']=$this->soc_cats;
+        return view('preferences.membership.add', $this->data);
     }
 
     public function show($id)
@@ -37,12 +42,31 @@ class MemberController extends BaseController
 
     public function edit($id)
     {
-        echo $id;
+        if(is_numeric($id)){
+            $member = Members::findAndCheck($id);
+            $this->data['title']="Азоларни руйхатга олиш";
+            $this->data['regions']=$this->region;
+            $this->data['bpts']=$this->bpt;
+            $this->data['member']=$member;
+            $this->data['soc_cats']=$this->soc_cats;
+            $this->data['nations']=$this->nation;
+            return view('preferences.membership.edit',$this->data);
+        }else{
+            abort(404,['Kechirasiz siz qidirgan sahifa hozirda mavjud emas!']);
+        }
     }
 
     public function update(Request $request, $id)
     {
-        //
+        if(is_numeric($id)){
+            if($this->customValidate($request, $id,1)){
+                return $this->index();
+            }else{
+                return redirect()->back()->withErrors($this->valid)->withInput();
+            }
+        }else{
+            abort(404);
+        }
     }
 
     public function destroy($id)

@@ -15,7 +15,7 @@ class ProvinceController extends BaseController
 
     public function index(){
         $this->data['regions']=$this->region;
-        return view('preferences.province',$this->data);
+        return view('preferences.province.province',$this->data);
     }
 
     public function action(Request $request){

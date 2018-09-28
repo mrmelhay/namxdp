@@ -18,5 +18,6 @@
         @if($errors->first('unionOrderNumber'))<li><?php echo $errors->first('unionOrderNumber'); ?></li>@endif
         @if($errors->first('unionCertfNumber'))<li><?php echo $errors->first('unionCertfNumber'); ?></li>@endif
         @if($errors->first('isFeePaid'))<li><?php echo $errors->first('isFeePaid'); ?></li>@endif
+        @if($errors->first('bpt_id'))<li><?php echo $errors->first('bpt_id'); ?></li>@endif
         @if($errors->first('socialPositionId'))<li><?php echo $errors->first('socialPositionId'); ?></li>@endif
 </ul>@endif

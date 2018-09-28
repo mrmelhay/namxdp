@@ -6,12 +6,12 @@
         <div class="page-header">
             <div>
                 <div class="btn-group" role="group" aria-label="...">
-                    <button class="btn btn-default btn-md" onclick="window.location='{{url('membership/create')}}';">+ A'zo Qo'shish</button>
-                    <button class="btn btn-default btn-md" id="editBtn">O'zgartirish</button>
+                    <button class="btn btn-primary btn-md" onclick="window.location='{{url('membership/create')}}';">+ A'zo Qo'shish</button>
+                    <button class="btn btn-warning btn-md" id="editBtn"> <span id="countt"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-pencil"></span> O'zgartirish</button>
                     <button class="btn btn-default btn-md">Pensiya</button>
                     <button class="btn btn-default btn-md">Badal</button>
-                    <button class="btn btn-default btn-md">O'chirish</button>
-                    <button class="btn btn-warning btn-md" id="count_records"> <span id="coun"></span> ta tanlandi</button>
+                    <button class="btn btn-danger btn-md" id="deleteBpt"><span id="count"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-trash"></span> O'chirish</button>
+                    <button class="btn btn-info btn-md" id="count_records"> <span id="coun"></span> ta tanlandi</button>
                 </div>
             </div>
             <div class="page-header-actions">
@@ -32,9 +32,11 @@
                     <th class="pre-cell"></th>
                     <th class="cell-30" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                     </th>
-                    <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">Name</th>
-                    <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">Phone</th>
-                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Email</th>
+                    <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">Ismi</th>
+                    <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">BPT Nomi</th>
+                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">A'zo bo'lgan sana</th>
+                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Tug'ilgan sana</th>
+                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Badal</th>
                     <th class="suf-cell"></th>
                 </tr>
                 </thead>
@@ -51,7 +53,10 @@
                             <td class="cell-300">
                                 {{$member->fullName}}
                             </td>
-                            <td class="cell-300">{{$member->phoneNumber}}</td>
+                            <td class="cell-300">{{$member->bpt->bpt_name}}</td>
+                            <td class="cell-300">{{$member->unionJoinDate}}</td>
+                            <td class="cell-300">{{$member->birthday}}</td>
+                            <td class="cell-300">{{($member->isFeePaid==0)?'To\'lamaydi':'To\'laydi'}}</td>
                             <td></td>
                             <td class="suf-cell"></td>
                         </tr>

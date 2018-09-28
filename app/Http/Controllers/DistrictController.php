@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class DistrictController extends BaseController
 {
-    //
 
     public function __construct()
     {
@@ -15,7 +14,8 @@ class DistrictController extends BaseController
     }
 
     public function index(){
-        return view('preferences.district',$this->data);
+        $this->data["districts"]=$this->district;
+        return view('preferences.district.district',$this->data);
     }
 
     public function action(Request $request){

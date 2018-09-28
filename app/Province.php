@@ -15,6 +15,6 @@ class Province extends Model
     ];
 
     public function districts(){
-        $this->belongsTo('App\District','region_id');
+       return $this->belongsTo('App\District','region_id');
     }
 }

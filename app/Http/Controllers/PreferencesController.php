@@ -26,6 +26,7 @@ class PreferencesController extends BaseController
 
     public function getDistrict(){
         $this->data['title']="Туман/Шахар";
+        $this->data['districts']=$this->region;
         return view('preferences.district', $this->data);
     }
 

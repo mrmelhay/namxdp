@@ -187,19 +187,19 @@
                         </li>
 
                     <li class="dropdown site-menu-item has-sub">
-                        <a href="{{ route('bts') }}">
+                        <a href="{{ url('bts') }}">
                             <span class="site-menu-title">БПТлар</span>
                         </a>
                     </li>
 
                     <li class="dropdown site-menu-item has-sub">
-                        <a  href="{{ route('reports') }}" >
+                        <a  href="{{ url('reports') }}" >
                             <span class="site-menu-title">Хисоботлар</span>
                         </a>
                     </li>
 
                     <li class="dropdown site-menu-item has-sub">
-                        <a class="dropdown-toggle" href="#" data-dropdown-toggle="false">
+                        <a class="dropdown-toggle" data-dropdown-toggle="false">
                             <span class="site-menu-title">Маъулмотнома</span>
                             <span class="site-menu-arrow"></span>
                         </a>
@@ -210,44 +210,44 @@
                                     <div>
                                         <ul class="site-menu-sub site-menu-normal-list">
                                             <li class="site-menu-item">
-                                                <a class="animsition-link" href="{{ route('province') }}">
+                                                <a class="animsition-link" href="{{ url('province') }}">
                                                     <span class="site-menu-title">Вилоятлар</span>
                                                 </a>
                                             </li>
 
                                             <li class="site-menu-item">
-                                                <a class="animsition-link" href="{{ route('district') }}">
+                                                <a class="animsition-link" href="{{ url('district') }}">
                                                     <span class="site-menu-title">Туман/шахар</span>
                                                 </a>
                                             </li>
                                             <li class="site-menu-item">
-                                                <a class="animsition-link" href="{{ route('sex') }}">
+                                                <a class="animsition-link" href="{{ url('/sex') }}">
                                                     <span class="site-menu-title">Жинси</span>
                                                 </a>
                                             </li>
 
                                             <li class="site-menu-item">
-                                                <a class="animsition-link" href="{{ route('nation') }}">
+                                                <a class="animsition-link" href="{{ url('nation') }}">
                                                     <span class="site-menu-title">Миллат</span>
                                                 </a>
                                             </li>
                                             <li class="site-menu-item">
-                                                <a class="animsition-link" href="{{ route('community') }}">
+                                                <a class="animsition-link" href="{{ url('socCats') }}">
                                                     <span class="site-menu-title">Ижтимоий тоифа </span>
                                                 </a>
                                             </li>
                                             <li class="site-menu-item">
-                                                <a class="animsition-link" href="{{ route('bts') }}">
+                                                <a class="animsition-link" href="{{ url('bpt') }}">
                                                     <span class="site-menu-title">БПТлар</span>
                                                 </a>
                                             </li>
                                             <li class="site-menu-item">
-                                                <a class="animsition-link" href="{{ route('councils') }}">
+                                                <a class="animsition-link">
                                                     <span class="site-menu-title">Кенгашлар</span>
                                                 </a>
                                             </li>
                                             <li class="site-menu-item">
-                                                <a class="animsition-link" href="{{ route('users') }}">
+                                                <a class="animsition-link" href="{{ url('users') }}">
                                                     <span class="site-menu-title">Фойдаланувчилар яратиш</span>
                                                 </a>
                                             </li>

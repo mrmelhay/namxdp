@@ -16,7 +16,7 @@ class District extends Model
 
 
 
-  public function districts(){
-      return $this->hasMany('App\Province','region_id');
+  public function region(){
+      return $this->hasOne('App\Province','region_id','region_id');
   }
 }
