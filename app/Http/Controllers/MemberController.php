@@ -12,9 +12,11 @@ class MemberController extends BaseController
     public function index()
     {
         $this->data['assets'] = Preferences::getAssets();
-        $this->data['members'] = Members::where('is_deleted',0)->get();
+        $this->data['members'] = Members::where('is_deleted',0)->paginate(20);
         return view('preferences.membership.index', $this->data);
     }
+
+
 
     public function store(Request $request)
     {
@@ -27,7 +29,7 @@ class MemberController extends BaseController
 
     public function create()
     {
-        $this->data['title']="Àçîëàğíè ğóéõàòãà îëèø";
+        $this->data['title']="ĞĞ·Ğ¾Ğ»Ğ°Ñ€Ğ½Ğ¸  Ñ€ÑƒĞ¹Ñ…Ğ°Ñ‚Ğ³Ğ°  Ğ¾Ğ»Ğ¸Ñˆ";
         $this->data['regions']=$this->region;
         $this->data['nations']=$this->nation;
         $this->data['bpts']=$this->bpt;
@@ -44,7 +46,7 @@ class MemberController extends BaseController
     {
         if(is_numeric($id)){
             $member = Members::findAndCheck($id);
-            $this->data['title']="Àçîëàğíè ğóéõàòãà îëèø";
+            $this->data['title']="ĞĞ·Ğ¾Ğ»Ğ°Ñ€Ğ½Ğ¸  Ñ€ÑƒĞ¹Ñ…Ğ°Ñ‚Ğ³Ğ°  Ğ¾Ğ»Ğ¸Ñˆ";
             $this->data['regions']=$this->region;
             $this->data['bpts']=$this->bpt;
             $this->data['member']=$member;

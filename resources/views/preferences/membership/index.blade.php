@@ -63,7 +63,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <ul data-plugin="paginator" data-total="50" data-skin="pagination-gap"></ul>
+            <div class="text-center">{{$members->links()}}</div>
         </div>
     </div>
 @endsection
