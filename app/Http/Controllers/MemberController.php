@@ -18,6 +18,9 @@ class MemberController extends BaseController
 
 
 
+
+
+
     public function store(Request $request)
     {
         if($this->customValidate($request)){
