@@ -65,6 +65,8 @@
                     <option selected value="{{$member->district_id}}">{{$member->district->district_name}}</option>
                 </select><br>
 
+
+
                 <input type="text" value="{{$member->homeAddress}}" name="homeAddress" class="form-control" placeholder="5 - Komil Yormatov ko'chasi, uy 34"><br>
 
                 <input placeholder="Partiyaga azo bo'lgan sana" value="{{$member->unionJoinDate}}" type="text" data-provide="datepicker" name="unionJoinDate" id="unionJoinDate" required="required" class="form-control"><br>

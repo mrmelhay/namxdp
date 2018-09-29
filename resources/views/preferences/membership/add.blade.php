@@ -6,12 +6,11 @@
         <h5>{{$title}}</h5><br>
         <div>
             @include('commons.errors_list')
+
         </div>
     </div>
             <form class="row" action="{{url('/membership')}}" method="post">
-
                 <div>
-
                     <div class="col-md-6">{{csrf_field()}}{{method_field('POST')}}
 
                         <input type="text" required="required" name="fullName" value="{{old('fullName')}}" id="fullName" class="form-control" placeholder="Ф.И.О"><br>
