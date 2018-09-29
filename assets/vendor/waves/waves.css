@@ -101,3 +101,6 @@
 a.waves-effect .waves-ripple {
   z-index: -1;
 }
+button#count_records{
+    display:none;
+}

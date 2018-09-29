@@ -109,7 +109,7 @@ class BaseController extends Controller
             'unionCertfNumber' => 'required',
             'bpt_id' => 'required|integer',
             'isFeePaid' => 'required|integer',
-            'socialPositionId' => 'required|integer'
+            'socialPositionId' => 'integer'
         ];}else{
             return  [
                 'fullName' => 'required|string|min:7',

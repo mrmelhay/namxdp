@@ -69,9 +69,9 @@
 
                 <input placeholder="Partiyaga azo bo'lgan sana" value="{{$member->unionJoinDate}}" type="text" data-provide="datepicker" name="unionJoinDate" id="unionJoinDate" required="required" class="form-control"><br>
 
-                <input type="number" name="unionOrderNumber" value="{{$member->unionOrderNumber}}" id="unionOrderNumber" required="required" class="form-control" placeholder="БПТ йиғилиш қарори рақами"><br>
+                <input type="text" name="unionOrderNumber" value="{{$member->unionOrderNumber}}" id="unionOrderNumber" required="required" class="form-control" placeholder="БПТ йиғилиш қарори рақами"><br>
 
-                <input type="number" name="unionCertfNumber" value="{{$member->unionCertfNumber}}" id="unionCertfNumber" required="required" class="form-control" placeholder="Партия гувохномаа рақами"><br>
+                <input type="text" name="unionCertfNumber" value="{{$member->unionCertfNumber}}" id="unionCertfNumber" required="required" class="form-control" placeholder="Партия гувохномаа рақами"><br>
 
                 <p class="sex_p_tag"><label for="">  Badal to'laydi  </label><input type="radio" name="isFeePaid" value="1" {{((int)$member->isFeePaid==1)?'checked':''}}><label for="">  Badal to'lamaydi  </label><input value="0" type="radio" name="isFeePaid" {{((int)$member->isFeePaid==0)?'checked':''}}></p>
 
