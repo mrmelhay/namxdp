@@ -33,3 +33,21 @@ Route::post('/deleteMember', function (Request $request) {
         ]);
     }
 });
+
+Route::post('/restoreMember', function (Request $request) {
+
+    $result = Members::whereIn('id',$request->all())->update(['is_deleted'=>0]);
+    if($result){
+        return response()->json([
+            'error' => false,
+            'status' => 'OK',
+            'code' => 200
+        ]);
+    }else{
+        return response()->json([
+            'error' => true,
+            'status' => 'error',
+            'code' => 465
+        ]);
+    }
+});

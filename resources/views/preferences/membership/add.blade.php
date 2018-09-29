@@ -2,14 +2,15 @@
 
 @section('content')
 
-            <h5>{{$title}}</h5><br>
-            <div>
-                @include('commons.errors_list')
-            </div>
+    <div>
+        <h5>{{$title}}</h5><br>
+        <div>
+            @include('commons.errors_list')
+        </div>
+    </div>
+            <form class="row" action="{{url('/membership')}}" method="post">
 
-            <form action="{{url('/membership')}}" method="post">
-
-                <div class="row">
+                <div>
 
                     <div class="col-md-6">{{csrf_field()}}{{method_field('POST')}}
 

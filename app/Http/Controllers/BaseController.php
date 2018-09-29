@@ -27,6 +27,7 @@ class BaseController extends Controller
     public $users=[];
     public $sex=[];
     public $region=[];
+    public $countArchive;
     public $bpt=[];
     public $soc_cats=[];
     public $nation=[];
@@ -36,6 +37,7 @@ class BaseController extends Controller
     {
         $this->middleware('auth');
         $this->rules=$this->validationRules();
+        $this->countArchive=$this->getAllArchives();
         $this->region=$this->getAllRegions();
         $this->bpt=$this->getAllBpt();
         $this->users=$this->getAllUsers();
@@ -70,6 +72,10 @@ class BaseController extends Controller
 
     public function getAllMenus(){
         return Home::getAllMenus();
+    }
+
+    public function getAllArchives(){
+        return Members::where('is_deleted',1)->count();
     }
 
     public function getAllBpt(){

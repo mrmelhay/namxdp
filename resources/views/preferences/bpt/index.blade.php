@@ -17,7 +17,7 @@
                     <th>M.F.Y yoki yo'q</th>
                     <th>Bpt tumani</th>
                     <th>Bpt viloyati</th>
-                    <th>Bpt partiya nomi</th>
+                    <th>Partiya nomi</th>
                     <th>Action</th>
                 </thead>
                 <tbody>

@@ -38,4 +38,10 @@ Route::group(['middleware'=>'web'],function (){
     Route::resource('/users','UserController');
     Route::resource('/council','CouncilController');
 
+
+    Route::get('/arxiv',function(){
+        $archives = \App\Members::where('is_deleted',1)->paginate(20);
+        return view('preferences.membership.archives', compact('archives'));
+    });
+
 });

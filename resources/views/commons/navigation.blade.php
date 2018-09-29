@@ -187,7 +187,7 @@
                         </li>
 
                     <li class="dropdown site-menu-item has-sub">
-                        <a href="{{ url('bts') }}">
+                        <a href="{{ url('bpt') }}">
                             <span class="site-menu-title">БПТлар</span>
                         </a>
                     </li>
