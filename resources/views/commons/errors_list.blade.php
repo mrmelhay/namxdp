@@ -1,4 +1,5 @@
-<ul>@if(count($errors))
+<ul>
+        @if(count($errors))
         @if($errors->first('fullName'))<li><?php echo $errors->first('fullName'); ?></li>@endif
         @if($errors->first('birthDay'))<li><?php echo $errors->first('birthDay'); ?></li>@endif
         @if($errors->first('sex_id'))<li><?php echo $errors->first('sex_id'); ?></li>@endif
@@ -20,4 +21,17 @@
         @if($errors->first('isFeePaid'))<li><?php echo $errors->first('isFeePaid'); ?></li>@endif
         @if($errors->first('bpt_id'))<li><?php echo $errors->first('bpt_id'); ?></li>@endif
         @if($errors->first('socialPositionId'))<li><?php echo $errors->first('socialPositionId'); ?></li>@endif
-</ul>@endif
+
+        @if($errors->first('bpt_name'))<li><?php echo $errors->first('bpt_name'); ?></li>@endif
+        @if($errors->first('speciality'))<li><?php echo $errors->first('speciality'); ?></li>@endif
+        @if($errors->first('bpt_address'))<li><?php echo $errors->first('bpt_address'); ?></li>@endif
+        @if($errors->first('bpt_is_mfy'))<li><?php echo $errors->first('bpt_is_mfy'); ?></li>@endif
+        @if($errors->first('bpt_region_id'))<li><?php echo $errors->first('bpt_region_id'); ?></li>@endif
+        @if($errors->first('bpt_district_id'))<li><?php echo $errors->first('bpt_district_id'); ?></li>@endif
+        @if($errors->first('bpt_party_id'))<li><?php echo $errors->first('bpt_party_id'); ?></li>@endif
+
+
+
+
+</ul>
+@endif

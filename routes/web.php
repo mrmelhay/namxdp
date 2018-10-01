@@ -42,7 +42,9 @@ Route::group(['middleware'=>'web'],function (){
 
     Route::get('/arxiv',function(){
         $archives = \App\Members::where('is_deleted',1)->paginate(20);
-        return view('preferences.membership.archives', compact('archives'));
+        $bpt = new \App\Http\Controllers\BptController();
+        $bpts = $bpt->getAllBpt();
+        return view('preferences.membership.archives', compact('archives','bpts'));
     });
 
     Route::post('/searchMember',function(\Illuminate\Http\Request $request){
@@ -50,7 +52,7 @@ Route::group(['middleware'=>'web'],function (){
         foreach($request->all() as $key => $value){
             if($value!==null && $key!='_token'){
                 if($key=='fullName'){
-                    $members1 = \App\Members::where('fullName','like','%'.$value.'%')->orderBy('id','desc')->paginate(20);
+                        $members1 = \App\Members::where('fullName','like','%'.$value.'%')->orderBy('id','desc')->paginate(20);
                     break;
                 }else{
                     $data[$key] = $value;
@@ -63,9 +65,9 @@ Route::group(['middleware'=>'web'],function (){
         if(isset($members1)){
             $data1["members"] = $members1;
         }else{
-            $members = \App\Members::where($data)->orderBy('id','desc')->paginate(20);
-            $data1["members"] = $members;
+                $members = \App\Members::where($data)->orderBy('id','desc')->paginate(20);
         }
+        $data1["members"] = $members;
         return view('preferences.membership.index', $data1);
     })->name('searchMember');
 
