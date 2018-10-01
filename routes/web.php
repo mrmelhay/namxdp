@@ -24,10 +24,7 @@ Route::group(['middleware'=>'web'],function (){
     Route::get('/councils','PreferencesController@index');
     Route::get('/users','PreferencesController@index');
 
-
-    Route::get('/reports','PreferencesController@index');
-
-
+    Route::resource('/reports','ReportsController');
 
     Route::resource('/socCats','SocialCatsController');
     Route::resource('/nation','NationController');

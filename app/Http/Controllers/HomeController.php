@@ -8,8 +8,6 @@ use App\Home;
 class HomeController  extends BaseController
 {
 
-
-
     public function __construct()
     {
         parent::__construct();
@@ -19,6 +17,6 @@ class HomeController  extends BaseController
 
     public function index()
     {
-        return view('/home',$this->data);
+        return view('/',$this->data);
     }
 }
