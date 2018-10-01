@@ -11,9 +11,9 @@
             <i class="icon md-more" aria-hidden="true"></i>
         </button>
         <a class="navbar-brand navbar-brand-center" href="/">
-            <img class="navbar-brand-logo navbar-brand-logo-normal" src="{!! asset('assets/images/logo.png') !!}"
+            <img class="navbar-brand-logo navbar-brand-logo-normal" src="{!! asset('images/logo_new.png') !!}"
                  title="Material">
-            <img class="navbar-brand-logo navbar-brand-logo-special" src="{!! asset('images/logo-blue.png') !!}"
+            <img class="navbar-brand-logo navbar-brand-logo-special" src="{!! asset('images/logo_new.png') !!}"
                  title="Material">
             <span class="navbar-brand-text hidden-xs"> Material</span>
         </a>

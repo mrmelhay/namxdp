@@ -2,7 +2,6 @@
 <html class="no-js css-menubar" lang="{{ app()->getLocale() }}">
 @include('commons.meta')
 <body class="site-navbar-small dashboard layout-boxed">
-
 <!--[if lt IE 8]>
 <p class="browserupgrade">Вы используюте <strong>устаревший</strong> браузер. Обновите <a href="http://browsehappy.com/">Ваш браузер</a> для лучшей работы сайта.</p>
 <![endif]-->
