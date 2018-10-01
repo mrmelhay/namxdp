@@ -79,7 +79,7 @@ class BaseController extends Controller
     }
 
     public function getAllBpt(){
-        return BPT::all();
+        return BPT::where('is_deleted',0)->orderBy('bpt_id','desc')->get();
     }
 
     public function getAllDistricts(){

@@ -8,6 +8,8 @@ class BPT extends Model
 {
     protected $table = 'bpt';
 
+    protected $primaryKey = 'bpt_id';
+
     protected $fillable = [
         'bpt_name',
         'bpt_speciality',

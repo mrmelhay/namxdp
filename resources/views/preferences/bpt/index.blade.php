@@ -7,27 +7,19 @@
                 <div class="btn-group" role="group" aria-label="...">
                     <button class="btn btn-primary btn-md" onclick="window.location='{{url('bpt/create')}}';">+ Бпт қўшиш</button>
                     <button class="btn btn-warning btn-md" id="editBtn"> <span id="countt"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-pencil"></span> Ўзгартириш</button>
-                    <button class="btn btn-default btn-md">Пенсия</button>
-                    <button class="btn btn-default btn-md">Бадал</button>
+                    {{--<button class="btn btn-default btn-md">Пенсия</button>--}}
+                    {{--<button class="btn btn-default btn-md">Бадал</button>--}}
                     <button class="btn btn-danger btn-md" id="deleteBpt"><span id="count"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-trash"></span> Ўчириш</button>
                     <button class="btn btn-default btn-md" onclick="window.location='{{url('arxiv')}}'">Архив</button>
                     <button class="btn btn-info btn-md" id="count_records"> <span id="coun"></span> та танланди</button>
                 </div>
             </div>
-            {{--<div class="page-header-actions">--}}
-            {{--<form>--}}
-            {{--<div class="input-search input-search-dark">--}}
-            {{--<i class="input-search-icon md-search" aria-hidden="true"></i>--}}
-            {{--<input type="text" class="form-control" name="" placeholder="Izlash...">--}}
-            {{--</div>--}}
-            {{--</form>--}}
-            {{--</div>--}}
         </div>
         <div class="table-responsive">
             <table class="table">
                 <thead>
                 <tr>
-                    <th><input type="checkbox"  name="bpt" id="bpt" /></th>
+                    <th></th>
                     <th>ID</th>
                     <th>Bpt номи</th>
                     <th>Bpt sohasi</th>
@@ -41,7 +33,7 @@
                 <tbody>
                 @foreach($bpts as $bpt)
                     <tr>
-                        <td><input type="checkbox" value="{{ $bpt->bpt_id }}" class="selectable-item" name="region[]" id="region[]" /></td>
+                        <td><input type="checkbox" value="{{ $bpt->bpt_id }}" class="selectable-item contacts-checkbox" name="region[]" id="contacts_{{$bpt->bpt_id}}" /></td>
                         <td><a href="{{ url('/bpt/'.$bpt->bpt_id) }}/edit">{{ $bpt->bpt_id}}</a></td>
                         <td>{{ $bpt->bpt_name }}</td>
                         <td>{{ $bpt->bpt_speciality }}</td>
@@ -65,6 +57,88 @@
             </table>
         </div>
     </div>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('editBtn').addEventListener('click' , function(e){
+                e.preventDefault()
+                if(data.length < 1){
+                    toastr.warning('Iltimos r\'oyhatdagilardan birini tanlang!')
+                }if(data.length > 1){
+                    toastr.warning('Iltimos r\'oyhatdagilardan faqat bittasini tanlang!')
+                }if(data.length == 1){
+                    console.log(data)
+                    var idd = data[0];
+                    var ids = idd.split("contacts_");
+                    window.location = '{{url('/bpt')}}'+'/'+ids[1]+'/edit';
+                }
+            })
+            var selectors = document.getElementsByClassName('contacts-checkbox');
+            var editButton = document.getElementsByClassName('contacts-checkbox');
+            var data = [];
+            for (var i = 0; i < selectors.length; i++) {
+                selectors[i].addEventListener('change', ggg);
+            }
+//            document.getElementById('count_records').style.display = 'none';
+            document.getElementById('deleteBpt').addEventListener('click',function(e){
+                e.preventDefault()
+                var bool = confirm('Qaydlarni o\'chirmoqchimisiz?')
+                if(bool){
+                    var data1=[];
+                    if(data.length > 0){
+                        for(var i=0;i<data.length;++i){
+                            var element = data[i];
+                            var id = element.split("contacts_");
+                            data1.push(parseInt(id[1]))
+                        }
+                        $.ajax({
+                            url:'{{url('api/deleteBpt')}}',
+                            type: 'POST',
+                            dataType:'json',
+                            data: JSON.stringify(data1),
+                            contentType: 'application/json; charset=utf-8',
+                            success: function(data11){
+                                if(!data11.error){
+                                    toastr.success('O\'CHIRILDI!')
+                                    for(var t=0;t<data.length;++t){
+                                        var l = document.getElementById(data[t]).parentNode.parentNode.parentNode;
+                                        l.parentNode.removeChild(l)
+                                    }
+                                    data=[];
+                                    document.getElementById('count_records').style.display = 'none';
+                                    document.getElementById('coun').innerHTML = ''
+                                    document.getElementById('count').innerHTML = ''
+                                    document.getElementById('countt').innerHTML = ''
+                                }else{
+                                    toastr.warning('Texnik xatolik!')
+                                }
+                            }
+                        });
 
+                    }else{
+                        toastr.warning('O\'chirish uchun qaydlardan birini yoki bir nechtasini tanlang!')
+                    }
+                }
+            })
+
+            function ggg(e) {
+                if (e.target.checked) {
+                    data.push(e.target.id)
+                } else {
+                    data.splice(data.indexOf(e.target.id), 1)
+                }
+                if(data.length){
+                    document.getElementById('count_records').style.display = 'block';
+                    document.getElementById('count').innerHTML = '('+data.length+')'
+                    document.getElementById('countt').innerHTML = '('+data.length+')'
+                    document.getElementById('coun').innerHTML = data.length
+                }else{
+                    document.getElementById('count_records').style.display = 'none';
+                    document.getElementById('coun').innerHTML = ''
+                    document.getElementById('count').innerHTML = ''
+                    document.getElementById('countt').innerHTML = ''
+                }
+            }
+        }
+    </script>
 
 @endsection
