@@ -44,4 +44,19 @@ Route::group(['middleware'=>'web'],function (){
         return view('preferences.membership.archives', compact('archives'));
     });
 
+    Route::post('/searchMember',function(\Illuminate\Http\Request $request){
+        $data = [];
+        //dd($request->all());
+        foreach($request->all() as $key => $value){
+            if($value!==null && $key!='_token'){
+                $data[$key] = $value;
+            }
+        }
+//        $members = \App\Members::where($data)->get();
+//        $assets = Preferences::getAssets();
+//        $countArchive'] = $this->countArchive;
+//        $this->data['bpts']=$this->bpt;
+        return view('preferences.membership.index', $this->data);
+    })->name('searchMember');
+
 });

@@ -14,6 +14,7 @@ class MemberController extends BaseController
         $this->data['assets'] = Preferences::getAssets();
         $this->data['members'] = Members::where('is_deleted',0)->paginate(20);
         $this->data['countArchive'] = $this->countArchive;
+        $this->data['bpts']=$this->bpt;
         return view('preferences.membership.index', $this->data);
     }
 

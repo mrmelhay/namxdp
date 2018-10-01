@@ -15,20 +15,46 @@
                     <button class="btn btn-info btn-md" id="count_records"> <span id="coun"></span> та танланди</button>
                 </div>
             </div>
-            <div class="page-header-actions">
-                <form>
-                    <div class="input-search input-search-dark">
-                        <i class="input-search-icon md-search" aria-hidden="true"></i>
-                        <input type="text" class="form-control" name="" placeholder="Izlash...">
-                    </div>
-                </form>
-            </div>
+            {{--<div class="page-header-actions">--}}
+                {{--<form>--}}
+                    {{--<div class="input-search input-search-dark">--}}
+                        {{--<i class="input-search-icon md-search" aria-hidden="true"></i>--}}
+                        {{--<input type="text" class="form-control" name="" placeholder="Izlash...">--}}
+                    {{--</div>--}}
+                {{--</form>--}}
+            {{--</div>--}}
         </div>
         <div class="page-content page-content-table">
             <!-- Contacts -->
             <table class="table is-indent tablesaw" data-tablesaw-mode="stack" data-plugin="animateList"
                    data-animate="fade" data-child="tr" data-selectable="selectable">
                 <thead>
+                <tr>
+                    <form action="{{route('searchMember')}}" method="post">
+                        {{csrf_field()}}
+                        <th class="pre-cell"></th>
+                        <th class="cell-30" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3"></th>
+                        <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3"><input class="form-control" name="fullName" type="text"></th>
+                        <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                            <select name="bpt_id" data-plugin="select2">
+                                <option disabled selected>Bpt nomi</option>
+                                @foreach($bpts as $bpt)
+                                    <option value="{{$bpt->bpt_id}}">{{$bpt->bpt_name}}</option>
+                                    @endforeach
+                            </select>
+                        </th>
+                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4"><input class="form-control" name="unionJoinDate" type="text" data-provide="datepicker"></th>
+                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4"><input class="form-control" name="birthday" type="text" data-provide="datepicker"></th>
+                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                            <select  data-plugin="select2"  name="isFeePaid">
+                                <option disabled selected>Badal</option>
+                                <option value="1">To'laydi</option>
+                                <option value="0">To'lamaydi</option>
+                            </select></th>
+                        <th class="suf-cell"></th>
+                        <th style="border: none;"><button type="submit" class="btn btn-default">Izlash</button></th>
+                    </form>
+                </tr>
                 <tr>
                     <th class="pre-cell"></th>
                     <th class="cell-30" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
@@ -59,6 +85,7 @@
                             <td class="cell-300">{{$member->birthday}}</td>
                             <td class="cell-300">{{($member->isFeePaid==0)?'To\'lamaydi':'To\'laydi'}}</td>
                             <td></td>
+                            <td class="suf-cell"></td>
                             <td class="suf-cell"></td>
                         </tr>
                     @endforeach
