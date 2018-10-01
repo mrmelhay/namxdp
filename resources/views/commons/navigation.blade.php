@@ -15,7 +15,7 @@
                  title="Material">
             <img class="navbar-brand-logo navbar-brand-logo-special" src="{!! asset('images/logo_new.png') !!}"
                  title="Material">
-            <span class="navbar-brand-text hidden-xs"> Material</span>
+            <span class="navbar-brand-text hidden-xs">ХПД</span>
         </a>
         <button type="button" class="navbar-toggle collapsed" data-target="#site-navbar-search"
                 data-toggle="collapse">
