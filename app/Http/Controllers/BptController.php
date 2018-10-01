@@ -48,7 +48,15 @@ class BptController extends BaseController
 
     public function edit($id)
     {
-        //
+        if(is_numeric($id)){
+            $this->data["regions"] = $this->getAllRegions();
+            $this->data["councils"] = $this->getAllCouncils();
+            $this->data["bpt"] = BPT::findOrFail($id);
+            return view('preferences.bpt.edit', $this->data);
+
+        }else{
+            abort(404);
+        }
     }
 
     public function update(Request $request, $id)
