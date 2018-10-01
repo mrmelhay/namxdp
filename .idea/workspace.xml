@@ -194,8 +194,8 @@
       <file leaf-file-name="web.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5162242">
-              <caret line="56" column="26" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.31563422">
+              <caret line="59" column="26" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
               <folding>
                 <element signature="e#7#27#0#PHP" expanded="true" />
               </folding>
@@ -781,7 +781,13 @@
       <option name="project" value="LOCAL" />
       <updated>1538368567801</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="serach page on azolik">
+      <created>1538374027121</created>
+      <option name="number" value="00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1538374027121</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -845,7 +851,8 @@
     <MESSAGE value="28.09.18" />
     <MESSAGE value="aslxk alskx lak lxk as" />
     <MESSAGE value="01.10.2018 &#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="01.10.2018 &#10;" />
+    <MESSAGE value="serach page on azolik" />
+    <option name="LAST_COMMIT_MESSAGE" value="serach page on azolik" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1227,8 +1234,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5162242">
-          <caret line="56" column="26" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.31563422">
+          <caret line="59" column="26" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
           <folding>
             <element signature="e#7#27#0#PHP" expanded="true" />
           </folding>

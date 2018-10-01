@@ -47,12 +47,9 @@ Route::group(['middleware'=>'web'],function (){
 
     Route::post('/searchMember',function(\Illuminate\Http\Request $request){
         $data=[];
-        //dd($request->all());
-        $text = '';
         foreach($request->all() as $key => $value){
             if($value!==null && $key!='_token'){
                 if($key=='fullName'){
-//                    $data = '"fullName" , "like" , "%'.$value. '%"';
                     $members1 = \App\Members::where('fullName','like','%'.$value.'%')->orderBy('id','desc')->paginate(20);
                     break;
                 }else{
@@ -60,20 +57,16 @@ Route::group(['middleware'=>'web'],function (){
                 }
             }
         }
+        $controller = new \App\Http\Controllers\BaseController();
+        $data1["countArchive"] = $controller->getAllArchives();
+        $data1["bpts"] = $controller->getAllBpt();
         if(isset($members1)){
-            $controller = new \App\Http\Controllers\BaseController();
-            $data1["countArchive"] = $controller->getAllArchives();
-            $data1["bpts"] = $controller->getAllBpt();
             $data1["members"] = $members1;
-            return view('preferences.membership.index', $data1);
         }else{
             $members = \App\Members::where($data)->orderBy('id','desc')->paginate(20);
-            $controller = new \App\Http\Controllers\BaseController();
-            $data1["countArchive"] = $controller->getAllArchives();
-            $data1["bpts"] = $controller->getAllBpt();
             $data1["members"] = $members;
-            return view('preferences.membership.index', $data1);
         }
+        return view('preferences.membership.index', $data1);
     })->name('searchMember');
 
 });
