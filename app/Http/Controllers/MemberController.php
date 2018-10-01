@@ -75,4 +75,10 @@ class MemberController extends BaseController
     {
         //
     }
+
+    public function arxiv(){
+        $archives = \App\Members::where('is_deleted',1)->paginate(20);
+        $bpt = new \App\Http\Controllers\BptController();
+        $bpts = $bpt->getAllBpt();
+        return view('preferences.membership.archives', compact('archives','bpts'));
 }

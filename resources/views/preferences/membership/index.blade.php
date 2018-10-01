@@ -15,17 +15,8 @@
                     <button class="btn btn-info btn-md" id="count_records"> <span id="coun"></span> та танланди</button>
                 </div>
             </div>
-            {{--<div class="page-header-actions">--}}
-                {{--<form>--}}
-                    {{--<div class="input-search input-search-dark">--}}
-                        {{--<i class="input-search-icon md-search" aria-hidden="true"></i>--}}
-                        {{--<input type="text" class="form-control" name="" placeholder="Izlash...">--}}
-                    {{--</div>--}}
-                {{--</form>--}}
-            {{--</div>--}}
         </div>
         <div class="page-content page-content-table">
-            <!-- Contacts -->
             <table class="table is-indent tablesaw" data-tablesaw-mode="stack" data-plugin="animateList"
                    data-animate="fade" data-child="tr" data-selectable="selectable">
                 <thead>

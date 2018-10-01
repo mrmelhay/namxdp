@@ -20,6 +20,7 @@ class BptController extends BaseController
     {
         $this->data["regions"] = $this->getAllRegions();
         $this->data["councils"] = $this->getAllCouncils();
+        $this->data["councils"] = $this->getAllCouncils();
         return view('preferences.bpt.store',$this->data);
     }
 
@@ -38,6 +39,30 @@ class BptController extends BaseController
             return redirect()->back()->withErrors($this->valid)->withInput();
         }
 
+    }
+
+    public function search(\Illuminate\Http\Request $request){
+        $data=[];
+        foreach($request->all() as $key => $value){
+            if($value!==null && $key!='_token'){
+                if($key=='fullName'){
+                    $members1 = \App\Members::where('fullName','like','%'.$value.'%')->orderBy('id','desc')->paginate(20);
+                    break;
+                }else{
+                    $data[$key] = $value;
+                }
+            }
+        }
+        $controller = new \App\Http\Controllers\BaseController();
+        $data1["countArchive"] = $controller->getAllArchives();
+        $data1["bpts"] = $controller->getAllBpt();
+        if(isset($members1)){
+            $data1["members"] = $members1;
+        }else{
+            $members = \App\Members::where($data)->orderBy('id','desc')->paginate(20);
+        }
+        $data1["members"] = $members;
+        return view('preferences.membership.index', $data1);
     }
 
 
@@ -61,7 +86,11 @@ class BptController extends BaseController
 
     public function update(Request $request, $id)
     {
-        //
+        if(is_numeric($id)){
+
+        }else{
+            abort(404);
+        }
     }
 
     public function destroy($id)
