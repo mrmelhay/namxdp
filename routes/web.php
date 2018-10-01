@@ -45,28 +45,6 @@ Route::group(['middleware'=>'web'],function (){
         return view('preferences.membership.archives', compact('archives','bpts'));
     });
 
-    Route::post('/searchMember',function(\Illuminate\Http\Request $request){
-        $data=[];
-        foreach($request->all() as $key => $value){
-            if($value!==null && $key!='_token'){
-                if($key=='fullName'){
-                        $members1 = \App\Members::where('fullName','like','%'.$value.'%')->orderBy('id','desc')->paginate(20);
-                    break;
-                }else{
-                    $data[$key] = $value;
-                }
-            }
-        }
-        $controller = new \App\Http\Controllers\BaseController();
-        $data1["countArchive"] = $controller->getAllArchives();
-        $data1["bpts"] = $controller->getAllBpt();
-        if(isset($members1)){
-            $data1["members"] = $members1;
-        }else{
-                $members = \App\Members::where($data)->orderBy('id','desc')->paginate(20);
-        }
-        $data1["members"] = $members;
-        return view('preferences.membership.index', $data1);
-    })->name('searchMember');
+    Route::post('/searchMember','BptController@search')->name('searchMember');
 
 });
