@@ -367,7 +367,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1370" />
@@ -614,41 +614,23 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="false" name="ExampleTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\Unit\ExampleTest" file="$PROJECT_DIR$/tests/Unit/ExampleTest.php" scope="Class" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
-      <BehatRunner />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
-      <method />
-    </configuration>
     <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
+    <configuration name="ExampleTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Unit\ExampleTest" file="$PROJECT_DIR$/tests/Unit/ExampleTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
       <node-options />
       <gulpfile />
       <tasks />
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
-      <envs />
-      <method />
+      <method v="2" />
     </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="PHPUnit.ExampleTest" />
-    </list>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
