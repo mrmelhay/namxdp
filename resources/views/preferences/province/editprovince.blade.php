@@ -4,7 +4,7 @@
     <div class="panel-body container-fluid">
         <div class="row row-lg">
             <div class="col-sm-12">
-               <form class="form-horizontal" action="{{ url('/province/action/save') }}" method="post" name="addform">
+               <form class="form-horizontal" action="{{ url('/province/action/update') }}" method="post" name="addform">
                    <input type="hidden" name="id" value="{{ $province[0]->region_id }}"/>
                    {{ csrf_field() }}
                 <div class="example-wrap">

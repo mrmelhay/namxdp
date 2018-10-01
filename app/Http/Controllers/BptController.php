@@ -100,8 +100,7 @@ class BptController extends BaseController
                 return false;
             }else{
                 $updated = BPT::findOrFail($id);
-                $updated
-                    ->update($request->except('_token','_method'));
+                $updated->update($request->except('_token','_method'));
                 return ($updated);
             }
         }else{

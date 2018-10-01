@@ -10,11 +10,8 @@ class Province extends Model
 
     protected $table="region";
 
-    protected $fillable = [
-        'region_id', 'region_name',
-    ];
+    protected $primaryKey='region_id';
 
-    public function districts(){
-       return $this->belongsTo('App\District','region_id');
-    }
+    protected $fillable = ['region_id', 'region_name'];
+
 }
