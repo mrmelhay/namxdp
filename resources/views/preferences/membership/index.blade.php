@@ -43,7 +43,9 @@
                                 <option value="0">Тўламайди</option>
                             </select></th>
                         <th class="suf-cell"></th>
-                        <th style="border: none;"><button type="submit" class="btn btn-default">Излаш</button></th>
+
+                        <th style="border: none;"><button type="submit" class="btn btn-default"><i class="fa-search"> </i></button></th>
+                        <th style="border: none;"><button type="submit" class="btn btn-default"><i class="fa-filter"> </i></button></th>
                     </form>
                 </tr>
                 <tr>
@@ -55,6 +57,8 @@
                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Аъзолик санаси</th>
                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Туғилган санаси</th>
                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Бадал</th>
+
+                    <th class="suf-cell"></th>
                     <th class="suf-cell"></th>
                 </tr>
                 </thead>
