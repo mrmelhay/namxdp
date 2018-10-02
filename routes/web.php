@@ -7,6 +7,7 @@ Route::group(['middleware'=>'web'],function (){
     Route::match(['get','post'],'/',['uses'=>'HomeController@index','as'=>'home']);
     Auth::routes();
     Route::get('/preferences', 'PreferencesController@index');
+    Route::get('/province', 'ProvinceController@index')->name('province');
     Route::get('/province/action/{action}/{id}', 'ProvinceController@action');
     Route::post('/province/action/{action}', 'ProvinceController@action');
     Route::get('/province/action/{action}', 'ProvinceController@action');
@@ -36,13 +37,7 @@ Route::group(['middleware'=>'web'],function (){
     Route::resource('/users','UserController');
     Route::resource('/council','CouncilController');
 
-
-    Route::get('/arxiv',function(){
-        $archives = \App\Members::where('is_deleted',1)->paginate(20);
-        $bpt = new \App\Http\Controllers\BptController();
-        $bpts = $bpt->getAllBpt();
-        return view('preferences.membership.archives', compact('archives','bpts'));
-    });
+    Route::get('/arxiv','MemberController@arxiv');
 
     Route::post('/searchMember','BptController@search')->name('searchMember');
 

@@ -6,7 +6,7 @@
         @include('commons.errors_list')
     </div>
 
-    <form action="{{url('/bpt')}}" method="post">
+    <form action="{{url('/bpt').'/'.$bpt->bpt_id}}" method="post">
 
         <div class="row">
 
@@ -19,24 +19,30 @@
                 <p class="sex_p_tag"><label for="">  M.F.Y  </label><input type="radio" {{((int)$bpt->bpt_is_mfy==1)?'checked':''}} name="bpt_is_mfy" value="1"><label for="">  M.F.Y emas  </label><input type="radio" name="bpt_is_mfy" {{((int)$bpt->bpt_is_mfy==0)?'checked':''}} value="0"></p>
 
                 <select class="form-control" data-plugin="select2" onchange="getDistrict(this)" name="bpt_region_id" name="" id="">
-                    <option disabled selected>Viloyatni tanlash</option>
                     @foreach($regions as $region)
-                        <option value="{{$region->region_id}}">{{$region->region_name}}</option>
+                        @if($bpt->bpt_region_id==$region->region_id)
+                            <option value="{{$region->region_id}}" selected>{{$region->region_name}}</option>
+                        @else
+                            <option value="{{$region->region_id}}">{{$region->region_name}}</option>
+                        @endif
                     @endforeach
                 </select><br>
 
                 <select name="bpt_district_id" data-plugin="select2" class="form-control" id="response">
-                    <option selected disabled>Tumanni tanlash</option> </select><br>
-                <input type="text" name="bpt_address" id="bpt_address" value="{{old('bpt_address')}}" required="required" class="form-control" placeholder="Bpt manzili"><br>
+                            <option value="{{$bpt->bpt_district_id}}">{{$bpt->district->district_name}}</option>
+                </select><br>
+                <input type="text" name="bpt_address" id="bpt_address" value="{{$bpt->bpt_address}}" required="required" class="form-control" placeholder="Bpt manzili"><br>
 
-                <input type="text" name="bpt_speciality" id="bpt_speciality" required="required" value="{{old('bpt_speciality')}}" class="form-control" placeholder="Мутахассислиги"><br>
+                <input type="text" name="bpt_speciality" id="bpt_speciality" required="required" value="{{$bpt->bpt_speciality}}" class="form-control" placeholder="Мутахассислиги"><br>
 
                 <select name="bpt_party_id" id="bpt_party_id" data-plugin="select2" required="required" class="form-control">
 
-                    <option selected disabled>Partiyani tanlash</option>
-
-                    @foreach($councils as $cat)
-                        <option value="{{$cat->party_id}}">{{$cat->party_name}}</option>
+                    @foreach($councils as $party)
+                        @if($party->party_id==$bpt->party_id)
+                            <option value="{{$bpt->region_id}}" selected>{{$bpt->party->party_name}}</option>
+                        @else
+                            <option value="{{$party->party_id}}">{{$party->party_name}}</option>
+                        @endif
                     @endforeach
 
                 </select><br>
