@@ -15,7 +15,7 @@
                  title="Material">
             <img class="navbar-brand-logo navbar-brand-logo-special" src="{!! asset('images/logo_new.png') !!}"
                  title="Material">
-            <span class="navbar-brand-text hidden-xs">ХПД</span>
+            <span class="navbar-brand-text hidden-xs">ХДП</span>
         </a>
         <button type="button" class="navbar-toggle collapsed" data-target="#site-navbar-search"
                 data-toggle="collapse">
@@ -34,24 +34,13 @@
                     <ul class="dropdown-menu" role="menu">
                         <li role="presentation">
                             <a href="javascript:void(0)" role="menuitem">
+                                <span class="flag-icon flag-icon-uz"></span> Ўзбекча</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="javascript:void(0)" role="menuitem">
                                 <span class="flag-icon flag-icon-ru"></span> Русский</a>
                         </li>
-                        <li role="presentation">
-                            <a href="javascript:void(0)" role="menuitem">
-                                <span class="flag-icon flag-icon-fr"></span> French</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="javascript:void(0)" role="menuitem">
-                                <span class="flag-icon flag-icon-cn"></span> Chinese</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="javascript:void(0)" role="menuitem">
-                                <span class="flag-icon flag-icon-de"></span> German</a>
-                        </li>
-                        <li role="presentation">
-                            <a href="javascript:void(0)" role="menuitem">
-                                <span class="flag-icon flag-icon-nl"></span> Dutch</a>
-                        </li>
+
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -68,7 +57,7 @@
                         </li>
 
                         <li role="presentation">
-                            <a href="javascript:void(0)" role="menuitem"><i class="icon md-settings" aria-hidden="true"></i> Созлама</a>
+                            <a href="javascript:void(0)" role="menuitem"><i class="icon md-settings" aria-hidden="true"></i> Созлаш</a>
                         </li>
                         <li class="divider" role="presentation"></li>
                         <li role="presentation">
@@ -88,8 +77,8 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
                         <li class="dropdown-menu-header" role="presentation">
-                            <h5>УВЕДОМЛЕНИЯ</h5>
-                            <span class="label label-round label-danger">New 5</span>
+                            <h5>ҲАБАРНОМА</h5>
+                            <span class="label label-round label-danger">Янги 5</span>
                         </li>
                         <li class="list-group" role="presentation">
                             <div data-role="container">
@@ -100,8 +89,8 @@
                                                 <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
                                             </div>
                                             <div class="media-body">
-                                                <h6 class="media-heading">Вышло обновление для FriendlyCMS</h6>
-                                                <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">5 hours ago</time>
+                                                <h6 class="media-heading">Дастур янгиланди</h6>
+                                                <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">5 соат олдин</time>
                                             </div>
                                         </div>
                                     </a>
@@ -111,8 +100,8 @@
                                                 <i class="icon md-account bg-green-600 white icon-circle" aria-hidden="true"></i>
                                             </div>
                                             <div class="media-body">
-                                                <h6 class="media-heading">Completed the task</h6>
-                                                <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">2 days ago</time>
+                                                <h6 class="media-heading">Топшириқлар бажарилди</h6>
+                                                <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">2 кун олдин</time>
                                             </div>
                                         </div>
                                     </a>
@@ -122,8 +111,8 @@
                                                 <i class="icon md-settings bg-red-600 white icon-circle" aria-hidden="true"></i>
                                             </div>
                                             <div class="media-body">
-                                                <h6 class="media-heading">Settings updated</h6>
-                                                <time class="media-meta" datetime="2015-06-11T14:05:00+08:00">2 days ago</time>
+                                                <h6 class="media-heading">Созламалар янгиланди</h6>
+                                                <time class="media-meta" datetime="2015-06-11T14:05:00+08:00">2 кун олдин</time>
                                             </div>
                                         </div>
                                     </a>
@@ -133,8 +122,8 @@
                                                 <i class="icon md-calendar bg-blue-600 white icon-circle" aria-hidden="true"></i>
                                             </div>
                                             <div class="media-body">
-                                                <h6 class="media-heading">Event started</h6>
-                                                <time class="media-meta" datetime="2015-06-10T13:50:18+08:00">3 days ago</time>
+                                                <h6 class="media-heading">Тадбир бўлиб ўтади</h6>
+                                                <time class="media-meta" datetime="2015-06-10T13:50:18+08:00">3 кундан сўнг</time>
                                             </div>
                                         </div>
                                     </a>
@@ -143,10 +132,7 @@
                                             <div class="media-left padding-right-10">
                                                 <i class="icon md-comment bg-orange-600 white icon-circle" aria-hidden="true"></i>
                                             </div>
-                                            <div class="media-body">
-                                                <h6 class="media-heading">Message received</h6>
-                                                <time class="media-meta" datetime="2015-06-10T12:34:48+08:00">3 days ago</time>
-                                            </div>
+
                                         </div>
                                     </a>
                                 </div>
@@ -157,7 +143,7 @@
                                 <i class="icon md-settings" aria-hidden="true"></i>
                             </a>
                             <a href="javascript:void(0)" role="menuitem">
-                                Все уведомления
+                                Барча ҳабарлар
                             </a>
                         </li>
                     </ul>

@@ -12,28 +12,28 @@ class MemberController extends BaseController
     public function index()
     {
         $this->data['assets'] = Preferences::getAssets();
-        $this->data['members'] = Members::where('is_deleted',0)->paginate(20);
+        $this->data['members'] = Members::where('is_deleted', 0)->paginate(20);
         $this->data['countArchive'] = $this->countArchive;
-        $this->data['bpts']=$this->bpt;
+        $this->data['bpts'] = $this->bpt;
         return view('preferences.membership.index', $this->data);
     }
 
     public function store(Request $request)
     {
-        if($this->customValidate($request)){
+        if ($this->customValidate($request)) {
             return $this->index();
-        }else{
+        } else {
             return redirect()->back()->withErrors($this->valid)->withInput();
         }
     }
 
     public function create()
     {
-        $this->data['title']="Азоларни  руйхатга  олиш";
-        $this->data['regions']=$this->region;
-        $this->data['nations']=$this->nation;
-        $this->data['bpts']=$this->bpt;
-        $this->data['soc_cats']=$this->soc_cats;
+        $this->data['title'] = "Азоларни  руйхатга  олиш";
+        $this->data['regions'] = $this->region;
+        $this->data['nations'] = $this->nation;
+        $this->data['bpts'] = $this->bpt;
+        $this->data['soc_cats'] = $this->soc_cats;
         return view('preferences.membership.add', $this->data);
     }
 
@@ -44,29 +44,29 @@ class MemberController extends BaseController
 
     public function edit($id)
     {
-        if(is_numeric($id)){
+        if (is_numeric($id)) {
             $member = Members::findAndCheck($id);
-            $this->data['title']="Азоларни  руйхатга  олиш";
-            $this->data['regions']=$this->region;
-            $this->data['bpts']=$this->bpt;
-            $this->data['member']=$member;
-            $this->data['soc_cats']=$this->soc_cats;
-            $this->data['nations']=$this->nation;
-            return view('preferences.membership.edit',$this->data);
-        }else{
-            abort(404,['Kechirasiz siz qidirgan sahifa hozirda mavjud emas!']);
+            $this->data['title'] = "Азоларни  руйхатга  олиш";
+            $this->data['regions'] = $this->region;
+            $this->data['bpts'] = $this->bpt;
+            $this->data['member'] = $member;
+            $this->data['soc_cats'] = $this->soc_cats;
+            $this->data['nations'] = $this->nation;
+            return view('preferences.membership.edit', $this->data);
+        } else {
+            abort(404, ['Kechirasiz siz qidirgan sahifa hozirda mavjud emas!']);
         }
     }
 
     public function update(Request $request, $id)
     {
-        if(is_numeric($id)){
-            if($this->customValidate($request, $id,1)){
+        if (is_numeric($id)) {
+            if ($this->customValidate($request, $id, 1)) {
                 return $this->index();
-            }else{
+            } else {
                 return redirect()->back()->withErrors($this->valid)->withInput();
             }
-        }else{
+        } else {
             abort(404);
         }
     }
@@ -76,9 +76,11 @@ class MemberController extends BaseController
         //
     }
 
-    public function arxiv(){
-        $archives = \App\Members::where('is_deleted',1)->paginate(20);
+    public function arxiv()
+    {
+        $archives = \App\Members::where('is_deleted', 1)->paginate(20);
         $bpt = new \App\Http\Controllers\BptController();
         $bpts = $bpt->getAllBpt();
-        return view('preferences.membership.archives', compact('archives','bpts'));
+        return view('preferences.membership.archives', compact('archives', 'bpts'));
+    }
 }

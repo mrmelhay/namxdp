@@ -21,14 +21,14 @@
                 <tr>
                     <th></th>
                     <th>ID</th>
-                    <th>Bpt номи</th>
-                    <th>Bpt sohasi</th>
-                    <th>Bpt manzili</th>
-                    <th>M.F.Y yoki yo'q</th>
-                    <th>Bpt tumani</th>
-                    <th>Bpt viloyati</th>
-                    <th>Partiya nomi</th>
-                    <th>Action</th>
+                    <th>БПТ номи</th>
+                    <th>БПТ соҳаси</th>
+                    <th>МФЙми?</th>
+                    <th>БПТ вилояти</th>
+                    <th>БПТ тумани</th>
+                    <th>БПТ манзили</th>
+                    <th>Партия номи</th>
+                    <th>Амаллар</th>
                 </thead>
                 <tbody>
                 @foreach($bpts as $bpt)
@@ -37,10 +37,10 @@
                         <td><a href="{{ url('/bpt/'.$bpt->bpt_id) }}/edit">{{ $bpt->bpt_id}}</a></td>
                         <td>{{ $bpt->bpt_name }}</td>
                         <td>{{ $bpt->bpt_speciality }}</td>
-                        <td>{{ $bpt->bpt_address }}</td>
                         <td>{{ ($bpt->bpt_is_mfy)?'M.F.Y':'Yo\'q' }}</td>
                         <td>{{ $bpt->region->region_name }}</td>
                         <td>{{ $bpt->district->district_name }}</td>
+                        <td>{{ $bpt->bpt_address }}</td>
                         <td>{{ $bpt->party->party_name }}</td>
                         <td>
                             <a href="{{ url('/bpt/'.$bpt->bpt_id) }}/edit"><i class="fa fa-pencil"></i></a>&nbsp;
@@ -62,9 +62,9 @@
             document.getElementById('editBtn').addEventListener('click' , function(e){
                 e.preventDefault()
                 if(data.length < 1){
-                    toastr.warning('Iltimos r\'oyhatdagilardan birini tanlang!')
+                    toastr.warning('Илтимос рўйхатдагилардан бирини танланг!')
                 }if(data.length > 1){
-                    toastr.warning('Iltimos r\'oyhatdagilardan faqat bittasini tanlang!')
+                    toastr.warning('Илтимос рўйхатдагилардан фақатгина биттасини танланг!')
                 }if(data.length == 1){
                     console.log(data)
                     var idd = data[0];
@@ -81,7 +81,7 @@
 //            document.getElementById('count_records').style.display = 'none';
             document.getElementById('deleteBpt').addEventListener('click',function(e){
                 e.preventDefault()
-                var bool = confirm('Qaydlarni o\'chirmoqchimisiz?')
+                var bool = confirm('Қайдларни ўчирмоқчимисиз?')
                 if(bool){
                     var data1=[];
                     if(data.length > 0){
@@ -115,7 +115,7 @@
                         });
 
                     }else{
-                        toastr.warning('O\'chirish uchun qaydlardan birini yoki bir nechtasini tanlang!')
+                        toastr.warning('Ўчириш учун қайдлардан бирини ёки бир нечтасини танланг!')
                     }
                 }
             })
