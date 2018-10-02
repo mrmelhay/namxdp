@@ -28,7 +28,7 @@
                         <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3"><input class="form-control" name="fullName" type="text"></th>
                         <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                             <select name="bpt_id" data-plugin="select2">
-                                <option disabled selected>Bpt nomi</option>
+                                <option disabled selected>БПТ номи</option>
                                 @foreach($bpts as $bpt)
                                     <option value="{{$bpt->bpt_id}}">{{$bpt->bpt_name}}</option>
                                     @endforeach
@@ -38,12 +38,14 @@
                         <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4"><input class="form-control" name="birthday" type="text" data-provide="datepicker"></th>
                         <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                             <select  data-plugin="select2"  name="isFeePaid">
-                                <option disabled selected>Badal</option>
-                                <option value="1">To'laydi</option>
-                                <option value="0">To'lamaydi</option>
+                                <option disabled selected>Бадал</option>
+                                <option value="1">Тўлайди</option>
+                                <option value="0">Тўламайди</option>
                             </select></th>
                         <th class="suf-cell"></th>
-                        <th style="border: none;"><button type="submit" class="btn btn-default">Izlash</button></th>
+
+                        <th style="border: none;"><button type="submit" class="btn btn-default"><i class="fa-search"> </i></button></th>
+                        <th style="border: none;"><button type="submit" class="btn btn-default"><i class="fa-filter"> </i></button></th>
                     </form>
                 </tr>
                 <tr>
@@ -55,6 +57,8 @@
                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Аъзолик санаси</th>
                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Туғилган санаси</th>
                     <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Бадал</th>
+
+                    <th class="suf-cell"></th>
                     <th class="suf-cell"></th>
                 </tr>
                 </thead>
@@ -74,7 +78,7 @@
                             <td class="cell-300">{{$member->bpt->bpt_name}}</td>
                             <td class="cell-300">{{$member->unionJoinDate}}</td>
                             <td class="cell-300">{{$member->birthday}}</td>
-                            <td class="cell-300">{{($member->isFeePaid==0)?'To\'lamaydi':'To\'laydi'}}</td>
+                            <td class="cell-300">{{($member->isFeePaid==0)?'Тўламайди':'Тўлайди'}}</td>
                             <td></td>
                             <td class="suf-cell"></td>
                             <td class="suf-cell"></td>
@@ -91,9 +95,9 @@
             document.getElementById('editBtn').addEventListener('click' , function(e){
                 e.preventDefault()
                 if(data.length < 1){
-                    toastr.warning('Iltimos r\'oyhatdagilardan birini tanlang!')
+                    toastr.warning('Илтимос рўйхатдагилардан бирини танланг!')
                 }if(data.length > 1){
-                    toastr.warning('Iltimos r\'oyhatdagilardan faqat bittasini tanlang!')
+                    toastr.warning('Илтимос рўйхатдан фақат битта маълумотни танланг!')
                 }if(data.length == 1){
                     var idd = data[0];
                     var ids = idd.split("contacts_");
@@ -109,7 +113,7 @@
 //            document.getElementById('count_records').style.display = 'none';
             document.getElementById('deleteBpt').addEventListener('click',function(e){
                 e.preventDefault()
-                var bool = confirm('Qaydlarni o\'chirmoqchimisiz?')
+                var bool = confirm('Қайдларни ўчирмоқчимисиз?')
                 if(bool){
                     var data1=[];
                     if(data.length > 0){
@@ -137,13 +141,13 @@
                                         document.getElementById('count').innerHTML = ''
                                         document.getElementById('countt').innerHTML = ''
                                 }else{
-                                    toastr.warning('Texnik xatolik!')
+                                    toastr.warning('Техник хатолик!')
                                 }
                             }
                         });
 
                     }else{
-                        toastr.warning('O\'chirish uchun qaydlardan birini yoki bir nechtasini tanlang!')
+                        toastr.warning('Ўчириш учун қайдлардан бирини ёки бир нечтасини танланг!')
                     }
                 }
             })

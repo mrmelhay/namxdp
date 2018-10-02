@@ -12,11 +12,11 @@
 
             <div class="col-md-6">{{csrf_field()}}{{method_field('PUT')}}
 
-                <input type="text" required="required" name="bpt_name" value="{{$bpt->bpt_name}}" id="bpt_name" class="form-control" placeholder="Bpt nomi"><br>
+                <input type="text" required="required" name="bpt_name" value="{{$bpt->bpt_name}}" id="bpt_name" class="form-control" placeholder="БПТ номи"><br>
 
-                <input placeholder="Bpt sohasi" type="text" value="{{$bpt->bpt_speciality}}" required="required" name="bpt_speciality" id="bpt_speciality" class="form-control"><br>
+                <input placeholder="БПТ соҳаси" type="text" value="{{$bpt->bpt_speciality}}" required="required" name="bpt_speciality" id="bpt_speciality" class="form-control"><br>
 
-                <p class="sex_p_tag"><label for="">  M.F.Y  </label><input type="radio" {{((int)$bpt->bpt_is_mfy==1)?'checked':''}} name="bpt_is_mfy" value="1"><label for="">  M.F.Y emas  </label><input type="radio" name="bpt_is_mfy" {{((int)$bpt->bpt_is_mfy==0)?'checked':''}} value="0"></p>
+                <p class="sex_p_tag"><label for="">  М.Ф.Й.  </label><input type="radio" {{((int)$bpt->bpt_is_mfy==1)?'checked':''}} name="bpt_is_mfy" value="1"><label for="">  М.Ф.Й. эмас  </label><input type="radio" name="bpt_is_mfy" {{((int)$bpt->bpt_is_mfy==0)?'checked':''}} value="0"></p>
 
                 <select class="form-control" data-plugin="select2" onchange="getDistrict(this)" name="bpt_region_id" name="" id="">
                     @foreach($regions as $region)
@@ -31,7 +31,7 @@
                 <select name="bpt_district_id" data-plugin="select2" class="form-control" id="response">
                             <option value="{{$bpt->bpt_district_id}}">{{$bpt->district->district_name}}</option>
                 </select><br>
-                <input type="text" name="bpt_address" id="bpt_address" value="{{$bpt->bpt_address}}" required="required" class="form-control" placeholder="Bpt manzili"><br>
+                <input type="text" name="bpt_address" id="bpt_address" value="{{$bpt->bpt_address}}" required="required" class="form-control" placeholder="БПТ манзили"><br>
 
                 <input type="text" name="bpt_speciality" id="bpt_speciality" required="required" value="{{$bpt->bpt_speciality}}" class="form-control" placeholder="Мутахассислиги"><br>
 
@@ -47,7 +47,7 @@
 
                 </select><br>
                 <div class="submitButton">
-                    <button type="submit" class="btn btn-primary ">Saqlash</button>
+                    <button type="submit" class="btn btn-primary ">Сақлаш</button>
                 </div>
             </div>
             <div class="col-md-6">

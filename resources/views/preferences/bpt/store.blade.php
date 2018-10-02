@@ -12,28 +12,28 @@
 
                 <div class="col-md-6">{{csrf_field()}}{{method_field('POST')}}
 
-                <input type="text" required="required" name="bpt_name" value="{{old('bpt_name')}}" id="bpt_name" class="form-control" placeholder="Bpt nomi"><br>
+                <input type="text" required="required" name="bpt_name" value="{{old('bpt_name')}}" id="bpt_name" class="form-control" placeholder="БПТ номи"><br>
 
-                <input placeholder="Bpt sohasi" type="text" value="{{old('bpt_speciality')}}" required="required" name="bpt_speciality" id="bpt_speciality" class="form-control"><br>
+                <input placeholder="БПТ соҳаси" type="text" value="{{old('bpt_speciality')}}" required="required" name="bpt_speciality" id="bpt_speciality" class="form-control"><br>
 
-                <p class="sex_p_tag"><label for="">  M.F.Y  </label><input type="radio" name="bpt_is_mfy" value="1" checked><label for="">  M.F.Y emas  </label><input type="radio" name="bpt_is_mfy" value="0"></p>
+                <p class="sex_p_tag"><label for="">  МФЙ  </label><input type="radio" name="bpt_is_mfy" value="1" checked><label for="">  МФЙ эмас  </label><input type="radio" name="bpt_is_mfy" value="0"></p>
 
                     <select class="form-control" data-plugin="select2" onchange="getDistrict(this)" name="bpt_region_id" name="" id="">
-                        <option disabled selected>Viloyatni tanlash</option>
+                        <option disabled selected>Вилоятни танланг...</option>
                         @foreach($regions as $region)
                             <option value="{{$region->region_id}}">{{$region->region_name}}</option>
                         @endforeach
                     </select><br>
 
                     <select name="bpt_district_id" data-plugin="select2" class="form-control" id="response">
-                        <option selected disabled>Tumanni tanlash</option> </select><br>
-                <input type="text" name="bpt_address" id="bpt_address" value="{{old('bpt_address')}}" required="required" class="form-control" placeholder="Bpt manzili"><br>
+                        <option selected disabled>Туманни танланг...</option> </select><br>
+                <input type="text" name="bpt_address" id="bpt_address" value="{{old('bpt_address')}}" required="required" class="form-control" placeholder="БПТ манзили"><br>
 
                 <input type="text" name="bpt_speciality" id="bpt_speciality" required="required" value="{{old('bpt_speciality')}}" class="form-control" placeholder="Мутахассислиги"><br>
 
                     <select name="bpt_party_id" id="bpt_party_id" data-plugin="select2" required="required" class="form-control">
 
-                        <option selected disabled>Partiyani tanlash</option>
+                        <option selected disabled>Партияни тангланг...</option>
 
                         @foreach($councils as $cat)
                             <option value="{{$cat->party_id}}">{{$cat->party_name}}</option>
@@ -41,7 +41,7 @@
 
                     </select><br>
                     <div class="submitButton">
-                        <button type="submit" class="btn btn-primary ">Saqlash</button>
+                        <button type="submit" class="btn btn-primary ">Сақлаш</button>
                     </div>
                 </div>
                 <div class="col-md-6">
