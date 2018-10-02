@@ -16,7 +16,10 @@ class CouncilController extends BaseController
 
     public function create()
     {
-        //
+        $this->data["title"]="Partiyalar";
+        $this->data["parties"]=$this->council;
+        $this->data["regions"]=$this->getAllRegions();
+        return view('preferences.council.store',$this->data);
     }
 
 
