@@ -159,7 +159,7 @@
             <div>
                 <ul class="site-menu">
                     <li class="dropdown site-menu-item has-sub">
-                        <a class="dropdown-toggle" href="#" data-dropdown-toggle="false">
+                        <a class="dropdown-toggle" href="{{url('/')}}" data-dropdown-toggle="false">
                             <span class="site-menu-title">Асосий</span>
 
                         </a>
