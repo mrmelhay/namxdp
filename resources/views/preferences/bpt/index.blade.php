@@ -10,7 +10,6 @@
                     {{--<button class="btn btn-default btn-md">Пенсия</button>--}}
                     {{--<button class="btn btn-default btn-md">Бадал</button>--}}
                     <button class="btn btn-danger btn-md" id="deleteBpt"><span id="count"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-trash"></span> Ўчириш</button>
-                    <button class="btn btn-default btn-md" onclick="window.location='{{url('arxiv')}}'">Архив</button>
                     <button class="btn btn-info btn-md" id="count_records"> <span id="coun"></span> та танланди</button>
                 </div>
             </div>
@@ -19,7 +18,52 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th></th>
+                    <form action="{{route('search')}}" method="post">
+                        {{csrf_field()}}
+                        <th class="cell-30" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3"></th>
+                        <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                            <input class="form-control" name="bpt_name" placeholder="БПТ номи" type="text"/>
+                        </th>
+                        <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                            <input class="form-control" name="bpt_speciality" placeholder="БПТ мутахасислиги" type="text">
+                        </th>
+                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                            <select  data-plugin="select2"  name="isFeePaid">
+                                <option disabled selected>М.Ф.Й</option>
+                                <option value="1">М.Ф.Й</option>
+                                <option value="0">М.Ф.Й эмас</option>
+                            </select>
+                        </th>
+                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                            <select class="form-control" data-plugin="select2" onchange="getDistrict(this)" name="bpt_region_id" name="" id="">
+                                <option disabled selected>Вилоят</option>
+                                @foreach($regions as $region)
+                                    <option value="{{$region->region_id}}">{{$region->region_name}}</option>
+                                @endforeach
+                            </select>
+                        </th>
+                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
+                            <select name="bpt_district_id" data-plugin="select2" class="form-control" id="response">
+                                <option selected disabled>Туман</option>
+                            </select>
+                        </th>
+                        <th class="suf-cell">
+                            <input class="form-control" name="bpt_address" placeholder="БПТ манзили" type="text">
+                        </th>
+                        <th class="suf-cell">
+                            <select class="form-control" data-plugin="select2" name="bpt_party_id" id="">
+                                <option disabled selected>Партия номи</option>
+                                @foreach($councils as $council)
+                                    <option value="{{$council->party_id}}">{{$council->party_name}}</option>
+                                @endforeach
+                            </select>
+                        </th>
+                        <th style="border: none;"><button type="submit" class="btn btn-default"><i class="fa-search"> </i></button></th>
+                        <th style="border: none;"><button type="submit" class="btn btn-default"><i class="fa-filter"> </i></button></th>
+                        <input type="hidden" name="key" value="_bpt">
+                    </form>
+                </tr>
+                <tr>
                     <th>ID</th>
                     <th>БПТ номи</th>
                     <th>БПТ соҳаси</th>
@@ -29,11 +73,11 @@
                     <th>БПТ манзили</th>
                     <th>Партия номи</th>
                     <th>Амаллар</th>
+                    <th></th>
                 </thead>
                 <tbody>
                 @foreach($bpts as $bpt)
                     <tr>
-                        <td><input type="checkbox" value="{{ $bpt->bpt_id }}" class="selectable-item contacts-checkbox" name="region[]" id="contacts_{{$bpt->bpt_id}}" /></td>
                         <td><a href="{{ url('/bpt/'.$bpt->bpt_id) }}/edit">{{ $bpt->bpt_id}}</a></td>
                         <td>{{ $bpt->bpt_name }}</td>
                         <td>{{ $bpt->bpt_speciality }}</td>
@@ -51,6 +95,7 @@
                                 <input type="hidden" name="bpt_id" value="{{$bpt->bpt_id}}">
                             </form>
                         </td>
+                        <td></td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -58,86 +103,20 @@
         </div>
     </div>
     <script type="text/javascript">
-        window.onload = function() {
-            document.getElementById('editBtn').addEventListener('click' , function(e){
-                e.preventDefault()
-                if(data.length < 1){
-                    toastr.warning('Илтимос рўйхатдагилардан бирини танланг!')
-                }if(data.length > 1){
-                    toastr.warning('Илтимос рўйхатдагилардан фақатгина биттасини танланг!')
-                }if(data.length == 1){
-                    console.log(data)
-                    var idd = data[0];
-                    var ids = idd.split("contacts_");
-                    window.location = '{{url('/bpt')}}'+'/'+ids[1]+'/edit';
-                }
-            })
-            var selectors = document.getElementsByClassName('contacts-checkbox');
-            var editButton = document.getElementsByClassName('contacts-checkbox');
-            var data = [];
-            for (var i = 0; i < selectors.length; i++) {
-                selectors[i].addEventListener('change', ggg);
-            }
-//            document.getElementById('count_records').style.display = 'none';
-            document.getElementById('deleteBpt').addEventListener('click',function(e){
-                e.preventDefault()
-                var bool = confirm('Қайдларни ўчирмоқчимисиз?')
-                if(bool){
-                    var data1=[];
-                    if(data.length > 0){
-                        for(var i=0;i<data.length;++i){
-                            var element = data[i];
-                            var id = element.split("contacts_");
-                            data1.push(parseInt(id[1]))
-                        }
-                        $.ajax({
-                            url:'{{url('api/deleteBpt')}}',
-                            type: 'POST',
-                            dataType:'json',
-                            data: JSON.stringify(data1),
-                            contentType: 'application/json; charset=utf-8',
-                            success: function(data11){
-                                if(!data11.error){
-                                    toastr.success('O\'CHIRILDI!')
-                                    for(var t=0;t<data.length;++t){
-                                        var l = document.getElementById(data[t]).parentNode.parentNode.parentNode;
-                                        l.parentNode.removeChild(l)
-                                    }
-                                    data=[];
-                                    document.getElementById('count_records').style.display = 'none';
-                                    document.getElementById('coun').innerHTML = ''
-                                    document.getElementById('count').innerHTML = ''
-                                    document.getElementById('countt').innerHTML = ''
-                                }else{
-                                    toastr.warning('Texnik xatolik!')
-                                }
-                            }
-                        });
-
-                    }else{
-                        toastr.warning('Ўчириш учун қайдлардан бирини ёки бир нечтасини танланг!')
+        function getDistrict(select){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    var textP;
+                    for(var i=0; i<data.districts.length; ++i){
+                        textP += '<option value="'+ data.districts[i].district_id +'">'+ data.districts[i].district_name +'</option>';
                     }
+                    document.getElementById('response').innerHTML = textP;
                 }
-            })
-
-            function ggg(e) {
-                if (e.target.checked) {
-                    data.push(e.target.id)
-                } else {
-                    data.splice(data.indexOf(e.target.id), 1)
-                }
-                if(data.length){
-                    document.getElementById('count_records').style.display = 'block';
-                    document.getElementById('count').innerHTML = '('+data.length+')'
-                    document.getElementById('countt').innerHTML = '('+data.length+')'
-                    document.getElementById('coun').innerHTML = data.length
-                }else{
-                    document.getElementById('count_records').style.display = 'none';
-                    document.getElementById('coun').innerHTML = ''
-                    document.getElementById('count').innerHTML = ''
-                    document.getElementById('countt').innerHTML = ''
-                }
-            }
+            };
+            xhttp.open("GET", '{{url('api/getDistricts/')}}/'+select.value, true);
+            xhttp.send();
         }
     </script>
 

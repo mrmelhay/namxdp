@@ -1,13 +1,48 @@
 @extends('layouts.main')
 @section('content')
-    <div class="panel">
-        <div class="panel-body container-fluid">
-            <h4 class="example-title">{{$title}}</h4>
+    <div class="panel page-main">
+        <div class="page-header">
+            <div>
+                <div class="btn-group" role="group" aria-label="...">
+                    <button class="btn btn-primary btn-md" onclick="window.location='{{url('council/create')}}';">+ Партия қўшиш</button>
+                </div>
+            </div>
         </div>
-
         <div class="table-responsive">
             <table class="table">
                 <thead>
+                {{--<tr>--}}
+                    {{--<form action="{{route('search')}}" method="post">--}}
+                        {{--{{csrf_field()}}--}}
+                        {{--<th class="pre-cell"></th>--}}
+                        {{--<th class="cell-30" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3"></th>--}}
+                        {{--<th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">--}}
+                            {{--<input class="form-control" name="fullName" type="text"></th>--}}
+                        {{--<th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">--}}
+                            {{--<select name="bpt_id" data-plugin="select2">--}}
+                                {{--<option disabled selected>БПТ номи</option>--}}
+                                {{--@foreach($bpts as $bpt)--}}
+                                    {{--<option value="{{$bpt->bpt_id}}">{{$bpt->bpt_name}}</option>--}}
+                                {{--@endforeach--}}
+                            {{--</select>--}}
+                        {{--</th>--}}
+                        {{--<th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">--}}
+                            {{--<input class="form-control" name="unionJoinDate" type="text" data-provide="datepicker"></th>--}}
+                        {{--<th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">--}}
+                            {{--<input class="form-control" name="birthday" type="text" data-provide="datepicker"></th>--}}
+                        {{--<th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">--}}
+                            {{--<select  data-plugin="select2"  name="isFeePaid">--}}
+                                {{--<option disabled selected>Бадал</option>--}}
+                                {{--<option value="1">Тўлайди</option>--}}
+                                {{--<option value="0">Тўламайди</option>--}}
+                            {{--</select></th>--}}
+                        {{--<th class="suf-cell"></th>--}}
+
+                        {{--<th style="border: none;"><button type="submit" class="btn btn-default"><i class="fa-search"> </i></button></th>--}}
+                        {{--<th style="border: none;"><button type="submit" class="btn btn-default"><i class="fa-filter"> </i></button></th>--}}
+                        {{--<input type="hidden" name="key" value="_member">--}}
+                    {{--</form>--}}
+                {{--</tr>--}}
                 <tr>
                     <th><input type="checkbox"  name="party" id="party" /></th>
                     <th>ID</th>

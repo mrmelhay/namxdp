@@ -76,6 +76,7 @@
 <script src="{{ asset('assets/js/components/jt-timepicker.js') }}"></script>
 <script src="{{ asset('assets/js/components/datepair-js.js') }}"></script>
 <script src="{{ asset('assets/js/components/jquery-strength.js') }}"></script>
+<script src="js/widgets/chart.js"></script>
 <script src="{{ asset('assets/js/components/multi-select.js') }}"></script>
 <script src="{{ asset('assets/js/components/jquery-placeholder.js') }}"></script>
 <script src="{{ asset('assets/js/forms/advanced.js') }}"></script>

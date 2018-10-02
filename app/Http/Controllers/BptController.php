@@ -13,6 +13,8 @@ class BptController extends BaseController
     {
         $this->data['title']="Boshlang'ich partiya tashkilotlari";
         $this->data['bpts']=$this->bpt;
+        $this->data['regions']=$this->getAllRegions();
+        $this->data['councils']=$this->getAllCouncils();
         return view('preferences.bpt.index', $this->data);
     }
 
@@ -27,12 +29,6 @@ class BptController extends BaseController
 
     public function store(Request $request)
     {
-        $data = [];
-        foreach($request->all() as $key => $value){
-            if($key!='_token' && $key!='_method'){
-                $data[$key] = $value;
-            }
-        }
         if($this->customValidates($request)){
             return $this->index();
         }else{
@@ -41,34 +37,10 @@ class BptController extends BaseController
 
     }
 
-    public function search(\Illuminate\Http\Request $request){
-        $data=[];
-        foreach($request->all() as $key => $value){
-            if($value!==null && $key!='_token'){
-                if($key=='fullName'){
-                    $members1 = \App\Members::where('fullName','like','%'.$value.'%')->orderBy('id','desc')->paginate(20);
-                    break;
-                }else{
-                    $data[$key] = $value;
-                }
-            }
-        }
-        $controller = new \App\Http\Controllers\BaseController();
-        $data1["countArchive"] = $controller->getAllArchives();
-        $data1["bpts"] = $controller->getAllBpt();
-        if(isset($members1)){
-            $data1["members"] = $members1;
-        }else{
-            $members = \App\Members::where($data)->orderBy('id','desc')->paginate(20);
-        }
-        $data1["members"] = $members;
-        return view('preferences.membership.index', $data1);
-    }
 
-
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+//        echo'sdoij';
     }
 
     public function edit($id)
@@ -87,7 +59,11 @@ class BptController extends BaseController
     public function update(Request $request, $id)
     {
         if(is_numeric($id)){
-
+            if($this->customValidates($request , $id, 1)){
+                return redirect()->to('/bpt');
+            }else{
+                return redirect()->back()->withErrors($this->valid)->withInput();
+            }
         }else{
             abort(404);
         }
@@ -95,20 +71,22 @@ class BptController extends BaseController
 
     public function destroy($id)
     {
-        //
+        if(is_numeric($id)){
+            $bpt = \App\BPT::find($id);
+            $bpt->update([
+                'is_deleted' => 1
+            ]);
+            return ($bpt)? redirect()->to('/bpt'):abort(404);
+        }else{
+            abort(404);
+        }
+    }
+
+    public function search(\Illuminate\Http\Request $request){
+
     }
 
     protected function validationRule($method=false){
-        if($method){
-            return  [
-            'bpt_name' => 'required',
-            'bpt_speciality' => 'required',
-            'bpt_address' => 'required',
-            'bpt_is_mfy' => 'required',
-            'bpt_region_id' => 'integer',
-            'bpt_district_id' => 'integer',
-            'bpt_party_id' => 'required|integer'
-        ];}else{
             return  [
                 'bpt_name' => 'required',
                 'bpt_speciality' => 'required',
@@ -118,7 +96,6 @@ class BptController extends BaseController
                 'bpt_district_id' => 'required|integer',
                 'bpt_party_id' => 'required|integer'
             ];
-        }
     }
 
     public function customValidates(Request $request , $id=null , $method=false){
@@ -130,7 +107,7 @@ class BptController extends BaseController
             }else{
                 $updated = BPT::findOrFail($id);
                 $updated->update($request->except('_token','_method'));
-                return ($updated);
+                return true;
             }
         }else{
             $valid = Validator::make($request->all(),$this->validationRule());

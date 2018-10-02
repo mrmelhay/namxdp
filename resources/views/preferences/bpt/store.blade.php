@@ -16,7 +16,7 @@
 
                 <input placeholder="БПТ соҳаси" type="text" value="{{old('bpt_speciality')}}" required="required" name="bpt_speciality" id="bpt_speciality" class="form-control"><br>
 
-                <p class="sex_p_tag"><label for="">  МФЙ  </label><input type="radio" name="bpt_is_mfy" value="1" checked><label for="">  МФЙ эмас  </label><input type="radio" name="bpt_is_mfy" value="0"></p>
+                <p class="sex_p_tag"><label for="">  МФЙ  </label><input type="radio" name="bpt_is_mfy" value="1"><label for="">  МФЙ эмас  </label><input type="radio" name="bpt_is_mfy" value="0" checked></p>
 
                     <select class="form-control" data-plugin="select2" onchange="getDistrict(this)" name="bpt_region_id" name="" id="">
                         <option disabled selected>Вилоятни танланг...</option>
@@ -28,8 +28,6 @@
                     <select name="bpt_district_id" data-plugin="select2" class="form-control" id="response">
                         <option selected disabled>Туманни танланг...</option> </select><br>
                 <input type="text" name="bpt_address" id="bpt_address" value="{{old('bpt_address')}}" required="required" class="form-control" placeholder="БПТ манзили"><br>
-
-                <input type="text" name="bpt_speciality" id="bpt_speciality" required="required" value="{{old('bpt_speciality')}}" class="form-control" placeholder="Мутахассислиги"><br>
 
                     <select name="bpt_party_id" id="bpt_party_id" data-plugin="select2" required="required" class="form-control">
 

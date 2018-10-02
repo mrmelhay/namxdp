@@ -2,111 +2,61 @@
 
 @section('content')
 
-            <h5>{{$title}}</h5><br>
-            <div>
-                @include('commons.errors_list')
-            </div>
+    <div>
+        @include('commons.errors_list')
+    </div>
 
-            <form action="{{url('/membership')}}" method="post">
+    <form action="{{url('/bpt')}}" method="post">
 
-                <div class="row">
+        <div class="row">
 
-                <div class="col-md-6">{{csrf_field()}}{{method_field('POST')}}
+            <div class="col-md-6">{{csrf_field()}}{{method_field('POST')}}
 
-                <input type="text" required="required" name="fullName" value="{{old('fullName')}}" id="fullName" class="form-control" placeholder="Ф.И.О"><br>
+                <input type="text" required="required" name="party_name" value="{{old('party_name')}}" id="party_name" class="form-control" placeholder="Партия номи"><br>
 
-                <input placeholder="Туғилган санаси" type="text" value="{{old('birthDay')}}" data-provide="datepicker" required="required" name="birthDay" id="birthDay" class="form-control"><br>
+                <input placeholder="Партия рахбари" type="text" value="{{old('party_director')}}" required="required" name="bpt_speciality" id="party_address" class="form-control"><br>
 
-                <p class="sex_p_tag"><label for="">  Аёл  </label><input type="radio" name="sex_id" value="1" checked><label for="">  Эркак  </label><input type="radio" name="sex_id" value="2"></p>
+                <input placeholder="Партия телефон раками" type="text" value="{{old('party_phone')}}" required="required" name="party_phone" id="party_phone" class="form-control"><br>
 
-                <select name="nationality_id" data-plugin="select2" required="required" id="nationality" class="form-control">
-                    <option selected disabled>Миллати...</option>
-                    @foreach($nations as $nation)
-                        <option value="{{$nation->nation_id}}">{{$nation->nation_name}}</option>
-                    @endforeach
-                </select><br>
-
-                <input type="text" name="passSerial" id="passSerial" value="{{old('passSerial')}}" required="required" class="form-control" placeholder="Паспорт серия ва раками"><br>
-
-                <input placeholder="Паспорт ким томонидан берилган" value="{{old('passGivenFrom')}}" type="text" name="passGivenFrom" id="passGivenFrom" required="required" class="form-control"><br>
-
-                <input placeholder="Паспорт берилган сана" type="text" value="{{old('passGivenDate')}}" data-provide="datepicker" name="passGivenDate" id="passGivenDate" required="required" class="form-control"><br>
-
-                <input placeholder="Паспорт муддати санаси" type="text" value="{{old('passExpireDate')}}" data-provide="datepicker" name="passExpireDate" id="passExpireDate" required="required" class="form-control"><br>
-
-                <input type="text" name="specialist" id="specialist" required="required" value="{{old('specialist')}}" class="form-control" placeholder="Мутахассислиги"><br>
-
-                <input type="text" name="workPlaceAndPosition" id="workPlaceAndPosition" value="{{old('workPlaceAndPosition')}}" required="required" class="form-control" placeholder="Иш жойи ва лавозими"><br>
-
-                    <select name="bpt_id" data-plugin="select2" id="" class="form-control">
-                        <option selected disabled>БПТни танланг...</option>
-                        @foreach($bpts as $bpt)
-                            <option value="{{$bpt->bpt_id}}">{{$bpt->bpt_name}}</option>
-                        @endforeach
-                    </select><br>
-
-                </div>
-                <div class="col-md-6">
-
-                <input type="text" name="phoneNumber" id="phoneNumber" value="{{old('phoneNumber')}}" required="required" class="form-control" placeholder="Телефон рақами"><br>
-
-                <p class="sex_p_tag"><label for="">  Раҳбар  </label><input type="radio" value="1" onchange="document.getElementById('xdpMemberArea').style.display='block'" name="isLeader"><label for="">  Раҳбар эмас  </label><input type="radio" value="0" onchange="document.getElementById('xdpMemberArea').style.display='none'" name="isLeader" checked></p>
-
-                <p class="sex_p_tag" id="xdpMemberArea"><label for="">  ХДП аъзоси  </label><input type="radio" value="1" name="isXdpMember"><label for="">  ХДП аъзоси эмас  </label><input type="radio" value="0" name="isXdpMember" checked></p>
-
-                <select class="form-control" data-plugin="select2" onchange="getDistrict(this)" name="region_id" name="" id="">
+                <select class="form-control" data-plugin="select2" onchange="getDistrict(this)" name="party_region_id" name="" id="">
                     <option disabled selected>Вилоятни танланг...</option>
                     @foreach($regions as $region)
                         <option value="{{$region->region_id}}">{{$region->region_name}}</option>
                     @endforeach
                 </select><br>
 
-                <select name="district_id" data-plugin="select2" class="form-control" id="response">
-                    <option selected disabled>Туманни танланг...</option> </select><br>
-
-                <input type="text" value="{{old('homeAddress')}}" name="homeAddress" class="form-control" placeholder="Манзил (У.Носир кўча, 2-уй)"><br>
-
-                <input placeholder="Партияга аъзо бўлган сана" value="{{old('unionJoinDate')}}" type="text" data-provide="datepicker" name="unionJoinDate" id="unionJoinDate" required="required" class="form-control"><br>
-
-                <input type="number" name="unionOrderNumber" value="{{old('unionOrderNumber')}}" id="unionOrderNumber" required="required" class="form-control" placeholder="БПТ йиғилиш қарори рақами"><br>
-
-                <input type="number" name="unionCertfNumber" value="{{old('unionCertfNumber')}}" id="unionCertfNumber" required="required" class="form-control" placeholder="Партия гувохномаа рақами"><br>
-
-                <p class="sex_p_tag"><label for="">  Badal to'laydi  </label><input type="radio" name="isFeePaid" value="1" checked><label for="">  Badal to'lamaydi  </label><input value="0" type="radio" name="isFeePaid"></p>
-
-                <select name="socialPositionId" id="socialPositionId" data-plugin="select2" required="required" class="form-control">
-
-                    <option selected disabled>Ижтимоий тоифаси</option>
-
-                    @foreach($soc_cats as $cat)
-                        <option value="{{$cat->soc_id}}">{{$cat->soc_name}}</option>
-                    @endforeach
-
+                <select name="party_distirict_id" data-plugin="select2" class="form-control" id="response">
+                    <option selected disabled>Туманни танланг...</option>
                 </select><br>
 
-                </div>
-                </div>
+                <input placeholder="Партия манзили" type="text" value="{{old('party_address')}}" required="required" name="party_address" id="party_address" class="form-control"><br>
+
                 <div class="submitButton">
                     <button type="submit" class="btn btn-primary ">Сақлаш</button>
                 </div>
+            </div>
+            <div class="col-md-6">
 
-            </form>
+            </div>
+        </div>
 
-            <script type="text/javascript">
-                function getDistrict(select){
-                    var xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function() {
-                        if (this.readyState == 4 && this.status == 200) {
-                            var data = JSON.parse(this.responseText);
-                            var textP;
-                            for(var i=0; i<data.districts.length; ++i){
-                                textP += '<option value="'+ data.districts[i].district_id +'">'+ data.districts[i].district_name +'</option>';
-                            }
-                            document.getElementById('response').innerHTML = textP;
-                        }
-                    };
-                    xhttp.open("GET", '{{url('api/getDistricts/')}}/'+select.value, true);
-                    xhttp.send();
+    </form>
+
+    <script type="text/javascript">
+        function getDistrict(select){
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var data = JSON.parse(this.responseText);
+                    var textP;
+                    for(var i=0; i<data.districts.length; ++i){
+                        textP += '<option value="'+ data.districts[i].district_id +'">'+ data.districts[i].district_name +'</option>';
+                    }
+                    document.getElementById('response').innerHTML = textP;
                 }
-            </script>
+            };
+            xhttp.open("GET", '{{url('api/getDistricts/')}}/'+select.value, true);
+            xhttp.send();
+        }
+    </script>
 @endsection

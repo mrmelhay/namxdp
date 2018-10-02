@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('vendor/slidepanel/slidePanel.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/flag-icon-css/flag-icon.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/waves/waves.css') }}">
+    <link rel="stylesheet" href="vendor/chartist-js/chartist.css">
+    <link rel="stylesheet" href="css/widgets/chart.css">
     <link rel="stylesheet" href="{{ asset('vendor/select2/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap-tokenfield/bootstrap-tokenfield.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap-tagsinput/bootstrap-tagsinput.css') }}">

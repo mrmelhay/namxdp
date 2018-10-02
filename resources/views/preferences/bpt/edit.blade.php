@@ -6,11 +6,13 @@
         @include('commons.errors_list')
     </div>
 
-    <form action="{{url('/bpt').'/'.$bpt->bpt_id}}" method="post">
+    <form action="{{url('bpt/'.$bpt->bpt_id)}}" method="post">
 
         <div class="row">
 
-            <div class="col-md-6">{{csrf_field()}}{{method_field('PUT')}}
+            <div class="col-md-6">
+                {{csrf_field()}}
+                {{method_field('PUT')}}
 
                 <input type="text" required="required" name="bpt_name" value="{{$bpt->bpt_name}}" id="bpt_name" class="form-control" placeholder="БПТ номи"><br>
 
@@ -32,8 +34,6 @@
                             <option value="{{$bpt->bpt_district_id}}">{{$bpt->district->district_name}}</option>
                 </select><br>
                 <input type="text" name="bpt_address" id="bpt_address" value="{{$bpt->bpt_address}}" required="required" class="form-control" placeholder="БПТ манзили"><br>
-
-                <input type="text" name="bpt_speciality" id="bpt_speciality" required="required" value="{{$bpt->bpt_speciality}}" class="form-control" placeholder="Мутахассислиги"><br>
 
                 <select name="bpt_party_id" id="bpt_party_id" data-plugin="select2" required="required" class="form-control">
 

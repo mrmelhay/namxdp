@@ -17,7 +17,8 @@ class BPT extends Model
         'bpt_is_mfy',
         'bpt_region_id',
         'bpt_district_id',
-        'bpt_party_id'
+        'bpt_party_id',
+        'is_deleted'
     ];
 
     public function region(){

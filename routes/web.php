@@ -39,6 +39,6 @@ Route::group(['middleware'=>'web'],function (){
 
     Route::get('/arxiv','MemberController@arxiv');
 
-    Route::post('/searchMember','BptController@search')->name('searchMember');
+    Route::post('/search','BaseController@search')->name('search');
 
 });

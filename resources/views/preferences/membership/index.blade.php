@@ -21,7 +21,7 @@
                    data-animate="fade" data-child="tr" data-selectable="selectable">
                 <thead>
                 <tr>
-                    <form action="{{route('searchMember')}}" method="post">
+                    <form action="{{route('search')}}" method="post">
                         {{csrf_field()}}
                         <th class="pre-cell"></th>
                         <th class="cell-30" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3"></th>
@@ -46,6 +46,7 @@
 
                         <th style="border: none;"><button type="submit" class="btn btn-default"><i class="fa-search"> </i></button></th>
                         <th style="border: none;"><button type="submit" class="btn btn-default"><i class="fa-filter"> </i></button></th>
+                        <input type="hidden" name="key" value="_member">
                     </form>
                 </tr>
                 <tr>
