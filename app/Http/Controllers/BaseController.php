@@ -167,4 +167,58 @@ class BaseController extends Controller
             }
         }
     }
+
+    public function search(Request $request){
+        switch ($request->key):
+            case '_bpt':
+                $data=[];
+                foreach($request->except('_token','key','_method') as $key => $value){
+                    if($value!==null){
+                        if($key=='bpt_name'){
+                            $members1 = \App\BPT::where('bpt_name','like','%'.$value.'%')->orderBy('bpt_id','desc')->paginate(20);
+                            break;
+                        }else{
+                            $data[$key] = $value;
+                        }
+                    }
+                }
+                if(isset($members1)){
+                    $this->data["bpts"] = $members1;
+                }else{
+                    $members = \App\BPT::where($data)->orderBy('bpt_id','desc')->paginate(20);
+                    $this->data["bpts"] = $members;
+                }
+                $this->data['title']="Boshlang'ich partiya tashkilotlari";
+                $this->data['regions']=$this->getAllRegions();
+                $this->data['councils']=$this->getAllCouncils();
+
+                return view('preferences.bpt.index', $this->data);
+                break;
+            case '_member':
+                $data=[];
+                foreach($request->all() as $key => $value){
+                    if($value!==null && $key!='_token'){
+                        if($key=='fullName'){
+                            $members1 = \App\Members::where('fullName','like','%'.$value.'%')->orderBy('id','desc')->paginate(20);
+                            break;
+                        }else{
+                            $data[$key] = $value;
+                        }
+                    }
+                }
+                $controller = new \App\Http\Controllers\BaseController();
+                $data1["countArchive"] = $controller->getAllArchives();
+                $data1["bpts"] = $controller->getAllBpt();
+                if(isset($members1)){
+                    $data1["members"] = $members1;
+                }else{
+                    $members = \App\Members::where($data)->orderBy('id','desc')->paginate(20);
+                }
+                $data1["members"] = $members;
+                return view('preferences.membership.index', $data1);
+                break;
+            default:
+                echo "i is not equal to 0, 1 or 2";
+        endswitch;
+    }
 }
