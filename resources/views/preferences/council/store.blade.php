@@ -6,7 +6,7 @@
         @include('commons.errors_list')
     </div>
 
-    <form action="{{url('/bpt')}}" method="post">
+    <form action="{{url('/council')}}" method="post">
 
         <div class="row">
 
@@ -14,7 +14,7 @@
 
                 <input type="text" required="required" name="party_name" value="{{old('party_name')}}" id="party_name" class="form-control" placeholder="Партия номи"><br>
 
-                <input placeholder="Партия рахбари" type="text" value="{{old('party_director')}}" required="required" name="bpt_speciality" id="party_address" class="form-control"><br>
+                <input placeholder="Партия рахбари" type="text" value="{{old('party_director')}}" required="required" name="party_director" id="party_address" class="form-control"><br>
 
                 <input placeholder="Партия телефон раками" type="text" value="{{old('party_phone')}}" required="required" name="party_phone" id="party_phone" class="form-control"><br>
 
