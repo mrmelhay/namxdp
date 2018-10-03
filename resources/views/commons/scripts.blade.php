@@ -45,6 +45,15 @@
 <script src="{{ asset('assets/vendor/slidepanel/jquery-slidePanel.js') }}"></script>
 <script src="{{ asset('assets/vendor/jquery-placeholder/jquery.placeholder.js') }}"></script>
 <!-- Scripts -->
+{{--<script src="{{ asset ('assets/vendor/c3/c3.min.js')}}"></script>--}}
+{{--<script src="{{ asset ('assets/vendor/d3/d3.min.js')}}"></script>--}}
+{{--<script src="{{ asset ('assets/js/charts/c3.js') }}"></script>--}}
+{{--<script src="{{ asset ('assets/js/charts/chartist.js') }}"></script>--}}
+{{--<script src="{{ asset ('assets/vendor/chartist-js/chartist.js') }}"></script>--}}
+{{--<script src="{{ asset ('assets/js/dashboard/v1.js') }}"></script>--}}
+{{--<script src="{{ asset ('assets/js/dashboard/v1.min.js') }}"></script>--}}
+
+
 <script src="{{ asset('assets/js/core.js') }}"></script>
 <script src="{{ asset('assets/js/site.js') }}"></script>
 <script src="{{ asset('assets/js/sections/menu.js') }}"></script>
@@ -76,7 +85,7 @@
 <script src="{{ asset('assets/js/components/jt-timepicker.js') }}"></script>
 <script src="{{ asset('assets/js/components/datepair-js.js') }}"></script>
 <script src="{{ asset('assets/js/components/jquery-strength.js') }}"></script>
-<script src="js/widgets/chart.js"></script>
+
 <script src="{{ asset('assets/js/components/multi-select.js') }}"></script>
 <script src="{{ asset('assets/js/components/jquery-placeholder.js') }}"></script>
 <script src="{{ asset('assets/js/forms/advanced.js') }}"></script>
