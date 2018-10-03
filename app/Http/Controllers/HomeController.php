@@ -3,22 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Home;
 
-class HomeController  extends BaseController
+class HomeController extends Controller
 {
-
-
-
     public function __construct()
     {
-        parent::__construct();
         $this->middleware('auth');
     }
 
-
-    public function index()
+    public static function index()
     {
-        return view('home',$this->data);
+        return view('home');
     }
 }
