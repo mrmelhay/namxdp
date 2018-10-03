@@ -58,7 +58,7 @@
       checkbox:
         "<div class='checkbox'><label><input class='bootbox-input bootbox-input-checkbox' type='checkbox' /></label></div>",
       date:
-        "<input class='bootbox-input bootbox-input-date form-control' autocomplete=off type='date' />",
+        "<input class='bootbox-input bootbox-input-date form-control' autocomplete=off data-provide='datepicker' type='text' />",
       time:
         "<input class='bootbox-input bootbox-input-time form-control' autocomplete=off type='time' />",
       number:
@@ -296,7 +296,7 @@
   exports.alert = function() {
     var options;
 
-    options = mergeDialogOptions("alert", ["ok"], ["message", "callback"], arguments);
+    options = mergeDialogOptions("alert", ["Ha"], ["message", "callback"], arguments);
 
     if (options.callback && !$.isFunction(options.callback)) {
       throw new Error("alert requires callback property to be a function when provided");
@@ -830,9 +830,9 @@
       CONFIRM : "Επιβεβαίωση"
     },
     en : {
-      OK      : "OK",
-      CANCEL  : "Cancel",
-      CONFIRM : "OK"
+      OK      : "Ха",
+      CANCEL  : "Йўқ",
+      CONFIRM : "Ха"
     },
     es : {
       OK      : "OK",
