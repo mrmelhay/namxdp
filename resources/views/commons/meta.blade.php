@@ -12,6 +12,13 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-extend.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site.min.css') }}">
     <!-- Plugins -->
+    <link rel="stylesheet" href="{{asset('vendor/chartist-js/chartist.css')}}">
+    <link rel="stylesheet" href="{{asset('css/charts/chartist.css')}}">
+    <link rel="stylesheet" href="{{asset('css/charts/pie-progress.css')}}">
+    <link rel="stylesheet" href="{{asset('css/widgets/chart.css')}}">
+    <link rel="stylesheet" href="{{asset('css/dashboard/v1.css')}}">
+    <link rel="stylesheet" href="{{asset('css/dashboard/v1.min.css')}}">
+
     <!-- Plugins -->
     <link rel="stylesheet" href="{{ asset('vendor/animsition/animsition.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/asscrollable/asScrollable.css') }}">
@@ -55,6 +62,7 @@
     <link rel="stylesheet" href="{{ asset('fonts/glyphicons/glyphicons.css') }}">
     <link rel="stylesheet" href="{{ asset('fonts/web-icons/web-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('fonts/octicons/octicons.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/c3/c3.css') }}">
     <link rel="stylesheet" href="{{ asset('fonts/material-design/material-design.min.css') }}">
     <link rel="stylesheet" href="{{ asset('fonts/brand-icons/brand-icons.min.css') }}">
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">

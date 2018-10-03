@@ -3,7 +3,7 @@
     <div class="navbar-header">
         <button type="button" class="navbar-toggle hamburger hamburger-close navbar-toggle-left hided"
                 data-toggle="menubar">
-            <span class="sr-only">Переключить Навигацию</span>
+            <span class="sr-only">Переключить</span>
             <span class="hamburger-bar"></span>
         </button>
         <button type="button" class="navbar-toggle collapsed" data-target="#site-navbar-collapse"
@@ -29,7 +29,7 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)" data-animation="scale-up"
                        aria-expanded="false" role="button">
-                        <span class="flag-icon flag-icon-ru"></span>
+                        <span class="flag-icon flag-icon-uz"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li role="presentation">
