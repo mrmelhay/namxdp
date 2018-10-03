@@ -8,8 +8,8 @@
                 <div class="btn-group" role="group" aria-label="...">
                     <button class="btn btn-primary btn-md" onclick="window.location='{{url('membership/create')}}';">+ Аъзо қўшиш</button>
                     <button class="btn btn-warning btn-md" id="editBtn"> <span id="countt"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-pencil"></span> Ўзгартириш</button>
-                    <button class="btn btn-default btn-md">Пенсия</button>
-                    <button class="btn btn-default btn-md">Бадал</button>
+                    <button class="btn btn-default btn-md" id="pensionerButton"> <span id="counp"></span> Пенсия</button>
+                    <button class="btn btn-default btn-md" id="feeButton"> <span id="counb"></span> Бадал</button>
                     <button class="btn btn-danger btn-md" id="deleteBpt"><span id="count"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-trash"></span> Ўчириш</button>
                     <button class="btn btn-default btn-md" onclick="window.location='{{url('arxiv')}}'">Архив</button>
                     <button class="btn btn-info btn-md" id="count_records"> <span id="coun"></span> та танланди</button>
@@ -79,7 +79,7 @@
                             <td class="cell-300">{{$member->bpt->bpt_name}}</td>
                             <td class="cell-300">{{$member->unionJoinDate}}</td>
                             <td class="cell-300">{{$member->birthday}}</td>
-                            <td class="cell-300">{{($member->isFeePaid==0)?'Тўламайди':'Тўлайди'}}</td>
+                            <td class="cell-3">{{($member->isFeePaid==0)?'Тўламайди':'Тўлайди'}}</td>
                             <td></td>
                             <td class="suf-cell"></td>
                             <td class="suf-cell"></td>
@@ -90,7 +90,9 @@
             <div class="text-center">{{$members->links()}}</div>
         </div>
     </div>
-
+    <script type="text/javascript" src="{{asset('assets/vendor/jquery/jquery.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/vendor/bootstrap/bootstrap.js')}}"></script>
+    <script type="text/javascript" src="{{asset('vendor/bootbox/bootbox.js')}}"></script>
     <script type="text/javascript">
         window.onload = function() {
             document.getElementById('editBtn').addEventListener('click' , function(e){
@@ -111,6 +113,66 @@
             for (var i = 0; i < selectors.length; i++) {
                 selectors[i].addEventListener('change', ggg);
             }
+
+            var feeB = document.getElementById('feeButton').addEventListener('click',function (e) {
+                e.preventDefault()
+                var bool = bootbox.confirm('Ушбу а\'золарни БАДАЛ тулашдан озод етилсинми ?',function(result){
+                    if(result){
+                        bootbox.prompt({
+                            title: "Бадалдан озод этиш санасини курсатинг!",
+                            inputType: 'date',
+                            callback: function (result1) {
+                                if(result1!==null){
+                                    bootbox.prompt({
+                                        title: "А'зони бадалдан озод этилиш сабабини киритинг!",
+                                        inputType:'text',
+                                        callback: function(result2){
+                                            if(result2.length>5){
+                                                var data1=[];
+                                                if(data.length > 0){
+                                                    for(var i=0;i<data.length;++i){
+                                                        var element = data[i];
+                                                        var id = element.split("contacts_");
+                                                        data1.push(parseInt(id[1]))
+                                                    }
+                                                    $.ajax({
+                                                        url:'{{url('api/checkAsUnFee')}}',
+                                                        type: 'POST',
+                                                        dataType:'json',
+                                                        data: JSON.stringify({ids:data1,reason:reason}),
+                                                        contentType: 'application/json; charset=utf-8',
+                                                        success: function(data11){
+                                                            if(!data11.error){
+                                                                toastr.success('Азолар БАДАЛдан озод этилди!')
+                                                                for(var t=0;t<data.length;++t){
+                                                                    // console.log();
+                                                                    var l = document.getElementById(data[t]).parentNode.parentNode.parentNode.childNodes[13];
+                                                                    l.textContent = 'Тўламайди';
+                                                                }
+                                                                data=[];
+                                                                document.getElementById('count_records').style.display = 'none';
+                                                                document.getElementById('coun').innerHTML = ''
+                                                                document.getElementById('count').innerHTML = ''
+                                                                document.getElementById('countt').innerHTML = ''
+                                                            }else{
+                                                                toastr.warning('Техник хатолик!')
+                                                            }
+                                                        }
+                                                    });
+
+                                                }else{
+                                                    toastr.warning('Ўзгартириш учун қайдлардан бирини ёки бир нечтасини танланг!')
+                                                }
+                                            }
+                                        }
+                                    })
+                                }
+                            }
+                        });
+                    }
+                })
+            })
+
 //            document.getElementById('count_records').style.display = 'none';
             document.getElementById('deleteBpt').addEventListener('click',function(e){
                 e.preventDefault()
@@ -162,11 +224,15 @@
                 if(data.length){
                     document.getElementById('count_records').style.display = 'block';
                     document.getElementById('count').innerHTML = '('+data.length+')'
+                    document.getElementById('counb').innerHTML = '('+data.length+')'
+                    document.getElementById('counp').innerHTML = '('+data.length+')'
                     document.getElementById('countt').innerHTML = '('+data.length+')'
                     document.getElementById('coun').innerHTML = data.length
                 }else{
                     document.getElementById('count_records').style.display = 'none';
+                    document.getElementById('counp').innerHTML = ''
                     document.getElementById('coun').innerHTML = ''
+                    document.getElementById('counb').innerHTML = ''
                     document.getElementById('count').innerHTML = ''
                     document.getElementById('countt').innerHTML = ''
                 }
