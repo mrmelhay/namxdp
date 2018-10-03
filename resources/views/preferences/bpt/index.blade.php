@@ -1,16 +1,15 @@
 @extends('layouts.main')
 @section('content')
     <div class="panel">
-
         <div class="page-header">
             <div>
                 <div class="btn-group" role="group" aria-label="...">
                     <button class="btn btn-primary btn-md" onclick="window.location='{{url('bpt/create')}}';">+ Бпт қўшиш</button>
-                    <button class="btn btn-warning btn-md" id="editBtn"> <span id="countt"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-pencil"></span> Ўзгартириш</button>
+                    {{--<button class="btn btn-warning btn-md" id="editBtn"> <span id="countt"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-pencil"></span> Ўзгартириш</button>--}}
                     {{--<button class="btn btn-default btn-md">Пенсия</button>--}}
                     {{--<button class="btn btn-default btn-md">Бадал</button>--}}
-                    <button class="btn btn-danger btn-md" id="deleteBpt"><span id="count"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-trash"></span> Ўчириш</button>
-                    <button class="btn btn-info btn-md" id="count_records"> <span id="coun"></span> та танланди</button>
+                    {{--<button class="btn btn-danger btn-md" id="deleteBpt"><span id="count"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-trash"></span> Ўчириш</button>--}}
+                    {{--<button class="btn btn-info btn-md" id="count_records"> <span id="coun"></span> та танланди</button>--}}
                 </div>
             </div>
         </div>
@@ -105,9 +104,13 @@
     <script type="text/javascript">
         function getDistrict(select){
             var xhttp = new XMLHttpRequest();
+
+
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var data = JSON.parse(this.responseText);
+
+
                     var textP;
                     for(var i=0; i<data.districts.length; ++i){
                         textP += '<option value="'+ data.districts[i].district_id +'">'+ data.districts[i].district_name +'</option>';

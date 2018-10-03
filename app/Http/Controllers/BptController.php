@@ -72,7 +72,7 @@ class BptController extends BaseController
     public function destroy($id)
     {
         if(is_numeric($id)){
-            $bpt = \App\BPT::find($id);
+            $bpt = \App\BPT::findOrFail($id);
             $bpt->update([
                 'is_deleted' => 1
             ]);

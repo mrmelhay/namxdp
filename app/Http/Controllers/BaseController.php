@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\BPT;
 use App\Council;
 use App\District;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Members;
 use App\Nation;
 use App\Province;
@@ -24,6 +25,7 @@ class BaseController extends Controller
     public $valid=[];
     public $menus=[];
     public $council=[];
+
     public $users=[];
     public $sex=[];
     public $region=[];
@@ -35,7 +37,6 @@ class BaseController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
         $this->rules=$this->validationRules();
         $this->countArchive=$this->getAllArchives();
         $this->region=$this->getAllRegions();
@@ -51,11 +52,11 @@ class BaseController extends Controller
     }
 
     public function getAllCouncils(){
-        return Council::all();
+        return Council::where('is_deleted',0)->get();
     }
 
     public function getAllUsers(){
-        return User::all();
+        return User::where('is_deleted',0)->orderBy('id','desc')->get();
     }
 
     public function getAllRegions(){
@@ -218,7 +219,7 @@ class BaseController extends Controller
                 return view('preferences.membership.index', $data1);
                 break;
             default:
-                echo "i is not equal to 0, 1 or 2";
+                echo "okok";
         endswitch;
     }
 }

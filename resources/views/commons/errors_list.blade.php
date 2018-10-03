@@ -30,6 +30,20 @@
         @if($errors->first('bpt_district_id'))<li><?php echo $errors->first('bpt_district_id'); ?></li>@endif
         @if($errors->first('bpt_party_id'))<li><?php echo $errors->first('bpt_party_id'); ?></li>@endif
 
+            @if($errors->first('party_name'))<li><?php echo $errors->first('party_name'); ?></li>@endif
+            @if($errors->first('party_address'))<li><?php echo $errors->first('party_address'); ?></li>@endif
+            @if($errors->first('party_director'))<li><?php echo $errors->first('party_director'); ?></li>@endif
+            @if($errors->first('party_phone'))<li><?php echo $errors->first('party_phone'); ?></li>@endif
+            @if($errors->first('party_region_id'))<li><?php echo $errors->first('party_region_id'); ?></li>@endif
+            @if($errors->first('party_distirict_id'))<li><?php echo $errors->first('party_distirict_id'); ?></li>@endif
+
+
+
+            @if($errors->first('name'))<li><?php echo $errors->first('name'); ?></li>@endif
+            @if($errors->first('email'))<li><?php echo $errors->first('email'); ?></li>@endif
+            @if($errors->first('password'))<li><?php echo $errors->first('password'); ?></li>@endif
+            @if($errors->first('role_id'))<li><?php echo $errors->first('role_id'); ?></li>@endif
+
 
 
 
