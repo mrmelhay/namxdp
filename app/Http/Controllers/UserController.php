@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends BaseController
 {
 
-    public function __constructor()
-    {
-        //$this->middleware('areYouSuperMan');
-    }
-
     protected $redirectPath = '/users';
 
     public function index()

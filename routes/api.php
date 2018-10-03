@@ -55,10 +55,10 @@ Route::post('/checkAsPensioner', function (Request $request) {
 
 Route::post('/checkAsUnFee', function (Request $request) {
 
-    $result = Members::whereIn('id',$request->all())->update(['isFeePaid'=>0]);
+    $result = Members::whereIn('id',$request->ids)->update(['isFeePaid'=>0]);
 
     if($result){
-        \App\NoFeeMember::insert($request->except(''));
+        \App\NoFeeMember::insert($request->reason);
         return response()->json([
             'error' => false,
             'status' => 'OK',

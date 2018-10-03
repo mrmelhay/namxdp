@@ -36,11 +36,16 @@ Route::group(['middleware'=>'web'],function (){
     Route::resource('/council','CouncilController');
 
 //--------------------------------- resource controllers area  END -------------------------------------------//
-    Auth::routes();
+
     Route::get('/arxiv','MemberController@arxiv');
     Route::post('/search','BaseController@search')->name('search');
 });
 
 Route::resource('/users','UserController');
-
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/login', 'CustomLoginController@login')->name('login');
+Route::post('/logout', 'CustomLoginController@logout')->name('logout');
+Route::get('/login', function (){
+    return view('auth.login');
+})->middleware('guest');

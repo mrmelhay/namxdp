@@ -11,3 +11,6 @@ p.sex_p_tag>label{
 p.sex_p_tag>input{
     margin-right: 3em;
 }
+p#xdpMemberArea{
+    display: none;
+}

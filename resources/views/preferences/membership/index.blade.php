@@ -128,6 +128,7 @@
                                         inputType:'text',
                                         callback: function(result2){
                                             if(result2.length>5){
+                                                var reason  = result2
                                                 var data1=[];
                                                 if(data.length > 0){
                                                     for(var i=0;i<data.length;++i){

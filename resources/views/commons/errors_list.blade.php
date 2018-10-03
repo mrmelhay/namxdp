@@ -1,5 +1,5 @@
 <ul>
-        @if(count($errors))
+        @if(isset($errors) > 1)
         @if($errors->first('fullName'))<li><?php echo $errors->first('fullName'); ?></li>@endif
         @if($errors->first('birthDay'))<li><?php echo $errors->first('birthDay'); ?></li>@endif
         @if($errors->first('sex_id'))<li><?php echo $errors->first('sex_id'); ?></li>@endif
@@ -45,7 +45,7 @@
             @if($errors->first('role_id'))<li><?php echo $errors->first('role_id'); ?></li>@endif
 
 
-
+@endif
 
 </ul>
-@endif
+

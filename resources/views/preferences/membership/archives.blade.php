@@ -17,7 +17,7 @@
                    data-animate="fade" data-child="tr" data-selectable="selectable">
                 <thead>
                 <tr>
-                    <form action="{{route('searchMember')}}" method="post">
+                    <form action="{{route('search')}}" method="post">
                         {{csrf_field()}}
                         <th class="pre-cell"></th>
                         <th class="cell-30" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3"></th>
