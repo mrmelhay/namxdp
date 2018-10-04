@@ -226,6 +226,7 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/widgets/chart.js') }}"></script>
 
 @endsection
 

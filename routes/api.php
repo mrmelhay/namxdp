@@ -16,66 +16,29 @@ Route::get('getDistricts/{id}', function ($id) {
     ]);
 });
 
-Route::post('/deleteMember', function (Request $request) {
-
-    $result = Members::whereIn('id',$request->all())->update(['is_deleted'=>1]);
-    if($result){
+Route::get('/deleteMember/{date}/{reason}/{id}', function ($date,$reason,$id) {
+    if(is_numeric($id) && \App\Members::findOrFail($id)->exists() && \App\Members::findOrFail($id)->is_deleted==0){
+        \App\Members::findOrFail($id)->update(['is_deleted' => 1, 'delete_reason_id' => $reason , 'date_reason' => $date]);
         return response()->json([
             'error' => false,
-            'status' => 'OK',
-            'code' => 200
+            'data' => $id,
+            'status_code' => 200
         ]);
     }else{
-        return response()->json([
-            'error' => true,
-            'status' => 'error',
-            'code' => 465
-        ]);
+        abort(404);
     }
 });
 
-Route::post('/checkAsPensioner', function (Request $request) {
-
-//    $result = Members::whereIn('id',$request->all())->update(['is_deleted'=>1]);
-//    if($result){
-//        return response()->json([
-//            'error' => false,
-//            'status' => 'OK',
-//            'code' => 200
-//        ]);
-//    }else{
+Route::get('/markMemberAsPensioner/{date}/{id}', function ($date,$id) {
 
         return response()->json([
             'error' => false,
             'status' => 'error',
             'code' => 465
         ]);
-//    }
-});
-
-Route::post('/checkAsUnFee', function (Request $request) {
-
-    $result = Members::whereIn('id',$request->ids)->update(['isFeePaid'=>0]);
-
-    if($result){
-        \App\NoFeeMember::insert($request->reason);
-        return response()->json([
-            'error' => false,
-            'status' => 'OK',
-            'code' => 200
-        ]);
-    }else{
-
-    return response()->json([
-        'error' => false,
-        'status' => 'error',
-        'code' => 465
-    ]);
-    }
 });
 
 Route::post('/restoreMember', function (Request $request) {
-
     $result = Members::whereIn('id',$request->all())->update(['is_deleted'=>0]);
     if($result){
         return response()->json([

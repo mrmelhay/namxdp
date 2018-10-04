@@ -29,7 +29,10 @@ class Members extends Model
         'unionJoinDate',
         'unionOrderNumber',
         'socialPositionId',
-        'socialPositionId'
+        'socialPositionId',
+        'isFeePaid',
+        'delete_reason_id',
+        'date_reason',
     ];
 
     protected $table = 'members';
@@ -65,6 +68,10 @@ class Members extends Model
 
     public function bpt(){
         return $this->hasOne('App\BPT' , 'bpt_id' , 'bpt_id');
+    }
+
+    public function noFeeMember(){
+        $this->hasOne('App\NoFeeMember','fee_member_id','id');
     }
 
 

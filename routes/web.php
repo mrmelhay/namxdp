@@ -3,6 +3,7 @@
 use App\Preferences;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
 
 Route::group(['middleware'=>'web'],function (){
     Route::match(['get','post'],'/',['uses'=>'HomeController@index','as'=>'home']);
@@ -34,18 +35,34 @@ Route::group(['middleware'=>'web'],function (){
     Route::resource('/district', 'DistrictController');
     Route::resource('/bpt','BptController');
     Route::resource('/council','CouncilController');
+    Route::resource('/users','UserController');
 
 //--------------------------------- resource controllers area  END -------------------------------------------//
 
     Route::get('/arxiv','MemberController@arxiv');
     Route::post('/search','BaseController@search')->name('search');
-});
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::post('/login', 'CustomLoginController@login')->name('login');
+    Route::post('/logout', 'CustomLoginController@logout')->name('logout');
+    Route::get('/login', function (){return view('auth.login');})->middleware('guest');
 
-Route::resource('/users','UserController');
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/login', 'CustomLoginController@login')->name('login');
-Route::post('/logout', 'CustomLoginController@logout')->name('logout');
-Route::get('/login', function (){
-    return view('auth.login');
-})->middleware('guest');
+    //--------------------------------------------  FeeStore  --------------------------------------------------//
+
+    Route::get('/feeSubmit/{feeDate}/{feeReason}/{id}',function ($feeDate, $feeReason, $id){
+        if(is_numeric($id)){
+            \App\Members::findOrFail($id)->update(['isFeePaid'=>0]);
+            if(!\App\NoFeeMember::where(['fee_member_id'=>$id])->exists()){
+                \App\NoFeeMember::insert(['fee_reason'=>$feeReason,'fee_member_id'=>$id,'fee_date'=>$feeDate]);
+            }
+            return response()->json([
+                'code' => 200,
+                'data' => [],
+                'error' => false,
+            ]);
+        }else{
+            abort(404);
+        }
+    });
+
+
+});

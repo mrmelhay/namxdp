@@ -98,6 +98,20 @@
 
     </form>
 
+    <script>
+        var phoneMask = new IMask(
+            document.getElementById('passSerial'), {
+                mask: '[aa]  000 000 0',
+                prepare: function (str) {
+                    return str.toUpperCase();
+                }
+            });
+
+        var phoneMask1 = new IMask(
+            document.getElementById('phoneNumber'), {
+                mask: '+ {998} (00) 000-00-00',
+            });
+    </script>
     <script type="text/javascript">
         function getDistrict(select){
             var xhttp = new XMLHttpRequest();

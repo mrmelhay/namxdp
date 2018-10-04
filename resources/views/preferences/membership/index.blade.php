@@ -90,11 +90,90 @@
             <div class="text-center">{{$members->links()}}</div>
         </div>
     </div>
+    <!-- Button trigger modal -->
+    <button type="button" style="display: none;" class="btn btn-primary btn-lg" id="btnModal" data-toggle="modal" data-target="#myModal"></button>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">А'золарни бадалдан озод етиш тўгрисида ма'лумотлар</h4>
+                </div>
+                <form id="feeSubmit" onsubmit="return false">
+                <div class="modal-body">
+                    <input id="feeDate" name="feeDate" required="required" class="form-control" type="text" data-provide="datepicker" placeholder="Озод этиш санаси"><br>
+                    <textarea id="feeReason" name="feeReason" required="required"  class="form-control" cols="30">Озод этиш сабаби</textarea><br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="closeFee" class="btn btn-default" data-dismiss="modal">Бекор қилиш</button>
+                    <button type="submit" class="btn btn-primary">Тасдиқлаш</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Button trigger modal -->
+    <button type="button" style="display: none;" class="btn btn-primary btn-lg" id="btnModalD" data-toggle="modal" data-target="#myModalD"></button>
+    <!-- Modal -->
+    <div class="modal fade" id="myModalD" tabindex="99999" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">А'зони ўчириш тўгрисида ма'лумотлар</h4>
+                </div>
+                <form id="feeSubmitD" onsubmit="return false">
+                    <div class="modal-body">
+                    <input id="feeDate" name="feeDate" required="required" class="form-control" type="text" data-provide="datepicker" placeholder="Ўчириш санаси"><br><br>
+                        <select name="feeReason_id" id="feeReason_id" class="form-control" >
+                            @foreach($reasons as $reason)
+                                <option value="{{$reason->reason_id}}">{{$reason->reason_name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" id="closeDee" class="btn btn-default" data-dismiss="modal">Бекор қилиш</button>
+                    <button type="submit" class="btn btn-primary">Тасдиқлаш</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" style="display: none;" class="btn btn-primary btn-lg" id="btnModalP" data-toggle="modal" data-target="#myModalP"></button>
+    <!-- Modal -->
+    <div class="modal fade" id="myModalP" tabindex="99999" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">А'зони нафақага тайинлаш тўгрисида ма'лумотлар</h4>
+                </div>
+                <form id="feeSubmitP" onsubmit="return false">
+                    <div class="modal-body">
+                    <input id="feeDate" name="feeDate" required="required" class="form-control" type="text" data-provide="datepicker" placeholder="Нафақага чиқиш санаси"><br><br>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" id="closePee" class="btn btn-default" data-dismiss="modal">Бекор қилиш</button>
+                    <button type="submit" class="btn btn-primary">Тасдиқлаш</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript" src="{{asset('assets/vendor/jquery/jquery.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/vendor/bootstrap/bootstrap.js')}}"></script>
     <script type="text/javascript" src="{{asset('vendor/bootbox/bootbox.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/loading.min.js')}}"></script>
     <script type="text/javascript">
+
         window.onload = function() {
+
+            //------------------------------   EDIT BUTTON CLICK EVENT   -----------------------------//
+
             document.getElementById('editBtn').addEventListener('click' , function(e){
                 e.preventDefault()
                 if(data.length < 1){
@@ -107,6 +186,9 @@
                     window.location = '{{url('/membership')}}'+'/'+ids[1]+'/edit';
                 }
             })
+
+            //------------------------------   ADD CLICK EVENT TO ALL CHECKBOXES   -----------------------------//
+
             var selectors = document.getElementsByClassName('contacts-checkbox');
             var editButton = document.getElementsByClassName('contacts-checkbox');
             var data = [];
@@ -114,107 +196,154 @@
                 selectors[i].addEventListener('change', ggg);
             }
 
-            var feeB = document.getElementById('feeButton').addEventListener('click',function (e) {
-                e.preventDefault()
-                var bool = bootbox.confirm('Ушбу а\'золарни БАДАЛ тулашдан озод етилсинми ?',function(result){
-                    if(result){
-                        bootbox.prompt({
-                            title: "Бадалдан озод этиш санасини курсатинг!",
-                            inputType: 'date',
-                            callback: function (result1) {
-                                if(result1!==null){
-                                    bootbox.prompt({
-                                        title: "А'зони бадалдан озод этилиш сабабини киритинг!",
-                                        inputType:'text',
-                                        callback: function(result2){
-                                            if(result2.length>5){
-                                                var reason  = result2
-                                                var data1=[];
-                                                if(data.length > 0){
-                                                    for(var i=0;i<data.length;++i){
-                                                        var element = data[i];
-                                                        var id = element.split("contacts_");
-                                                        data1.push(parseInt(id[1]))
-                                                    }
-                                                    $.ajax({
-                                                        url:'{{url('api/checkAsUnFee')}}',
-                                                        type: 'POST',
-                                                        dataType:'json',
-                                                        data: JSON.stringify({ids:data1,reason:reason}),
-                                                        contentType: 'application/json; charset=utf-8',
-                                                        success: function(data11){
-                                                            if(!data11.error){
-                                                                toastr.success('Азолар БАДАЛдан озод этилди!')
-                                                                for(var t=0;t<data.length;++t){
-                                                                    // console.log();
-                                                                    var l = document.getElementById(data[t]).parentNode.parentNode.parentNode.childNodes[13];
-                                                                    l.textContent = 'Тўламайди';
-                                                                }
-                                                                data=[];
-                                                                document.getElementById('count_records').style.display = 'none';
-                                                                document.getElementById('coun').innerHTML = ''
-                                                                document.getElementById('count').innerHTML = ''
-                                                                document.getElementById('countt').innerHTML = ''
-                                                            }else{
-                                                                toastr.warning('Техник хатолик!')
-                                                            }
-                                                        }
-                                                    });
+            //------------------------------   fEE BUTTON CLICK EVENT   -----------------------------//
 
-                                                }else{
-                                                    toastr.warning('Ўзгартириш учун қайдлардан бирини ёки бир нечтасини танланг!')
-                                                }
-                                            }
-                                        }
-                                    })
-                                }
-                            }
-                        });
+            document.getElementById('feeButton').addEventListener('click',function (e) {
+                e.preventDefault()
+                if(data.length == 1){
+                    var textC = document.getElementById(data[0]).parentNode.parentNode.parentNode.childNodes[13];
+                    if(textC.textContent =="Тўламайди"){
+                        toastr.warning('Ушбу а\'зо бадал тулашдан озод етиб бўлинган!')
+                        return false;
                     }
-                })
-            })
-
-//            document.getElementById('count_records').style.display = 'none';
-            document.getElementById('deleteBpt').addEventListener('click',function(e){
-                e.preventDefault()
-                var bool = confirm('Қайдларни ўчирмоқчимисиз?')
-                if(bool){
-                    var data1=[];
-                    if(data.length > 0){
-                        for(var i=0;i<data.length;++i){
-                            var element = data[i];
-                            var id = element.split("contacts_");
-                            data1.push(parseInt(id[1]))
+                    document.getElementById('btnModal').click()
+                    document.getElementById('feeSubmit').addEventListener('submit',function (e) {
+                        e.preventDefault()
+                        document.getElementById('closeFee').click()
+                        H5_loading.show()
+                        console.log(data[0]);
+                        var xhr = new XMLHttpRequest();
+                        var reason = e.target.feeReason.value
+                        var dateF = e.target.feeDate.value
+                        var dateD = dateF.replace("/", "-");
+                        var dateS = dateD.replace("/", "-");
+                        var elementD = data[0];
+                        var idT = elementD.split("contacts_");
+                        var g = parseInt(idT[1])
+                        xhr.open('GET', '{{url('feeSubmit')}}'+'/'+dateS+'/'+reason+'/'+g, true);
+                        xhr.send()
+                        xhr.onreadystatechange = function() {
+                            if (this.readyState != 4) return;
+                            if (this.status != 200) {
+                                toastr.warning('Техник хатолик!')
+                                return;
+                            }
+                            e.target.feeDate.value =''
+                            e.target.feeReason.value =''
+                            console.log(this.responseText)
+                            toastr.success('А\'зо БАДАЛдан озод этилди!')
+                            for(var t=0;t<data.length;++t){
+                                var l = document.getElementById(data[t]).parentNode.parentNode.parentNode.childNodes[13];
+                                l.textContent = 'Тўламайди';
+                                document.getElementById('contacts_'+g).checked = false;
+                            }
+                            data=[];
+                            document.getElementById('count_records').style.display = 'none';
+                            document.getElementById('coun').innerHTML = ''
+                            document.getElementById('count').innerHTML = ''
+                            document.getElementById('counp').innerHTML = ''
+                            document.getElementById('counb').innerHTML = ''
+                            document.getElementById('countt').innerHTML = ''
                         }
-                        $.ajax({
-                            url:'{{url('api/deleteMember')}}',
-                            type: 'POST',
-                            dataType:'json',
-                            data: JSON.stringify(data1),
-                            contentType: 'application/json; charset=utf-8',
-                            success: function(data11){
-                                if(!data11.error){
-                                    toastr.success('O\'CHIRILDI!')
-                                    for(var t=0;t<data.length;++t){
-                                        var l = document.getElementById(data[t]).parentNode.parentNode.parentNode;
-                                        l.parentNode.removeChild(l)
-                                    }
-                                    data=[];
-                                        document.getElementById('count_records').style.display = 'none';
-                                        document.getElementById('coun').innerHTML = ''
-                                        document.getElementById('count').innerHTML = ''
-                                        document.getElementById('countt').innerHTML = ''
-                                }else{
-                                    toastr.warning('Техник хатолик!')
-                                }
-                            }
-                        });
-
-                    }else{
-                        toastr.warning('Ўчириш учун қайдлардан бирини ёки бир нечтасини танланг!')
-                    }
+                        return false;
+                    })
+                }else {
+                    alert('Илтимос рўйхатдагилардан фақат биттасини танланг!')
                 }
             })
+
+            //------------------------------   DELETE BUTTON CLICK EVENT   -----------------------------//
+
+            document.getElementById('deleteBpt').addEventListener('click',function(e){
+                e.preventDefault()
+                if(data.length==1){
+                        document.getElementById('btnModalD').click()
+                        document.getElementById('feeSubmitD').addEventListener('submit',function (e) {
+                            e.preventDefault()
+                            document.getElementById('closeDee').click()
+                            H5_loading.show()
+                            console.log(data[0]);
+                            var xhr = new XMLHttpRequest();
+                            var reason = e.target.feeReason_id.value
+                            console.log(reason)
+                            var dateF = e.target.feeDate.value
+                            var dateD = dateF.replace("/", "-");
+                            var dateS = dateD.replace("/", "-");
+                            var elementD = data[0];
+                            var idT = elementD.split("contacts_");
+                            var g = parseInt(idT[1])
+                            xhr.open('GET', '{{url('api/deleteMember')}}'+'/'+dateS+'/'+reason+'/'+g, true);
+                            xhr.send()
+                            xhr.onreadystatechange = function() {
+                                if (this.readyState != 4) return;
+                                if (this.status != 200) {
+                                    toastr.warning('Техник хатолик!')
+                                    return;
+                                }
+                                e.target.feeDate.value =''
+                                toastr.success('А\'зо ўчирилди')
+                                var l = document.getElementById(data[0]).parentNode.parentNode.parentNode;
+                                l.parentNode.removeChild(l)
+                                document.getElementById('count_records').style.display = 'none';
+                                document.getElementById('coun').innerHTML = ''
+                                document.getElementById('count').innerHTML = ''
+                                document.getElementById('counp').innerHTML = ''
+                                document.getElementById('counb').innerHTML = ''
+                                document.getElementById('countt').innerHTML = ''
+                                data=[];
+                            }
+                            return false;
+                        })
+                }else{
+                    toastr.warning('Илтимос рўйхатдагилардан фақат биттасини танланг!')
+                }
+            })
+
+            //------------------------------   PENSIONER BUTTON CLICK EVENT   -----------------------------//
+
+            document.getElementById('pensionerButton').addEventListener('click',function(e){
+                e.preventDefault()
+                if(data.length==1){
+                        document.getElementById('btnModalP').click()
+                        document.getElementById('feeSubmitP').addEventListener('submit',function (e) {
+                            e.preventDefault()
+                            document.getElementById('closePee').click()
+                            H5_loading.show()
+                            console.log(data[0]);
+                            var xhr = new XMLHttpRequest();
+                            var dateF = e.target.feeDate.value
+                            var dateD = dateF.replace("/", "-");
+                            var dateS = dateD.replace("/", "-");
+                            var elementD = data[0];
+                            var idT = elementD.split("contacts_");
+                            var g = parseInt(idT[1])
+                            xhr.open('GET', '{{url('api/markMemberAsPensioner')}}'+'/'+dateS+'/'+g, true);
+                            xhr.send()
+                            xhr.onreadystatechange = function() {
+                                if (this.readyState != 4) return;
+                                if (this.status != 200) {
+                                    toastr.warning('Техник хатолик!')
+                                    return;
+                                }
+                                document.getElementById(data[0]).checked = false;
+                                e.target.feeDate.value =''
+                                toastr.success('А\'зога нафақа тайинланди')
+                                document.getElementById('count_records').style.display = 'none';
+                                document.getElementById('coun').innerHTML = ''
+                                document.getElementById('count').innerHTML = ''
+                                document.getElementById('counp').innerHTML = ''
+                                document.getElementById('counb').innerHTML = ''
+                                document.getElementById('countt').innerHTML = ''
+                                data=[];
+                            }
+                            return false;
+                        })
+                }else{
+                    toastr.warning('Илтимос рўйхатдагилардан фақат биттасини танланг!')
+                }
+            })
+
+            //------------------------------   DISPLAY COUNT OF SELECTED ELEMENTS EVENT   -----------------------------//
 
             function ggg(e) {
                 if (e.target.checked) {

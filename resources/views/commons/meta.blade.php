@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-extend.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site.min.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Plugins -->
     <link rel="stylesheet" href="{{asset('vendor/chartist-js/chartist.css')}}">
     <link rel="stylesheet" href="{{asset('css/charts/chartist.css')}}">

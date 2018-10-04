@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Members;
 use App\Preferences;
+use App\Reasons;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,6 +16,7 @@ class MemberController extends BaseController
         $this->data['members'] = Members::where('is_deleted', 0)->paginate(20);
         $this->data['countArchive'] = $this->countArchive;
         $this->data['bpts'] = $this->bpt;
+        $this->data['reasons'] = Reasons::all();
         return view('preferences.membership.index', $this->data);
     }
 
@@ -64,6 +66,7 @@ class MemberController extends BaseController
             if ($this->customValidate($request, $id, 1)) {
                 return $this->index();
             } else {
+                dd($this->valid);
                 return redirect()->back()->withErrors($this->valid)->withInput();
             }
         } else {

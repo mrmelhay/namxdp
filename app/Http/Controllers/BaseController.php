@@ -8,6 +8,7 @@ use App\District;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Members;
 use App\Nation;
+use App\NoFeeMember;
 use App\Province;
 use App\Home;
 use App\Sex;
@@ -95,30 +96,31 @@ class BaseController extends Controller
     }
 
     public function validationRules($method=false){
-//        if($method){return  [
-//            'fullName' => 'required|string|min:7',
-//            'birthDay' => 'required|date',
-//            'sex_id' => 'required|integer',
-//            'nationality_id' => 'required|integer',
-//            'passSerial' => 'required|min:13',
-//            'passGivenFrom' => 'required|string|min:20',
-//            'passGivenDate' => 'required|date',
-//            'passExpireDate' => 'required|date',
-//            'specialist' => 'required|string|min:4',
-//            'workPlaceAndPosition' => 'required|string|min:20',
-//            'phoneNumber' => 'required|string|min:20',
-//            'isLeader' => 'required|integer',
-////            'isXdpMember' => '',
-//            'region_id' => 'required|integer',
-//            'district_id' => 'required|integer',
-//            'homeAddress' => 'required|string|min:10',
-//            'unionJoinDate' => 'required|date',
-//            'unionOrderNumber' => 'required',
-//            'unionCertfNumber' => 'required',
-//            'bpt_id' => 'required|integer',
-//            'isFeePaid' => 'required|integer',
-//            'socialPositionId' => 'integer'
-//        ];}else{
+        if($method){return  [
+            'fullName' => 'required|string|min:7',
+            'birthDay' => 'required|date',
+            'sex_id' => 'required|integer',
+            'nationality_id' => 'required|integer',
+            'passSerial' => 'required|min:13',
+            'passGivenFrom' => 'required|string|min:7',
+            'passGivenDate' => 'required|date',
+            'passExpireDate' => 'required|date',
+            'specialist' => 'required|string|min:4',
+            'workPlaceAndPosition' => 'required|string|min:5',
+            'phoneNumber' => 'required|string|min:20',
+            'isLeader' => 'required|integer',
+//            'isXdpMember' => '',
+            'region_id' => 'required|integer',
+            'district_id' => 'required|integer',
+            'homeAddress' => 'required|string|min:10',
+            'unionJoinDate' => 'required|date',
+            'unionOrderNumber' => 'required',
+            'unionCertfNumber' => 'required',
+            'bpt_id' => 'required|integer',
+            'isFeePaid' => 'required',
+            'socialPositionId' => 'integer'
+        ];
+        }else{
             return  [
                 'fullName' => 'required|string|min:7',
                 'birthDay' => 'required|date',
@@ -140,10 +142,10 @@ class BaseController extends Controller
                 'unionOrderNumber' => 'required',
                 'unionCertfNumber' => 'required',
                 'bpt_id' => 'required|integer',
-                'isFeePaid' => 'required|integer',
+                'isFeePaid' => 'required',
                 'socialPositionId' => 'integer'
             ];
-//        }
+        }
     }
 
     public function customValidate(Request $request , $id=null , $method=false){
@@ -153,9 +155,7 @@ class BaseController extends Controller
                 $this->valid = $valid;
                 return false;
             }else{
-                $updated = Members::findOrFail($id);
-                $updated
-                    ->update($request->except('_token','_method'));
+                $updated = Members::findOrFail($id)->update($request->except('_token','_method'));
                 return ($updated);
             }
         }else{
@@ -164,8 +164,12 @@ class BaseController extends Controller
                 $this->valid = $valid;
                 return false;
             }else{
-                $record = Members::insert($request->except('_token','_method'));
-                return ($record);
+                $idn = Members::insertGetId($request->except('_token','_method'));
+                if((int)$request->isFeePaid==0){
+                    $reason = \App\SocialCategory::find($request->socialPositionId)->soc_name;
+                    \App\NoFeeMember::insert(['fee_reason'=>$reason,'fee_member_id'=>$idn,'fee_date'=>date('Y:m:d')]);
+                }
+                return ($idn);
             }
         }
     }
