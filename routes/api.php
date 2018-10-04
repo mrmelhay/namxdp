@@ -31,11 +31,16 @@ Route::get('/deleteMember/{date}/{reason}/{id}', function ($date,$reason,$id) {
 
 Route::get('/markMemberAsPensioner/{date}/{id}', function ($date,$id) {
 
+    if(is_numeric($id) && \App\Members::findOrFail($id)->exists() && !\App\Pensioner::where('member_pensioner_id',$id)->exists()){
+        \App\Pensioner::insert(['member_pensioner_id' => $id, 'pensioner_date' => $date]);
         return response()->json([
             'error' => false,
-            'status' => 'error',
-            'code' => 465
+            'status' => [],
+            'status_code' => 200
         ]);
+    }else{
+        abort(404);
+    }
 });
 
 Route::post('/restoreMember', function (Request $request) {
