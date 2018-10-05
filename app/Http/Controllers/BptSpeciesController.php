@@ -24,7 +24,7 @@ class BptSpeciesController extends BaseController
     public function store(Request $request)
     {
         if($this->customValidates($request)){
-            return $this->index();
+            return redirect()->to('/bpt_spec');
         }else{
             return redirect()->back()->withErrors($this->valid)->withInput();
         }

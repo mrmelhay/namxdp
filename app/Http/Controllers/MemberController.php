@@ -23,7 +23,7 @@ class MemberController extends BaseController
     public function store(Request $request)
     {
         if ($this->customValidate($request)) {
-            return $this->index();
+            return redirect()->to('/membership');
         } else {
             return redirect()->back()->withErrors($this->valid)->withInput();
         }
@@ -64,7 +64,7 @@ class MemberController extends BaseController
     {
         if (is_numeric($id)) {
             if ($this->customValidate($request, $id, 1)) {
-                return $this->index();
+                return redirect()->to('/membership');
             } else {
                 dd($this->valid);
                 return redirect()->back()->withErrors($this->valid)->withInput();

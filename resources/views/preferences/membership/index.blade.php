@@ -25,7 +25,10 @@
                         {{csrf_field()}}
                         <th class="pre-cell"></th>
                         <th class="cell-30" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3"></th>
-                        <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3"><input class="form-control" name="fullName" type="text"></th>
+                        <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                            <input class="form-control" name="fullName" type="text"></th>
+                        <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+
                         <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                             <select name="bpt_id" data-plugin="select2">
                                 <option disabled selected>БПТ номи</option>
@@ -230,6 +233,7 @@
                             if (this.readyState != 4) return;
                             if (this.status != 200) {
                                 toastr.warning('Техник хатолик!')
+                                H5_loading.hide()
                                 return;
                             }
                             e.target.feeDate.value =''
@@ -248,11 +252,15 @@
                             document.getElementById('counp').innerHTML = ''
                             document.getElementById('counb').innerHTML = ''
                             document.getElementById('countt').innerHTML = ''
+                            H5_loading.hide()
                         }
                         return false;
+                        H5_loading.hide()
                     })
                 }else {
+                    H5_loading.hide()
                     alert('Илтимос рўйхатдагилардан фақат биттасини танланг!')
+
                 }
             })
 
@@ -279,9 +287,10 @@
                             xhr.open('GET', '{{url('api/deleteMember')}}'+'/'+dateS+'/'+reason+'/'+g, true);
                             xhr.send()
                             xhr.onreadystatechange = function() {
-                                if (this.readyState != 4) return;
+                                if (this.readyState != 4)  return;
                                 if (this.status != 200) {
                                     toastr.warning('Техник хатолик!')
+                                    H5_loading.hide()
                                     return;
                                 }
                                 e.target.feeDate.value =''
@@ -295,10 +304,13 @@
                                 document.getElementById('counb').innerHTML = ''
                                 document.getElementById('countt').innerHTML = ''
                                 data=[];
+                                H5_loading.hide()
                             }
                             return false;
+                            H5_loading.hide()
                         })
                 }else{
+                    H5_loading.hide()
                     toastr.warning('Илтимос рўйхатдагилардан фақат биттасини танланг!')
                 }
             })
@@ -327,10 +339,12 @@
                                 if (this.readyState != 4) return;
                                 if (this.status != 200) {
                                     toastr.warning('Техник хатолик!')
+                                    H5_loading.hide()
                                     return;
                                 }
                                 if(!this.responseText.data){
                                     toastr.warning('А\'зо аввлроқ нафақага чиқарилган!')
+                                    H5_loading.hide()
                                     return false;
                                 }
                                 document.getElementById(data[0]).checked = false;
@@ -343,10 +357,13 @@
                                 document.getElementById('counb').innerHTML = ''
                                 document.getElementById('countt').innerHTML = ''
                                 data=[];
+                                H5_loading.hide()
                             }
                             return false;
+                            H5_loading.hide()
                         })
                 }else{
+                    H5_loading.hide()
                     toastr.warning('Илтимос рўйхатдагилардан фақат биттасини танланг!')
                 }
             })
