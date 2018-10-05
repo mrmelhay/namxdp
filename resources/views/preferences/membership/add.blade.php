@@ -9,7 +9,7 @@
 
         </div>
     </div>
-            <form class="row" action="{{url('/membership')}}" method="post">
+            <form class="row" action="{{url('/membership')}}" method="post" enctype="multipart/form-data">
                 <div>
                     <div class="col-md-6">{{csrf_field()}}{{method_field('POST')}}
 
@@ -88,7 +88,18 @@
                     @endforeach
 
                 </select><br>
-
+                        <div>
+                            <div class="btn-group margin-bottom-20">
+                                <label class="btn btn-primary waves-effect waves-light" data-toggle="tooltip" for="inputImage" data-container="body" title="" data-original-title="Upload File">
+                                    <input type="file" class="hide" id="inputImage" name="photo" accept="image/*">
+                                    <span class="cropper-tooltip" title="Import image with FileReader">
+                                    <i class="glyphicon glyphicon-picture" aria-hidden="true"></i> Сурат танлаш
+                                </span>
+                                </label>
+                            </div>
+                            <span id="sss" style="margin-left: 15px;padding: 5px; display: none;"></span>
+                        </div>
+                        <br>
                     </div>
                 </div>
 
@@ -111,6 +122,12 @@
                         document.getElementById('phoneNumber'), {
                             mask: '+ {998} (00) 000-00-00',
                         });
+
+                document.getElementById('inputImage').addEventListener('change' , function (e) {
+                    e.preventDefault()
+                    document.getElementById('sss').style.display = 'block';
+                    document.getElementById('sss').textContent = e.target.value;
+                })
             </script>
 
             <script type="text/javascript">

@@ -3,6 +3,7 @@
 use App\Members;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -58,4 +59,17 @@ Route::post('/restoreMember', function (Request $request) {
             'code' => 465
         ]);
     }
+});
+
+Route::get('/removeImg/{member_id}', function ($member_id) {
+    $p = \App\PhotoMember::where('member_id',$member_id)->first();
+    if($p->photo_path!="no-person.jpg"){
+        Storage::disk('public')->delete($p->photo_path);
+        $p->photo_path = 'no-person.jpg';$p->save();
+    }
+        return response()->json([
+            'error' => false,
+            'data' => [],
+            'status_code' => 200
+        ]);
 });

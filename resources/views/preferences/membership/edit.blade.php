@@ -7,7 +7,7 @@
         @include('commons.errors_list')
     </div>
 
-    <form action="{{url('membership/'.$member->id)}}" method="post">
+    <form action="{{url('membership/'.$member->id)}}" method="post" enctype="multipart/form-data">
 
         <div class="row">
 
@@ -89,6 +89,22 @@
                             @endif
                     @endforeach
                 </select><br>
+                <div>
+                    <div class="btn-group margin-bottom-20">
+                        <label class="btn btn-primary waves-effect waves-light" data-toggle="tooltip" for="inputImage" data-container="body" title="" data-original-title="Upload File">
+                            <input type="file" class="hide" id="inputImage" name="photo" accept="image/*" disabled>
+                            <span class="cropper-tooltip" title="Import image with FileReader">
+                                    <i class="glyphicon glyphicon-picture" aria-hidden="true"></i> Сурат танлаш
+                                </span>
+                        </label>
+                    </div><br>
+                    <div style="position:relative;display: inline-block;">
+                        <span class="glyphicon glyphicon-remove" id="removeImg" style="position:absolute;top: -11px;right: -14px;color: #ff2500;cursor: pointer;" title="Ўчириш"></span>
+                        <img class="img-rounded img-bordered img-bordered-primary" width="150" height="150" src="{{asset('store/members/'.$member->photo->photo_path)}}" alt="">
+                    </div>
+                    <input type="hidden" id="member_id" value="{{$member->id}}">
+                    <span id="sss" style="margin-left: 15px;padding: 5px; display: none;"></span>
+                </div><br>
 
             </div>
         </div>
@@ -113,6 +129,31 @@
             });
     </script>
     <script type="text/javascript">
+        document.getElementById('removeImg').addEventListener('click',function (e) {
+            e.preventDefault()
+            var bool = confirm('Суратни ўчирмоқчимисиз ?')
+            if(bool){
+                var member_id = document.getElementById('member_id').value
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var l = e.target.parentNode
+                        console.log(e.target.parentNode.parentNode.removeChild(l))
+                        toastr.success("Сурат ўчирилди !")
+                        document.getElementById('inputImage').removeAttribute('disabled')
+                    }
+                };
+                xhttp.open("GET", '{{url('api/removeImg')}}/'+member_id, true);
+                xhttp.send();
+            }
+        })
+
+        document.getElementById('inputImage').addEventListener('change' , function (e) {
+            e.preventDefault()
+            document.getElementById('sss').style.display = 'block';
+            document.getElementById('sss').textContent = e.target.value;
+        })
+
         function getDistrict(select){
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {

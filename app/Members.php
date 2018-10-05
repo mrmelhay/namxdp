@@ -71,7 +71,11 @@ class Members extends Model
     }
 
     public function noFeeMember(){
-        $this->hasOne('App\NoFeeMember','fee_member_id','id');
+        return $this->hasOne('App\NoFeeMember','fee_member_id','id');
+    }
+
+    public function photo(){
+        return $this->hasOne('App\PhotoMember','member_id','id');
     }
 
 

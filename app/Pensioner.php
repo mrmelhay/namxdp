@@ -18,6 +18,6 @@ class Pensioner extends Model
     protected $table = 'pensioners';
 
     public function member(){
-        return $this->hasOne('App\Member','id','pensioner_id');
+        return $this->hasOne('App\Member','id','member_pensioner_id');
     }
 }

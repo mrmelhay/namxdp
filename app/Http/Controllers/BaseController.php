@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Members;
 use App\Nation;
 use App\NoFeeMember;
+use App\PhotoMember;
 use App\Province;
 use App\Home;
 use App\Sex;
@@ -16,6 +17,7 @@ use App\SocialCategory;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class BaseController extends Controller
@@ -155,8 +157,12 @@ class BaseController extends Controller
                 $this->valid = $valid;
                 return false;
             }else{
-                $updated = Members::findOrFail($id)->update($request->except('_token','_method'));
-                return ($updated);
+                Members::find($id)->update($request->except('_token','_method','photo'));
+                if($request->hasFile('photo')){
+                    $path = Storage::disk('public')->put(date('Y-m-d').'/u_'.$id.'_image', $request->file('photo'));
+                    PhotoMember::where('member_id',$id)->update(['photo_path' => $path]);
+                }
+                return true;
             }
         }else{
             $valid = Validator::make($request->all(),$this->validationRules());
@@ -164,12 +170,18 @@ class BaseController extends Controller
                 $this->valid = $valid;
                 return false;
             }else{
-                $idn = Members::insertGetId($request->except('_token','_method'));
+                $idn = Members::insertGetId($request->except('_token','_method','photo'));
                 if((int)$request->isFeePaid==0){
                     $reason = \App\SocialCategory::find($request->socialPositionId)->soc_name;
                     \App\NoFeeMember::insert(['fee_reason'=>$reason,'fee_member_id'=>$idn,'fee_date'=>date('Y:m:d')]);
                 }
-                return ($idn);
+                if($request->hasFile('photo')){
+                    $path = Storage::disk('public')->put(date('Y-m-d'), $request->file('photo'));
+                    PhotoMember::insert(['member_id' => $idn, 'photo_path' => $path]);
+                }else{
+                    PhotoMember::insert(['member_id' => $idn, 'photo_path' => 'store/members/no-person.jpg']);
+                }
+                return (true);
             }
         }
     }
