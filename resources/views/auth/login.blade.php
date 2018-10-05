@@ -1,5 +1,4 @@
 @extends('layouts.login')
-
 @section('content')
     <div class="page animsition" data-animsition-in="fade-in" data-animsition-out="fade-out">
         <div class="page-content">
@@ -32,19 +31,14 @@
                     <div class="form-group form-material floating">
                         <input type="password" class="form-control empty" id="inputPassword" name="password">
                         <label class="floating-label" for="inputPassword">Пароль</label>
-
-
                         @if (isset($errors) && $errors->has('password'))
                             <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                         @endif
                     </div>
-
                     <button type="submit" class="btn btn-primary btn-block">Кириш</button>
                 </form>
-
-
             </div>
         </div>
     </div>

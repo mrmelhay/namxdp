@@ -21,11 +21,11 @@
                     <tr>
 
                         <td><input type="checkbox" value="{{ $district->district_id }}" class="selectable-item" name="region[]" id="region[]" /></td>
-                        <td><a href="{{ url('/province/'.$district->district_id) }}/edit">{{ $district->district_id }}</a></td>
+                        <td><a href="{{ url('/district/action/edit/'.$district->district_id) }}">{{ $district->district_id }}</a></td>
                         <td>{{ $district->region->region_name }}</td>
                         <td>{{ $district->district_name }}</td>
                         <td>
-                            <a href="{{ url('/province/'.$district->district_id) }}/edit"><i class="fa fa-pencil"></i></a>&nbsp;
+                            <a href="{{ url('/district/action/edit/'.$district->district_id) }}"><i class="fa fa-pencil"></i></a>&nbsp;
                             <a onclick="document.getElementById('formDelete').submit()"><i class="fa fa-trash"></i></a>
                             <form action="{{url('/district')}}" method="post" id="formDelete">
                                 <input type="hidden" name="district_id" value="{{$district->district_id}}">
