@@ -32,13 +32,21 @@ Route::get('/deleteMember/{date}/{reason}/{id}', function ($date,$reason,$id) {
 
 Route::get('/markMemberAsPensioner/{date}/{id}', function ($date,$id) {
 
-    if(is_numeric($id) && \App\Members::findOrFail($id)->exists() && !\App\Pensioner::where('member_pensioner_id',$id)->exists()){
-        \App\Pensioner::insert(['member_pensioner_id' => $id, 'pensioner_date' => $date]);
-        return response()->json([
-            'error' => false,
-            'status' => [],
-            'status_code' => 200
-        ]);
+    if(is_numeric($id) && \App\Members::findOrFail($id)->exists()){
+        if(!\App\Pensioner::where('member_pensioner_id',$id)->exists()){
+            \App\Pensioner::insert(['member_pensioner_id' => $id, 'pensioner_date' => $date]);
+            return response()->json([
+                'error' => false,
+                'data' => [],
+                'status_code' => 200
+            ]);
+        }else{
+            return response()->json([
+                'error' => false,
+                'data' => false,
+                'status_code' => 200
+            ]);
+        }
     }else{
         abort(404);
     }

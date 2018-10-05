@@ -36,6 +36,7 @@ Route::group(['middleware'=>'web'],function (){
     Route::resource('/bpt','BptController');
     Route::resource('/council','CouncilController');
     Route::resource('/users','UserController');
+    Route::resource('/bpt_spec','BptSpeciesController');
 
 //--------------------------------- resource controllers area  END -------------------------------------------//
 

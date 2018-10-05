@@ -24,7 +24,12 @@
                             <input class="form-control" name="bpt_name" placeholder="БПТ номи" type="text"/>
                         </th>
                         <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
-                            <input class="form-control" name="bpt_speciality" placeholder="БПТ мутахасислиги" type="text">
+                            <select name="bpt_speciality_id" id="bpt_speciality_id" data-plugin="select2">
+                                <option disabled selected>Сохани танлаш</option>
+                                @foreach($bpt_specs as $bpt_spec)
+                                    <option value="{{$bpt_spec->id}}">{{$bpt_spec->bpt_spec_name}}</option>
+                                @endforeach
+                            </select>
                         </th>
                         <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">
                             <select  data-plugin="select2"  name="isFeePaid">
@@ -66,6 +71,7 @@
                     <th>ID</th>
                     <th>БПТ номи</th>
                     <th>БПТ соҳаси</th>
+                    <th>БПТ ташкил топган сана</th>
                     <th>МФЙми?</th>
                     <th>БПТ вилояти</th>
                     <th>БПТ тумани</th>
@@ -79,7 +85,8 @@
                     <tr>
                         <td><a href="{{ url('/bpt/'.$bpt->bpt_id) }}/edit">{{ $bpt->bpt_id}}</a></td>
                         <td>{{ $bpt->bpt_name }}</td>
-                        <td>{{ $bpt->bpt_speciality }}</td>
+                        <td>{{ $bpt->spec->bpt_spec_name }}</td>
+                        <td>{{ $bpt->bpt_establish_date }}</td>
                         <td>{{ ($bpt->bpt_is_mfy)?'M.F.Y':'Yo\'q' }}</td>
                         <td>{{ $bpt->region->region_name }}</td>
                         <td>{{ $bpt->district->district_name }}</td>

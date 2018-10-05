@@ -12,8 +12,9 @@ class BPT extends Model
 
     protected $fillable = [
         'bpt_name',
-        'bpt_speciality',
+        'bpt_speciality_id',
         'bpt_address',
+        'bpt_establish_date',
         'bpt_is_mfy',
         'bpt_region_id',
         'bpt_district_id',
@@ -31,5 +32,9 @@ class BPT extends Model
 
     public function party(){
         return $this->hasOne('App\Party' , 'party_id', 'bpt_party_id');
+    }
+
+    public function spec(){
+        return $this->hasOne('App\BptSpecies' , 'id', 'bpt_speciality_id');
     }
 }

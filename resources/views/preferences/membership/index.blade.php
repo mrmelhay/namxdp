@@ -329,6 +329,10 @@
                                     toastr.warning('Техник хатолик!')
                                     return;
                                 }
+                                if(!this.responseText.data){
+                                    toastr.warning('А\'зо аввлроқ нафақага чиқарилган!')
+                                    return false;
+                                }
                                 document.getElementById(data[0]).checked = false;
                                 e.target.feeDate.value =''
                                 toastr.success('А\'зога нафақа тайинланди')

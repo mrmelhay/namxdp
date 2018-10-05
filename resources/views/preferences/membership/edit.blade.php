@@ -91,7 +91,7 @@
                 </select><br>
                 <div>
                     <div class="btn-group margin-bottom-20">
-                        <label class="btn btn-primary waves-effect waves-light" data-toggle="tooltip" for="inputImage" data-container="body" title="" data-original-title="Upload File">
+                        <label class="btn btn-primary waves-effect waves-light" data-toggle="tooltip" for="inputImage" data-container="body" title="" data-original-title="Сурат юклаш">
                             <input type="file" class="hide" id="inputImage" name="photo" accept="image/*" disabled>
                             <span class="cropper-tooltip" title="Import image with FileReader">
                                     <i class="glyphicon glyphicon-picture" aria-hidden="true"></i> Сурат танлаш

@@ -14,7 +14,14 @@
 
                 <input type="text" required="required" name="bpt_name" value="{{old('bpt_name')}}" id="bpt_name" class="form-control" placeholder="БПТ номи"><br>
 
-                <input placeholder="БПТ соҳаси" type="text" value="{{old('bpt_speciality')}}" required="required" name="bpt_speciality" id="bpt_speciality" class="form-control"><br>
+                    <select name="bpt_speciality_id" id="bpt_speciality_id" data-plugin="select2">
+                        <option disabled selected>Сохани танлаш</option>
+                        @foreach($bpt_specs as $bpt_spec)
+                            <option value="{{$bpt_spec->id}}">{{$bpt_spec->bpt_spec_name}}</option>
+                        @endforeach
+                    </select><br>
+
+                <input placeholder="БПТ ташкил топган сана" type="text" value="{{old('bpt_establish_date')}}" required="required" data-provide="datepicker" name="bpt_establish_date" id="bpt_establish_date" class="form-control" ><br>
 
                 <p class="sex_p_tag"><label for="">  МФЙ  </label><input type="radio" name="bpt_is_mfy" value="1"><label for="">  МФЙ эмас  </label><input type="radio" name="bpt_is_mfy" value="0" checked></p>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BPT;
+use App\BptSpecies;
 use App\Council;
 use App\District;
 use App\Http\Controllers\Auth\RegisterController;
@@ -208,6 +209,7 @@ class BaseController extends Controller
                 }
                 $this->data['title']="Boshlang'ich partiya tashkilotlari";
                 $this->data['regions']=$this->getAllRegions();
+                $this->data['bpt_specs']=BptSpecies::all();
                 $this->data['councils']=$this->getAllCouncils();
 
                 return view('preferences.bpt.index', $this->data);

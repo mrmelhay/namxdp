@@ -228,6 +228,11 @@
                                                 </a>
                                             </li>
                                             <li class="site-menu-item">
+                                                <a class="animsition-link" href="{{ url('bpt_spec') }}">
+                                                    <span class="site-menu-title">БПТ сохалари</span>
+                                                </a>
+                                            </li>
+                                            <li class="site-menu-item">
                                                 <a class="animsition-link" href="{{url('council')}}">
                                                     <span class="site-menu-title">Кенгашлар</span>
                                                 </a>

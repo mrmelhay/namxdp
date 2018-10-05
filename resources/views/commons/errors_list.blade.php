@@ -1,5 +1,5 @@
 <ul>
-        @if(isset($errors) > 1)
+@if(isset($errors) && count($errors) > 0)
         @if($errors->first('fullName'))<li><?php echo $errors->first('fullName'); ?></li>@endif
         @if($errors->first('birthDay'))<li><?php echo $errors->first('birthDay'); ?></li>@endif
         @if($errors->first('sex_id'))<li><?php echo $errors->first('sex_id'); ?></li>@endif
@@ -37,12 +37,11 @@
             @if($errors->first('party_region_id'))<li><?php echo $errors->first('party_region_id'); ?></li>@endif
             @if($errors->first('party_distirict_id'))<li><?php echo $errors->first('party_distirict_id'); ?></li>@endif
 
-
-
             @if($errors->first('name'))<li><?php echo $errors->first('name'); ?></li>@endif
             @if($errors->first('email'))<li><?php echo $errors->first('email'); ?></li>@endif
             @if($errors->first('password'))<li><?php echo $errors->first('password'); ?></li>@endif
             @if($errors->first('role_id'))<li><?php echo $errors->first('role_id'); ?></li>@endif
+            @if($errors->first('bpt_spec_name'))<li><?php echo $errors->first('bpt_spec_name'); ?></li>@endif
 
 
 @endif

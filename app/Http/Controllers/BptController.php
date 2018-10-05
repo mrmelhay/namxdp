@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BPT;
+use App\BptSpecies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -13,6 +14,7 @@ class BptController extends BaseController
     {
         $this->data['title']="Boshlang'ich partiya tashkilotlari";
         $this->data['bpts']=$this->bpt;
+        $this->data['bpt_specs']=BptSpecies::all();
         $this->data['regions']=$this->getAllRegions();
         $this->data['councils']=$this->getAllCouncils();
         return view('preferences.bpt.index', $this->data);
@@ -21,7 +23,7 @@ class BptController extends BaseController
     public function create()
     {
         $this->data["regions"] = $this->getAllRegions();
-        $this->data["councils"] = $this->getAllCouncils();
+        $this->data['bpt_specs']=BptSpecies::all();
         $this->data["councils"] = $this->getAllCouncils();
         return view('preferences.bpt.store',$this->data);
     }
@@ -30,7 +32,7 @@ class BptController extends BaseController
     public function store(Request $request)
     {
         if($this->customValidates($request)){
-            return $this->index();
+            return redirect()->to('/bpt');
         }else{
             return redirect()->back()->withErrors($this->valid)->withInput();
         }
@@ -89,8 +91,9 @@ class BptController extends BaseController
     protected function validationRule($method=false){
             return  [
                 'bpt_name' => 'required',
-                'bpt_speciality' => 'required',
+                'bpt_speciality_id' => 'required',
                 'bpt_address' => 'required',
+                'bpt_establish_date' => 'required',
                 'bpt_is_mfy' => 'required',
                 'bpt_region_id' => 'required|integer',
                 'bpt_district_id' => 'required|integer',
@@ -112,6 +115,7 @@ class BptController extends BaseController
         }else{
             $valid = Validator::make($request->all(),$this->validationRule());
             if($valid->fails()){
+                dd($valid);
                 $this->valid = $valid;
                 return false;
             }else{
