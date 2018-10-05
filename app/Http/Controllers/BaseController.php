@@ -177,7 +177,7 @@ class BaseController extends Controller
                     \App\NoFeeMember::insert(['fee_reason'=>$reason,'fee_member_id'=>$idn,'fee_date'=>date('Y:m:d')]);
                 }
                 if($request->hasFile('photo')){
-                    $path = Storage::disk('public')->put(date('Y-m-d').'/u_'.$id.'_image', $request->file('photo'));
+                    $path = Storage::disk('public')->put(date('Y-m-d').'/u_'.$idn.'_image', $request->file('photo'));
                     PhotoMember::insert(['member_id' => $idn, 'photo_path' => $path]);
                 }else{
                     PhotoMember::insert(['member_id' => $idn, 'photo_path' => 'no-person.jpg']);
