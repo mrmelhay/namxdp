@@ -211,7 +211,6 @@ class BaseController extends Controller
                 $this->data['regions']=$this->getAllRegions();
                 $this->data['bpt_specs']=BptSpecies::all();
                 $this->data['councils']=$this->getAllCouncils();
-
                 return view('preferences.bpt.index', $this->data);
                 break;
             case '_member':
@@ -237,6 +236,7 @@ class BaseController extends Controller
 //                    dd($data);
                     $data1["members"] = \App\Members::where($data)->orderBy('id','desc')->paginate(20);
                 }
+                $data1["reasons"] = \App\Reasons::all();
                 return view('preferences.membership.index', $data1);
                 break;
             default:
