@@ -21,7 +21,9 @@
                         {{csrf_field()}}
                         <th class="pre-cell"></th>
                         <th class="cell-30" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3"></th>
-                        <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3"><input class="form-control" name="fullName" type="text"></th>
+                        <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                            <input class="form-control" name="fullName" type="text"></th>
+                        <th class="cell-30" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3"></th>
                         <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                             <select name="bpt_id" data-plugin="select2">
                                 <option disabled selected>Bpt nomi</option>
@@ -47,13 +49,14 @@
                 </tr>
                 <tr>
                     <th class="pre-cell"></th>
-                    <th class="cell-30" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
+                    <th class="" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                     </th>
-                    <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">Ф.И.О</th>
-                    <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">БПТ номи</th>
-                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Аъзолик санаси</th>
-                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Туғилган санаси</th>
-                    <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Бадал</th>
+                    <th class="" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">Ф.И.О</th>
+                    <th class="" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">Сурати</th>
+                    <th class="" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">БПТ номи</th>
+                    <th scope="" data-tablesaw-sortable-col data-tablesaw-priority="4">Аъзолик санаси</th>
+                    <th scope="" data-tablesaw-sortable-col data-tablesaw-priority="4">Туғилган санаси</th>
+                    <th scope="" data-tablesaw-sortable-col data-tablesaw-priority="4">Бадал</th>
                     <th class="suf-cell"></th>
                 </tr>
                 </thead>
@@ -61,19 +64,22 @@
                 @foreach($archives as $member)
                     <tr data-url="panel.tpl" data-toggle="slidePanel">
                         <td class="pre-cell"></td>
-                        <td class="cell-30">
+                        <td class="">
                                 <span class="checkbox-custom checkbox-primary checkbox-lg">
                                     <input type="checkbox" class="contacts-checkbox selectable-item" id="contacts_{{$member->id}}"/>
                                     <label for="contacts_{{$member->id}}"></label>
                                 </span>
                         </td>
-                        <td class="cell-300">
+                        <td class="">
                             {{$member->fullName}}
                         </td>
-                        <td class="cell-300">{{$member->bpt->bpt_name}}</td>
-                        <td class="cell-300">{{$member->unionJoinDate}}</td>
-                        <td class="cell-300">{{$member->birthday}}</td>
-                        <td class="cell-300">{{($member->isFeePaid==0)?'To\'lamaydi':'To\'laydi'}}</td>
+                        <td class="">
+                            <img style="width: 50px;" src="{{asset('store/members/'.$member->photo->photo_path)}}" alt="">
+                        </td>
+                        <td class="">{{$member->bpt->bpt_name}}</td>
+                        <td class="">{{$member->unionJoinDate}}</td>
+                        <td class="">{{$member->birthday}}</td>
+                        <td class="">{{($member->isFeePaid==0)?'To\'lamaydi':'To\'laydi'}}</td>
                         <td></td>
                         <td class="suf-cell"></td>
                     </tr>

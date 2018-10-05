@@ -83,7 +83,7 @@
                             <td class="">{{$member->bpt->bpt_name}}</td>
                             <td class="">{{$member->unionJoinDate}}</td>
                             <td class="">{{$member->birthday}}</td>
-                            <td class="">{{($member->isFeePaid==0)?'Тўламайди':'Тўлайди'}}</td>
+                            <td class="piad">{{($member->isFeePaid==0)?'Тўламайди':'Тўлайди'}}</td>
                             <td></td>
                             <td class="suf-cell"></td>
                             <td class="suf-cell"></td>
@@ -205,7 +205,7 @@
             document.getElementById('feeButton').addEventListener('click',function (e) {
                 e.preventDefault()
                 if(data.length == 1){
-                    var textC = document.getElementById(data[0]).parentNode.parentNode.parentNode.childNodes[13];
+                    var textC = document.getElementById(data[0]).parentNode.parentNode.parentNode.childNodes[15];
                     if(textC.textContent =="Тўламайди"){
                         toastr.warning('Ушбу а\'зо бадал тулашдан озод етиб бўлинган!')
                         return false;
@@ -237,7 +237,7 @@
                             console.log(this.responseText)
                             toastr.success('А\'зо БАДАЛдан озод этилди!')
                             for(var t=0;t<data.length;++t){
-                                var l = document.getElementById(data[t]).parentNode.parentNode.parentNode.childNodes[13];
+                                var l = document.getElementById(data[t]).parentNode.parentNode.parentNode.childNodes[15];
                                 l.textContent = 'Тўламайди';
                                 document.getElementById('contacts_'+g).checked = false;
                             }
