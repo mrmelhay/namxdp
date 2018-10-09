@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Members;
 use App\Nation;
 use App\NoFeeMember;
+use App\Pensioner;
 use App\PhotoMember;
 use App\Province;
 use App\Home;
@@ -121,7 +122,7 @@ class BaseController extends Controller
             'unionCertfNumber' => 'required',
             'bpt_id' => 'required|integer',
             'isFeePaid' => 'required',
-            'socialPositionId' => 'integer'
+            'socialPositionId' => 'required|integer'
         ];
         }else{
             return  [
@@ -146,7 +147,7 @@ class BaseController extends Controller
                 'unionCertfNumber' => 'required',
                 'bpt_id' => 'required|integer',
                 'isFeePaid' => 'required',
-                'socialPositionId' => 'integer'
+                'socialPositionId' => 'required|integer'
             ];
         }
     }
@@ -158,6 +159,12 @@ class BaseController extends Controller
                 $this->valid = $valid;
                 return false;
             }else{
+                $ijs=\App\Members::find($id)->socialPositionId;
+                if($request->socialPositionId != $ijs){
+                    if(!Pensioner::where('member_pensioner_id',$id)->exists()){
+                        \App\Pensioner::insert(['member_pensioner_id' => $id, 'pensioner_date' => date('Y-m-d')]);
+                    }
+                }
                 Members::find($id)->update($request->except('_token','_method','photo'));
                 if($request->hasFile('photo')){
                     $path = Storage::disk('public')->put(date('Y-m-d').'/u_'.$id.'_image', $request->file('photo'));

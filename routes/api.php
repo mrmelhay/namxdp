@@ -35,6 +35,8 @@ Route::get('/markMemberAsPensioner/{date}/{id}', function ($date,$id) {
     if(is_numeric($id) && \App\Members::findOrFail($id)->exists()){
         if(!\App\Pensioner::where('member_pensioner_id',$id)->exists()){
             \App\Pensioner::insert(['member_pensioner_id' => $id, 'pensioner_date' => $date]);
+            $pos_id = \App\Members::find('id',$id)->socialPositionId;
+            \App\Members::find($id)->update(['socialPositionId' => 2, 'first_pos_id' => $pos_id]);
             return response()->json([
                 'error' => false,
                 'data' => [],
@@ -43,7 +45,7 @@ Route::get('/markMemberAsPensioner/{date}/{id}', function ($date,$id) {
         }else{
             return response()->json([
                 'error' => false,
-                'data' => false,
+                'data' => 2,
                 'status_code' => 200
             ]);
         }

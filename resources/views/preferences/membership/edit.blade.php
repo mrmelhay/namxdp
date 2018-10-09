@@ -78,7 +78,7 @@
                 <select name="socialPositionId" id="socialPositionId" data-plugin="select2" required="required" class="form-control">
 
                 @if($member->social_category->soc_id==1001)
-                    <option selected disabled>ijtimoiy toifani tanlsh</option>
+                    <option selected disabled>Ижтимоий тоифани танлаш</option>
                     @else
                         <option value="{{$member->social_category->soc_id}}">{{$member->social_category->soc_name}}</option>
                 @endif

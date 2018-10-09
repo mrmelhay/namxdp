@@ -6,18 +6,29 @@ use App\Members;
 use App\Preferences;
 use App\Reasons;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class MemberController extends BaseController
 {
     public function index()
     {
-        $this->data['assets'] = Preferences::getAssets();
-        $this->data['members'] = Members::where('is_deleted', 0)->paginate(20);
-        $this->data['countArchive'] = $this->countArchive;
-        $this->data['bpts'] = $this->bpt;
-        $this->data['reasons'] = Reasons::all();
-        return view('preferences.membership.index', $this->data);
+        if(Auth::user()->role_id==3){
+            $this->data['assets'] = Preferences::getAssets();
+            $this->data['members'] = Members::where('is_deleted', 0)->paginate(20);
+            $this->data['countArchive'] = $this->countArchive;
+            $this->data['bpts'] = $this->bpt;
+            $this->data['reasons'] = Reasons::all();
+            return view('preferences.membership.index', $this->data);
+        }
+        if(Auth::user()->role_id==3){
+            $this->data['assets'] = Preferences::getAssets();
+            $this->data['members'] = Members::where('is_deleted', 0)->paginate(20);
+            $this->data['countArchive'] = $this->countArchive;
+            $this->data['bpts'] = $this->bpt;
+            $this->data['reasons'] = Reasons::all();
+            return view('preferences.membership.index', $this->data);
+        }
     }
 
     public function store(Request $request)

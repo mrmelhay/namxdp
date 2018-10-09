@@ -12,6 +12,7 @@ class Members extends Model
         'bpt_id',
         'birthday',
         'sex_id',
+        'first_pos_id',
         'nationality_id',
         'passSerial',
         'passGivenFrom',

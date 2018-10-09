@@ -17,4 +17,12 @@ class HomeController extends Controller
         Auth::check();
         return view('home');
     }
+
+    public static function import()
+    {
+        Auth::check();
+        return view('home');
+    }
+
+
 }

@@ -6,7 +6,6 @@
         <h5>{{$title}}</h5><br>
         <div>
             @include('commons.errors_list')
-
         </div>
     </div>
             <form class="row" action="{{url('/membership')}}" method="post" enctype="multipart/form-data">
@@ -79,7 +78,7 @@
 
                         <p class="sex_p_tag"><label for="">  Бадал тўлайди </label><input type="radio" name="isFeePaid" value="1" checked><label for="">  Бадал тўламайди </label><input value="0" type="radio" name="isFeePaid"></p>
 
-                        <select name="socialPositionId" id="socialPositionId" data-plugin="select2" class="form-control">
+                        <select name="socialPositionId" onchange="document.getElementById('first_pos_id').value=this.value" id="socialPositionId" data-plugin="select2" class="form-control">
 
                     <option selected disabled>Ижтимоий тоифаси</option>
 
@@ -88,6 +87,7 @@
                     @endforeach
 
                 </select><br>
+                        <input type="hidden" name="first_pos_id" id="first_pos_id">
                         <div>
                             <div class="btn-group margin-bottom-20">
                                 <label class="btn btn-primary waves-effect waves-light" data-toggle="tooltip" for="inputImage" data-container="body" title="" data-original-title="Сурат танлаш">

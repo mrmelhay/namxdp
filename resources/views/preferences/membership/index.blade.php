@@ -259,7 +259,7 @@
                     })
                 }else {
                     H5_loading.hide()
-                    alert('Илтимос рўйхатдагилардан фақат биттасини танланг!')
+                    toastr.warning('Илтимос рўйхатдагилардан фақат биттасини танланг!')
 
                 }
             })
@@ -325,7 +325,6 @@
                             e.preventDefault()
                             document.getElementById('closePee').click()
                             H5_loading.show()
-                            console.log(data[0]);
                             var xhr = new XMLHttpRequest();
                             var dateF = e.target.feeDate.value
                             var dateD = dateF.replace("/", "-");
@@ -342,8 +341,9 @@
                                     H5_loading.hide()
                                     return;
                                 }
-                                if(!this.responseText.data){
-                                    toastr.warning('А\'зо аввлроқ нафақага чиқарилган!')
+                                var j = JSON.parse(this.responseText)
+                                if(j.data==2){
+                                    toastr.warning('А\'зо аввалроқ нафақага чиқарилган!')
                                     H5_loading.hide()
                                     return false;
                                 }
