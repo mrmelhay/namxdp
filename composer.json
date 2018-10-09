@@ -3,10 +3,6 @@
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
-    "authors":{
-        "name" : "myName",
-        "email" : "besmartness@gmail.com"
-    },
     "type": "project",
     "require": {
         "php": ">=5.6.4",
@@ -22,6 +18,9 @@
         "phpunit/phpunit": "~5.7"
     },
     "autoload": {
+        "files": [
+            "helpers/helpers.php"
+        ],
         "classmap": [
             "database"
         ],
