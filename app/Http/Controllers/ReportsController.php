@@ -14,6 +14,10 @@ class ReportsController extends Controller
 
     public function store(){
 
-        return view('reports.index');
+
+    }
+
+    public function getBtpCheif(){
+        return "";
     }
 }
