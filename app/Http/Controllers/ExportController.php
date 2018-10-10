@@ -13,6 +13,7 @@ use App\Sex;
 use App\SocialCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
 //use Maatwebsite\Excel\Excel;
 

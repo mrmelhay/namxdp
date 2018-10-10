@@ -82,7 +82,6 @@ class MemberController extends BaseController
             if ($this->customValidate($request, $id, 1)) {
                 return redirect()->to('/membership');
             } else {
-                dd($this->valid);
                 return redirect()->back()->withErrors($this->valid)->withInput();
             }
         } else {
