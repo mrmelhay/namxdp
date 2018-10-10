@@ -20,7 +20,6 @@ Route::group(['middleware'=>'web'],function (){
     Route::post('/district/action/{action}', 'DistrictController@action');
     Route::get('/district/action/{action}', 'DistrictController@action');
 
-    Route::get('/nation','PreferencesController@index');
     Route::get('/community','PreferencesController@index');
     Route::get('/community','PreferencesController@index');
     Route::get('/councils','PreferencesController@index');
@@ -42,6 +41,7 @@ Route::group(['middleware'=>'web'],function (){
 //--------------------------------- resource controllers area  END -------------------------------------------//
 
     Route::get('/arxiv','MemberController@arxiv');
+    Route::get('/export/{name}','ExportController@export');
     Route::post('/search','BaseController@search')->name('search');
     Route::get('/home', 'HomeController@index')->name('home');
     Route::post('/login', 'CustomLoginController@login')->name('login');
@@ -65,7 +65,7 @@ Route::group(['middleware'=>'web'],function (){
         foreach ($Reader as $Row)
         {
             $data = [];
-            if($i>3000)
+            if($i>0)
             {
                 if(strlen($Row[0]) > 3){
                     $data["fullName"] = $Row[0];
@@ -218,7 +218,7 @@ Route::group(['middleware'=>'web'],function (){
                 $dataGlobal[] = $data;
                 Log::info($data);
             }$i++;
-            if($i==6000){//11125
+            if($i==12){//11125
                 \App\Members::insert($dataGlobal);
                 return 'ok';
             }

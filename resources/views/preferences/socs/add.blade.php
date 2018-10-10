@@ -1,43 +1,26 @@
 @extends('layouts.main')
+
 @section('content')
-    <div class="panel">
-        <div class="panel-body container-fluid">
-            <div class="row row-lg">
-                <div class="col-sm-12">
-                    <form class="form-horizontal" action="{{ url('/district/action/save') }}" method="post" name="addform">
 
-                        {{ csrf_field() }}
-                        <div class="example-wrap">
-                            <h4 class="example-title">Туман/шахарни киритиш ёки тахрирлаш</h4>
-                            <div class="example">
-                                <form autocomplete="off">
-                                    <div class="form-group form-material row">
-                                        <div class="col-sm-12">
-                                            <label class="control-label" for="region">Худуд номи</label>
-                                            <select class="form-control" data-plugin="select2" name="region_id" id="region_id">
-                                                <option value="0">Танланг...</option>
-                                                @foreach($regions  as $region)
-                                                    <option value="{{ $region->region_id }}">{{ $region->region_name }}</option>
-                                                @endforeach
-                                            </select>
+    <div>
+        @include('commons.errors_list')
+    </div>
 
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <label class="control-label" for="region">Туман/шахар номини киритинг</label>
+    <form action="{{url('/socCats')}}" method="post">
 
-                                            <input type="text" class="form-control" id="district_name" name="district_name" placeholder="Туман/шахар номини киритинг" autocomplete="off">
-                                        </div>
-                                    </div>
-                                    <div class="form-group form-material">
-                                        <button type="button" class="btn btn-primary waves-effect waves-light" onclick="document.addform.submit();">Сақлаш</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </form>
+        <div class="row">
 
-                </div>
+            <div class="col-md-6">{{csrf_field()}}{{method_field('POST')}}
+
+                <input type="text" required="required" name="soc_name" value="{{old('soc_name')}}" id="soc_name" class="form-control" placeholder="Тоифа номи"><br>
+
+            </div>
+            <div class="col-md-6">
             </div>
         </div>
-    </div>
+        <div class="submitButton">
+            <button type="submit" class="btn btn-primary ">Сақлаш</button>
+        </div>
+
+    </form>
 @endsection

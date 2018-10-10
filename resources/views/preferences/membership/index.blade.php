@@ -12,6 +12,7 @@
                     <button class="btn btn-default btn-md" id="feeButton"> <span id="counb"></span> Бадал</button>
                     <button class="btn btn-danger btn-md" id="deleteBpt"><span id="count"></span> <span style="font-size: 11px;" class="glyphicon glyphicon-trash"></span> Ўчириш</button>
                     <button class="btn btn-default btn-md" onclick="window.location='{{url('arxiv')}}'">Архив</button>
+                    <a class="btn btn-default btn-md" target="_blank" href="{{url('export/member')}}">Експорт</a>
                     <button class="btn btn-info btn-md" id="count_records"> <span id="coun"></span> та танланди</button>
                 </div>
             </div>

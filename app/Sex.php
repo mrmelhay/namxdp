@@ -12,4 +12,5 @@ class Sex extends Model
     ];
 
     protected $table = 'sex';
+    protected $primaryKey = 'sex_id';
 }
