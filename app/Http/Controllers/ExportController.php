@@ -18,6 +18,14 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ExportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        ini_set('memory_limit', '-1');
+        ini_set('max_execution_time', 3600);
+        ini_set('display_errors', '1');
+    }
+
     public function export($name){
         if($name=='member'){
             if(Auth::user()->role_id==3){//for Hotamjon Ketmonov
