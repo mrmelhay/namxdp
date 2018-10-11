@@ -18,6 +18,7 @@ use App\Sex;
 use App\SocialCategory;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -221,11 +222,21 @@ class BaseController extends Controller
                 return view('preferences.bpt.index', $this->data);
                 break;
             case '_member':
+
                 $data=[];
                 foreach($request->all() as $key => $value){
                     if($value!==null && $key!='_token'&& $key!='_method'){
                         if($key=='fullName'){
-                            $members1 = \App\Members::where('fullName','like','%'.$value.'%')->orderBy('id','desc')->paginate(20);
+                            $user=Auth::user();
+                            if($user->role_id==3){
+                                $members1 = \App\Members::where('fullName','like','%'.$value.'%')->orderBy('id','desc')->paginate(20);
+                            }
+                            if($user->role_id==1){
+                                $members1 = \App\Members::where('fullName','like','%'.$value.'%')->where('region_id',$user->region_id)->orderBy('id','desc')->paginate(20);
+                            }
+                            if($user->role_id==2){
+                                $members1 = \App\Members::where('fullName','like','%'.$value.'%')->where('district_id',$user->district_id)->orderBy('id','desc')->paginate(20);
+                            }
                             break;
                         }else{
                             if($value!='_member'){
@@ -240,8 +251,15 @@ class BaseController extends Controller
                 if(isset($members1)){
                     $data1["members"] = $members1;
                 }else{
-//                    dd($data);
-                    $data1["members"] = \App\Members::where($data)->orderBy('id','desc')->paginate(20);
+                    if($user->role_id==3){
+                        $data1["members"] = \App\Members::where($data)->orderBy('id','desc')->paginate(20);
+                    }
+                    if($user->role_id==1){
+                        $data1["members"] = \App\Members::where($data)->where('region_id',$user->region_id)->orderBy('id','desc')->paginate(20);
+                    }
+                    if($user->role_id==2){
+                        $data1["members"] = \App\Members::where($data)->where('district_id',$user->district_id)->orderBy('id','desc')->paginate(20);
+                    }
                 }
                 $data1["reasons"] = \App\Reasons::all();
                 return view('preferences.membership.index', $data1);

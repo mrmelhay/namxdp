@@ -47,7 +47,7 @@
                     <a class="navbar-avatar dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
                        data-animation="scale-up" role="button">
               <span class="avatar avatar-online">
-                <img src="{{ asset('assets/images/5.jpg') }}">
+                <img src="{{ asset('images/5.jpg') }}">
                 <i></i>
               </span>
                     </a>

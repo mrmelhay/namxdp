@@ -1,10 +1,13 @@
 @extends('layouts.main')
 @section('content')
     <div class="panel">
-        <div class="panel-body container-fluid">
-            <h4 class="example-title">{{$title}}</h4>
+        <div class="page-header">
+            <div>
+                <div class="btn-group" role="group" aria-label="...">
+                    <button class="btn btn-primary btn-md" onclick="window.location='{{url('socCats/create')}}';">+ Тоифа қўшиш</button>
+                </div>
+            </div>
         </div>
-
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -24,8 +27,8 @@
                         <td>{{ $soc->soc_name }}</td>
                         <td>
                             <a href="{{ url('/socCats/'.$soc->soc_id) }}/edit"><i class="fa fa-pencil"></i></a>&nbsp;
-                            <a onclick="document.getElementById('formDelete').submit()"><i class="fa fa-trash"></i></a>
-                            <form action="{{url('/socCats')}}" method="post" id="formDelete">
+                            <a onclick="document.getElementById('formDelete{{ $soc->soc_id }}').submit()"><i class="fa fa-trash"></i></a>
+                            <form action="{{url('/socCats').'/'.$soc->soc_id}}" id="formDelete{{ $soc->soc_id }}" method="post">
                                 <input type="hidden" name="soc_id" value="{{$soc->soc_id}}">
                                 {{csrf_field()}}
                                 {{method_field('DELETE')}}

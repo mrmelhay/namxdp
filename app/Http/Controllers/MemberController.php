@@ -14,16 +14,21 @@ class MemberController extends BaseController
     public function index()
     {
         if(Auth::user()->role_id==3){
-            $this->data['assets'] = Preferences::getAssets();
-            $this->data['members'] = Members::where('is_deleted', 0)->paginate(20);
+            $this->data['members'] = get_own_members(Auth::user()->id);
             $this->data['countArchive'] = $this->countArchive;
             $this->data['bpts'] = $this->bpt;
             $this->data['reasons'] = Reasons::all();
             return view('preferences.membership.index', $this->data);
         }
-        if(Auth::user()->role_id==3){
-            $this->data['assets'] = Preferences::getAssets();
-            $this->data['members'] = Members::where('is_deleted', 0)->paginate(20);
+        if(Auth::user()->role_id==1){
+            $this->data['members'] = get_own_members(Auth::user()->id);
+            $this->data['countArchive'] = $this->countArchive;
+            $this->data['bpts'] = $this->bpt;
+            $this->data['reasons'] = Reasons::all();
+            return view('preferences.membership.index', $this->data);
+        }
+        if(Auth::user()->role_id==2){
+            $this->data['members'] = get_own_members(Auth::user()->id);
             $this->data['countArchive'] = $this->countArchive;
             $this->data['bpts'] = $this->bpt;
             $this->data['reasons'] = Reasons::all();
@@ -77,7 +82,6 @@ class MemberController extends BaseController
             if ($this->customValidate($request, $id, 1)) {
                 return redirect()->to('/membership');
             } else {
-                dd($this->valid);
                 return redirect()->back()->withErrors($this->valid)->withInput();
             }
         } else {

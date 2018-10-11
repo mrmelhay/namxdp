@@ -70,6 +70,9 @@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic&subset=latin,cyrillic'>
     <script src="https://unpkg.com/imask"></script>
+    <script src="{{ asset('vendor/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/bootstrap.js') }}"></script>
+
     <!--[if lt IE 9]>
     <script src="{{ asset('vendor/html5shiv/html5shiv.min.js') }}"></script>
     <![endif]-->
