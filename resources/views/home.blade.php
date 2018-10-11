@@ -12,7 +12,7 @@
                                 <div class="grey-800 pull-left padding-vertical-10">
                                     <i class="icon md-accounts grey-600 font-size-24 vertical-align-bottom margin-right-5"></i>            АЪЗОлар сони
                                 </div>
-                                <span class="pull-right grey-700 font-size-30">2,709</span>
+                                <span class="pull-right grey-700 font-size-30">{!! $member_count !!}</span>
                             </div>
 
 
@@ -30,7 +30,7 @@
                                 <div class="grey-800 pull-left padding-vertical-10">
                                     <i class="icon md-balance grey-600 font-size-24 vertical-align-bottom margin-right-5"></i>                    БПТлар сони
                                 </div>
-                                <span class="pull-right grey-700 font-size-30">2,425</span>
+                                <span class="pull-right grey-700 font-size-30">{!! $bpt_count !!}</span>
                             </div>
 
 
@@ -48,7 +48,7 @@
                                 <div class="grey-800 pull-left padding-vertical-10">
                                     <i class="icon md-money green-600 font-size-24 vertical-align-bottom margin-right-5"></i>                    БАДАЛ тўлайди
                                 </div>
-                                <span class="pull-right grey-700 font-size-30">1,864</span>
+                                <span class="pull-right grey-700 font-size-30">{!! $feePaid_count !!}</span>
                             </div>
 
 
@@ -66,7 +66,7 @@
                                 <div class="grey-800 pull-left padding-vertical-10">
                                     <i class="icon md-money-off red-600 font-size-24 vertical-align-bottom margin-right-5"></i>                    БАДАЛ тўламайди
                                 </div>
-                                <span class="pull-right grey-700 font-size-30">845</span>
+                                <span class="pull-right grey-700 font-size-30">{!! $feeNotPaid_count !!}</span>
                             </div>
 
 
@@ -92,7 +92,7 @@
                                 <div class="grey-800 pull-left padding-vertical-10">
                                     <i class="icon md-account-box-mail blue-600 font-size-24 vertical-align-bottom margin-right-5"></i>            Нафақада
                                 </div>
-                                <span class="pull-right grey-700 font-size-30">300</span>
+                                <span class="pull-right grey-700 font-size-30">{!! $pensioner_count !!}</span>
                             </div>
 
 
@@ -110,7 +110,7 @@
                                 <div class="grey-800 pull-left padding-vertical-10">
                                     <i class="icon md-account-box blue-600 font-size-24 vertical-align-bottom margin-right-5"></i>                   Талаба
                                 </div>
-                                <span class="pull-right grey-700 font-size-30">150</span>
+                                <span class="pull-right grey-700 font-size-30">{!! $student_count !!}</span>
                             </div>
 
 
@@ -128,7 +128,7 @@
                                 <div class="grey-800 pull-left padding-vertical-10">
                                     <i class="icon md-airline-seat-recline-extra blue-600 font-size-24 vertical-align-bottom margin-right-5"></i>                    Ногирон
                                 </div>
-                                <span class="pull-right grey-700 font-size-30">28</span>
+                                <span class="pull-right grey-700 font-size-30">{!! $invalid_count !!}</span>
                             </div>
 
 
@@ -146,7 +146,7 @@
                                 <div class="grey-800 pull-left padding-vertical-10">
                                     <i class="icon md-mood-bad blue-600 font-size-24 vertical-align-bottom margin-right-5"></i>                    Кам таъминланган
                                 </div>
-                                <span class="pull-right grey-700 font-size-30">5</span>
+                                <span class="pull-right grey-700 font-size-30">{!! $low_income_count !!}</span>
                             </div>
 
 
