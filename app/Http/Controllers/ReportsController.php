@@ -2,22 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Reports;
 use Illuminate\Http\Request;
 
-class ReportsController extends Controller
+class ReportsController extends BaseController
 {
     //
 
     public function index(){
-        return view('reports.index');
+        $page=new Reports();
+        $this->data['reports']=$page->getAllMember();
+        return view('reports.index',$this->data);
     }
 
-    public function store(){
-
-
-    }
-
-    public function getBtpCheif(){
-        return "";
-    }
 }
