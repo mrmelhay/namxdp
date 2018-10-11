@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Reports extends Model
 {
@@ -12,13 +13,41 @@ class Reports extends Model
 
 
     public  function getAllMember(){
-       return Members::leftJoin('region','region.region_id','=','members.region_id')->
-                        leftJoin('district','district.district_id','=','members.district_id')->
-                        leftJoin('sex','sex.sex_id','=','members.sex_id')
-                        ->leftJoin('nation','nation.nation_id','=','members.nationality_id')
-                        ->leftJoin('btp','bpt.bpt_id','=','members.bpt_id')
-                        ->take(20)
-                        ->get();
+        $sql="select r.region_name,d.district_name,(select count(mm.isLeader) from members mm where mm.isLeader=1) as lscount,(select count(mmm.sex_id) from members mmm where mmm.sex_id=1) as sxcount,
+                                 (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Олий%\") as spccountoliy,
+                                 (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Ўрта%\") as spccounturta,
+                                 
+                                 (SELECT count(YEAR(CURRENT_TIMESTAMP) - YEAR(mday.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(birthday, 5))) as age 
+                                  FROM members mday 
+	                              where YEAR(CURRENT_TIMESTAMP) - YEAR(mday.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(birthday, 5))<=30
+	                              order by age desc)  as age30,
+	                              (SELECT count(YEAR(CURRENT_TIMESTAMP) - YEAR(mday3040.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday3040.birthday, 5))) as age 
+                                  FROM members mday3040 
+	                              where (YEAR(CURRENT_TIMESTAMP) - YEAR(mday3040.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday3040.birthday, 5))>=30) and 
+				                        (YEAR(CURRENT_TIMESTAMP) - YEAR(mday3040.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday3040.birthday, 5))<=45) 
+	                                    order by age desc) as age3040,
+                                  (SELECT count(YEAR(CURRENT_TIMESTAMP) - YEAR(mday4555.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday4555.birthday, 5))) as age 
+                                  FROM members mday4555 
+	                              where (YEAR(CURRENT_TIMESTAMP) - YEAR(mday4555.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday4555.birthday, 5))>=45) and 
+				                        (YEAR(CURRENT_TIMESTAMP) - YEAR(mday4555.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday4555.birthday, 5))<=55) 
+	                                    order by age desc) as age4555,
+	                              (SELECT count(YEAR(CURRENT_TIMESTAMP) - YEAR(mday5560.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday5560.birthday, 5))) as age 
+                                  FROM members mday5560 
+	                              where (YEAR(CURRENT_TIMESTAMP) - YEAR(mday5560.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday5560.birthday, 5))>=55) and 
+				                        (YEAR(CURRENT_TIMESTAMP) - YEAR(mday5560.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday5560.birthday, 5))<=60) 
+	                                    order by age desc) as age5560,
+	                              (SELECT count(YEAR(CURRENT_TIMESTAMP) - YEAR(mday60.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday60.birthday, 5))) as age 
+                                  FROM members mday60 
+	                              where (YEAR(CURRENT_TIMESTAMP) - YEAR(mday60.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday60.birthday, 5))>=60) 
+	                                    order by age desc) as age60                                                
+                                    from members m  
+                                    left join region r on r.region_id=m.region_id
+                                    left join district d on d.district_id=m.district_id
+                                    left join sex sx on sx.sex_id=m.sex_id
+									group by m.district_id,m.region_id  
+                      ";
+        return DB::select($sql);
+
 
     }
 }
