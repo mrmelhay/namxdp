@@ -26,7 +26,8 @@ Route::group(['middleware'=>'web'],function (){
 
 //--------------------------------- resource controllers area -------------------------------------------//
 
-    Route::resource('/reports','ReportsController');
+    Route::get('/reports','ReportsController@index');
+    Route::get('/reports/{action}','ReportsController@index');
     Route::resource('/socCats','SocialCatsController');
     Route::resource('/nation','NationController');
     Route::resource('/sex','SexController');

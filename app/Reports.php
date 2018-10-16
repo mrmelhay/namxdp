@@ -7,12 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class Reports extends Model
 {
-    //
-//
+
     protected $table="members";
 
 
-    public  function getAllMember(){
+    public  function getAllMemberBptCheif(){
         $sql="select r.region_name,d.district_name,(select count(mm.isLeader) from members mm where mm.isLeader=1) as lscount,(select count(mmm.sex_id) from members mmm where mmm.sex_id=1) as sxcount,
                                  (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Олий%\") as spccountoliy,
                                  (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Ўрта%\") as spccounturta,
@@ -47,7 +46,29 @@ class Reports extends Model
 									group by m.district_id,m.region_id  
                       ";
         return DB::select($sql);
-
-
     }
+
+
+    public function getMembersBptCounter(){
+
+        $sql="select r.region_name,d.district_name,(select count(bp.bpt_id) from bpt bp) as bptcount,count(m.bpt_id) as ismember
+      from members m 
+								left join region r on r.region_id=m.region_id
+								left join district d on d.district_id=m.district_id
+								left join bpt bp on bp.bpt_id=m.bpt_id
+								group by m.region_id,m.district_id
+								order by count(m.bpt_id) desc";
+        return DB::select($sql);
+    }
+
+
+    public function getBptXdpInfo(){
+        $sql="select bp.bpt_name,count(m.bpt_id) as bpcount,DATE_FORMAT(bp.bpt_establish_date,'%Y') as esdate,bp.bpt_address,m.fullName,m.birthday,m.specialist,m.homeaddress,m.workPlaceAndPosition,m.phoneNumber  from members m 
+							left join bpt bp on bp.bpt_id=m.bpt_id
+					     group by m.bpt_id,m.id";
+        return DB::select($sql);
+    }
+
+
+
 }
