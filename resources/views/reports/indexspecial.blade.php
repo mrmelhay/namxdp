@@ -26,14 +26,14 @@
 
                     @foreach($reports as $report)
                         <tr>
-                            <td> {{ $report->region_name}} {{ $report->district_name}}</td>
+                            <td> {{ $report->bpt_name}}</td>
                             <td> {{ $report->bptcount}}</td>
-                            <td> {{ $report->ismember}}</td>
-                            <td> {{ round($report->ismember/$report->bptcount)}}</td>
-                            <td> {{ round($report->ismember/$report->bptcount)}}</td>
-                            <td> {{ round($report->ismember/$report->bptcount)}}</td>
-                            <td> {{ round($report->ismember/$report->bptcount)}}</td>
-                            <td> {{ round($report->ismember/$report->bptcount)}}</td>
+                            <td> {{ $report->bpt_mfy}}</td>
+                            <td> {{ $report->ishlabchiqarish}}</td>
+                            <td> {{ $report->qishloq}}</td>
+                            <td> {{ $report->xizmat}}</td>
+                            <td> {{ $report->sogliq}}</td>
+                            <td> 0</td>
 
                         </tr>
                     @endforeach

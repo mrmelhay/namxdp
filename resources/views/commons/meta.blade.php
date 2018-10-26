@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-extend.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/site.min.css') }}">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Plugins -->
     <link rel="stylesheet" href="{{asset('vendor/chartist-js/chartist.css')}}">
     <link rel="stylesheet" href="{{asset('css/charts/chartist.css')}}">
@@ -28,9 +27,9 @@
     <link rel="stylesheet" href="{{ asset('vendor/slidepanel/slidePanel.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/flag-icon-css/flag-icon.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/waves/waves.css') }}">
-    <link rel="stylesheet" href="{{asset('vendor/chartist-js/chartist.css')}}">
-    <link rel="stylesheet" href="{{asset('css/charts/chartist.css')}}">
-    <link rel="stylesheet" href="{{asset('css/widgets/chart.css')}}">
+    <link rel="stylesheet" href="{{ asset('vendor/chartist-js/chartist.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/charts/chartist.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/widgets/chart.css')}}">
     <link rel="stylesheet" href="{{ asset('vendor/select2/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap-tokenfield/bootstrap-tokenfield.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap-tagsinput/bootstrap-tagsinput.css') }}">
@@ -52,6 +51,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/typeahead-js/typeahead.css') }}">
     <link rel="stylesheet" href="{{ asset('css/forms/advanced.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pages/login-v2.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/apps/documents.css') }}">
     <!-- Fonts -->
     <link rel="stylesheet" href="{{ asset('fonts/font-awesome/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ asset('fonts/7-stroke/7-stroke.css') }}">

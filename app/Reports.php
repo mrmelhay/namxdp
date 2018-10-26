@@ -69,6 +69,34 @@ class Reports extends Model
         return DB::select($sql);
     }
 
+    public function getBptSpecial(){
+        $sql="select bp.bpt_name,count(bp.bpt_id) as bptcount ,(select count(*) from bpt bp1 where (bp1.bpt_is_mfy is null and bp1.bpt_id=m.bpt_id)) as bpt_mfy,
+						(IF(bp.bpt_speciality_id=1,count(bp.bpt_speciality_id),0)) as ishlabchiqarish,
+						(IF(bp.bpt_speciality_id=2,count(bp.bpt_speciality_id),0)) as qishloq,
+				  	(IF(bp.bpt_speciality_id=3,count(bp.bpt_speciality_id),0)) as xizmat,
+				    (IF(bp.bpt_speciality_id=4,count(bp.bpt_speciality_id),0)) as sogliq
+					
+					from bpt bp 
+					left join members m on m.bpt_id=bp.bpt_id
+					left join region r on r.region_id=m.region_id
+					left join district d on d.district_id=m.district_id
+					left join bpt_species bps on bps.id=bp.bpt_speciality_id
+					group by bp.bpt_id";
+        return DB::select($sql);
+    }
+
+    public function getMembersReports(){
+        $sql="select d.district_name,count(m.id) as memcount,(select count(*) from bpt bp1) as bptcount,round((count(m.id)/(select count(*) from bpt bp1))) as memprecent,
+		 (select count(s.sex_id) from members s where s.sex_id=1) as womtotal,
+		 (select count(s.sex_id) from members s where s.sex_id=2) as mentotal
+    
+		     from members m
+						  left join bpt bp on bp.bpt_id=m.bpt_id
+							left join region r on r.region_id=m.region_id
+							left join district d on d.district_id=m.district_id
+							group by m.district_id";
+        return DB::select($sql);
+    }
 
 
 }
