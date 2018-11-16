@@ -25,14 +25,14 @@ class MemberController extends BasesController
         if(Auth::user()->role_id==1){
             $this->data['members'] = get_own_members(Auth::user()->id);
             $this->data['countArchive'] = $this->countArchive;
-            $this->data['bpts'] = BPT::where('is_deleted',0)->where('btp_region_id',Auth::user()->region_id)->orderBy('bpt_id','desc')->get();
+            $this->data['bpts'] = BPT::where('is_deleted',0)->where('bpt_region_id',Auth::user()->region_id)->where('bpt_district_id',Auth::user()->district_id)->orderBy('bpt_id','desc')->get();
             $this->data['reasons'] = Reasons::all();
             return view('preferences.membership.index', $this->data);
         }
         if(Auth::user()->role_id==2){
             $this->data['members'] = get_own_members(Auth::user()->id);
             $this->data['countArchive'] = $this->countArchive;
-            $this->data['bpts'] = BPT::where('is_deleted',0)->where('bpt_district_id',Auth::user()->district_id)->orderBy('bpt_id','desc')->get();
+            $this->data['bpts'] = BPT::where('is_deleted',0)->where('bpt_region_id',Auth::user()->region_id)->orderBy('bpt_id','desc')->get();
             $this->data['reasons'] = Reasons::all();
             return view('preferences.membership.index', $this->data);
         }

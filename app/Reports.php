@@ -17,8 +17,8 @@ class Reports extends Model
         $user=Auth::user();
         $result=[];
         if ($user->role_id==3){
-            $sql="select r.region_name,d.district_name,(select count(mm.isLeader) from members mm where mm.isLeader=1 and mm.region_id='{$user->region_id}') as lscount,
-                                 (select count(mmm.sex_id) from members mmm where mmm.sex_id=1 and mmm.region_id='{$user->region_id}') as sxcount,
+            $sql="select r.region_name,d.district_name,(select count(mm.isLeader) from members mm where mm.isLeader=1 ) as lscount,
+                                 (select count(mmm.sex_id) from members mmm where mmm.sex_id=1) as sxcount,
                                  (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Олий%\") as spccountoliy,
                                  (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Ўрта%\") as spccounturta,
                                  
@@ -55,33 +55,33 @@ class Reports extends Model
         }
 
         if ($user->role_id==2){
-            $sql="select r.region_name,d.district_name,(select count(mm.isLeader) from members mm where mm.isLeader=1 and mm.region_id='{$user->region_id}' and mm.district_id='{$user->district_id}') as lscount,
+            $sql="select r.region_name,d.district_name,(select count(mm.isLeader) from members mm where mm.isLeader=1 and mm.region_id='{$user->region_id}') as lscount,
                                  (select count(mmm.sex_id) from members mmm where mmm.sex_id=1 and mmm.region_id='{$user->region_id}' and mmm.district_id='{$user->district_id}') as sxcount,
-                                 (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Олий%\") as spccountoliy,
-                                 (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Ўрта%\") as spccounturta,
+                                 (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Олий%\" and  mmal.region_id='{$user->region_id}' ) as spccountoliy,
+                                 (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Ўрта%\" and  mmal.region_id='{$user->region_id}' ) as spccounturta,
                                  
                                  (SELECT count(YEAR(CURRENT_TIMESTAMP) - YEAR(mday.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(birthday, 5))) as age 
                                   FROM members mday 
-	                              where YEAR(CURRENT_TIMESTAMP) - YEAR(mday.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(birthday, 5))<=30
+	                              where mday.region_id='{$user->region_id}' and  mday.district_id='{$user->district_id}' and YEAR(CURRENT_TIMESTAMP) - YEAR(mday.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(birthday, 5))<=30
 	                              order by age desc)  as age30,
 	                              (SELECT count(YEAR(CURRENT_TIMESTAMP) - YEAR(mday3040.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday3040.birthday, 5))) as age 
                                   FROM members mday3040 
-	                              where (YEAR(CURRENT_TIMESTAMP) - YEAR(mday3040.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday3040.birthday, 5))>=30) and 
+	                              where mday3040.region_id='{$user->region_id}'  and  mday3040.district_id='{$user->district_id}' and (YEAR(CURRENT_TIMESTAMP) - YEAR(mday3040.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday3040.birthday, 5))>=30) and 
 				                        (YEAR(CURRENT_TIMESTAMP) - YEAR(mday3040.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday3040.birthday, 5))<=45) 
 	                                    order by age desc) as age3040,
                                   (SELECT count(YEAR(CURRENT_TIMESTAMP) - YEAR(mday4555.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday4555.birthday, 5))) as age 
                                   FROM members mday4555 
-	                              where (YEAR(CURRENT_TIMESTAMP) - YEAR(mday4555.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday4555.birthday, 5))>=45) and 
+	                              where mday4555.region_id='{$user->region_id}' and  mday4555.district_id='{$user->district_id}' and (YEAR(CURRENT_TIMESTAMP) - YEAR(mday4555.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday4555.birthday, 5))>=45) and 
 				                        (YEAR(CURRENT_TIMESTAMP) - YEAR(mday4555.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday4555.birthday, 5))<=55) 
 	                                    order by age desc) as age4555,
 	                              (SELECT count(YEAR(CURRENT_TIMESTAMP) - YEAR(mday5560.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday5560.birthday, 5))) as age 
                                   FROM members mday5560 
-	                              where (YEAR(CURRENT_TIMESTAMP) - YEAR(mday5560.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday5560.birthday, 5))>=55) and 
+	                              where mday5560.region_id='{$user->region_id}' and  mday5560.district_id='{$user->district_id}' and (YEAR(CURRENT_TIMESTAMP) - YEAR(mday5560.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday5560.birthday, 5))>=55) and 
 				                        (YEAR(CURRENT_TIMESTAMP) - YEAR(mday5560.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday5560.birthday, 5))<=60) 
 	                                    order by age desc) as age5560,
 	                              (SELECT count(YEAR(CURRENT_TIMESTAMP) - YEAR(mday60.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday60.birthday, 5))) as age 
                                   FROM members mday60 
-	                              where (YEAR(CURRENT_TIMESTAMP) - YEAR(mday60.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday60.birthday, 5))>=60) 
+	                              where mday60.region_id='{$user->region_id}' and  mday5560.district_id='{$user->district_id}' and  (YEAR(CURRENT_TIMESTAMP) - YEAR(mday60.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday60.birthday, 5))>=60) 
 	                                    order by age desc) as age60                                                
                                     from members m  
                                     left join region r on r.region_id=m.region_id
@@ -94,38 +94,39 @@ class Reports extends Model
         }
 
         if ($user->role_id==1){
-            $sql="select r.region_name,d.district_name,(select count(mm.isLeader) from members mm where mm.isLeader=1 and mm.region_id='{$user->region_id}') as lscount,
-                                 (select count(mmm.sex_id) from members mmm where mmm.sex_id=1 and mmm.region_id='{$user->region_id}') as sxcount,
-                                 (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Олий%\") as spccountoliy,
-                                 (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Ўрта%\") as spccounturta,
+            $sql="select r.region_name,d.district_name,(select count(mm.isLeader) from members mm where mm.isLeader=1 and mm.region_id='{$user->region_id}' ) as lscount,
+                                 (select count(mmm.sex_id) from members mmm where mmm.sex_id=1 and mmm.region_id='{$user->region_id}' ) as sxcount,
+                                 (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Олий%\" and  mmal.region_id='{$user->region_id}' ) as spccountoliy,
+                                 (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Ўрта%\" and  mmal.region_id='{$user->region_id}' ) as spccounturta,
                                  
                                  (SELECT count(YEAR(CURRENT_TIMESTAMP) - YEAR(mday.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(birthday, 5))) as age 
                                   FROM members mday 
-	                              where YEAR(CURRENT_TIMESTAMP) - YEAR(mday.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(birthday, 5))<=30
+	                              where mday.region_id='{$user->region_id}'  and YEAR(CURRENT_TIMESTAMP) - YEAR(mday.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(birthday, 5))<=30
 	                              order by age desc)  as age30,
 	                              (SELECT count(YEAR(CURRENT_TIMESTAMP) - YEAR(mday3040.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday3040.birthday, 5))) as age 
                                   FROM members mday3040 
-	                              where (YEAR(CURRENT_TIMESTAMP) - YEAR(mday3040.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday3040.birthday, 5))>=30) and 
+	                              where mday3040.region_id='{$user->region_id}' and (YEAR(CURRENT_TIMESTAMP) - YEAR(mday3040.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday3040.birthday, 5))>=30) and 
 				                        (YEAR(CURRENT_TIMESTAMP) - YEAR(mday3040.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday3040.birthday, 5))<=45) 
 	                                    order by age desc) as age3040,
                                   (SELECT count(YEAR(CURRENT_TIMESTAMP) - YEAR(mday4555.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday4555.birthday, 5))) as age 
                                   FROM members mday4555 
-	                              where (YEAR(CURRENT_TIMESTAMP) - YEAR(mday4555.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday4555.birthday, 5))>=45) and 
+	                              where mday4555.region_id='{$user->region_id}'  and (YEAR(CURRENT_TIMESTAMP) - YEAR(mday4555.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday4555.birthday, 5))>=45) and 
 				                        (YEAR(CURRENT_TIMESTAMP) - YEAR(mday4555.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday4555.birthday, 5))<=55) 
 	                                    order by age desc) as age4555,
 	                              (SELECT count(YEAR(CURRENT_TIMESTAMP) - YEAR(mday5560.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday5560.birthday, 5))) as age 
                                   FROM members mday5560 
-	                              where (YEAR(CURRENT_TIMESTAMP) - YEAR(mday5560.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday5560.birthday, 5))>=55) and 
+	                              where mday5560.region_id='{$user->region_id}'  and (YEAR(CURRENT_TIMESTAMP) - YEAR(mday5560.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday5560.birthday, 5))>=55) and 
 				                        (YEAR(CURRENT_TIMESTAMP) - YEAR(mday5560.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday5560.birthday, 5))<=60) 
 	                                    order by age desc) as age5560,
 	                              (SELECT count(YEAR(CURRENT_TIMESTAMP) - YEAR(mday60.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday60.birthday, 5))) as age 
                                   FROM members mday60 
-	                              where (YEAR(CURRENT_TIMESTAMP) - YEAR(mday60.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday60.birthday, 5))>=60) 
+	                              where mday60.region_id='{$user->region_id}'  and  (YEAR(CURRENT_TIMESTAMP) - YEAR(mday60.birthday) - (RIGHT(CURRENT_TIMESTAMP, 5) < RIGHT(mday60.birthday, 5))>=60) 
 	                                    order by age desc) as age60                                                
                                     from members m  
                                     left join region r on r.region_id=m.region_id
                                     left join district d on d.district_id=m.district_id
                                     left join sex sx on sx.sex_id=m.sex_id
+                                    where m.region_id='{$user->region_id}' 
 									group by m.district_id,m.region_id  
                       ";
             $result=DB::select($sql);
@@ -139,14 +140,45 @@ class Reports extends Model
 
     public function getMembersBptCounter(){
 
-        $sql="select r.region_name,d.district_name,(select count(bp.bpt_id) from bpt bp) as bptcount,count(m.bpt_id) as ismember
+        $user=Auth::user();
+        $where="";
+        if ($user->role_id==3){
+            $sql="select r.region_name,d.district_name,(select count(bp.bpt_id) from bpt bp where bp.bpt_region_id={$user->region_id} ) as bptcount,count(m.bpt_id) as ismember
                                 from members m 
 								left join region r on r.region_id=m.region_id
 								left join district d on d.district_id=m.district_id
 								left join bpt bp on bp.bpt_id=m.bpt_id
 								group by m.region_id,m.district_id
 								order by count(m.bpt_id) desc";
-        return DB::select($sql);
+            return DB::select($sql);
+        }
+
+        if ($user->role_id==2){
+            $sql="select r.region_name,d.district_name,(select count(bp.bpt_id) from bpt bp where bp.bpt_region_id={$user->region_id} and bp.bpt_district_id={$user->district_id} ) as bptcount,count(m.bpt_id) as ismember
+                                from members m 
+								left join region r on r.region_id=m.region_id
+								left join district d on d.district_id=m.district_id
+								left join bpt bp on bp.bpt_id=m.bpt_id
+								where m.region_id={$user->region_id} and and m.district_id={$user->district_id}
+								group by m.region_id,m.district_id
+								order by count(m.bpt_id) desc";
+            return DB::select($sql);
+        }
+
+
+        if ($user->role_id==1){
+            $sql="select r.region_name,d.district_name,(select count(bp.bpt_id) from bpt bp where bp.bpt_region_id={$user->region_id} ) as bptcount,
+                              count(m.bpt_id) as ismember
+                                from members m 
+								left join region r on r.region_id=m.region_id
+								left join district d on d.district_id=m.district_id
+								left join bpt bp on bp.bpt_id=m.bpt_id
+								where m.region_id={$user->region_id} 
+								group by m.region_id,m.district_id
+								order by count(m.bpt_id) desc";
+            return DB::select($sql);
+        }
+
     }
 
 
