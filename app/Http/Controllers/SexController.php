@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SexController extends BaseController
+class SexController extends BasesController
 {
 
     public function index()

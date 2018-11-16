@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-class BaseController extends Controller
+class BasesController extends Controller
 {
     //
 
@@ -40,6 +40,7 @@ class BaseController extends Controller
     public $soc_cats=[];
     public $nation=[];
     public $district=[];
+    private $user;
 
     public function __construct()
     {
@@ -47,7 +48,6 @@ class BaseController extends Controller
         $this->rules=$this->validationRules();
         $this->countArchive=$this->getAllArchives();
         $this->region=$this->getAllRegions();
-        $this->bpt=$this->getAllBpt();
         $this->users=$this->getAllUsers();
         $this->council=$this->getAllCouncils();
         $this->sex=$this->getAllSexes();
@@ -56,6 +56,8 @@ class BaseController extends Controller
         $this->menus = $this->getAllMenus();
         $this->data['menus']=$this->menus;
         $this->district=$this->getAllDistricts();
+        $this->bpt=$this->getAllBpt();
+        $this->clients=Auth::user();
     }
 
     public function getAllCouncils(){
@@ -87,7 +89,20 @@ class BaseController extends Controller
     }
 
     public function getAllBpt(){
-        return BPT::where('is_deleted',0)->orderBy('bpt_id','desc')->get();
+//
+//        $dataarray=[];
+//
+//        if(Auth::user()->role_id==3){
+//            $dataarray=BPT::where('is_deleted',0)->orderBy('bpt_id','desc')->get();
+//         }
+//        if(Auth::user()->role_id==1){
+//            $dataarray= BPT::where('is_deleted',0)->where('btp_region_id',Auth::user()->region_id)->orderBy('bpt_id','desc')->get();
+//        }
+//        if(Auth::user()->role_id==2){
+//            $dataarray=BPT::where('is_deleted',0)->where('bpt_district_id',Auth::user()->district_id)->orderBy('bpt_id','desc')->get();
+//        }
+//        return $dataarray;
+
     }
 
     public function getAllDistricts(){
@@ -112,7 +127,7 @@ class BaseController extends Controller
             'passExpireDate' => 'required|date',
             'specialist' => 'required|string|min:4',
             'workPlaceAndPosition' => 'required|string|min:5',
-            'phoneNumber' => 'required|string|min:20',
+            'phoneNumber' => 'required|min:20',
             'isLeader' => 'required|integer',
 //            'isXdpMember' => '',
             'region_id' => 'required|integer',

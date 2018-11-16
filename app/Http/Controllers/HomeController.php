@@ -7,9 +7,11 @@ use App\Members;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class HomeController extends BaseController
+class HomeController extends BasesController
 {
-    public function index()
+
+
+      public function index()
     {
         if(Auth::user()->role_id==3){//for republic
             $this->data["member_count"] = Members::where('is_deleted',0)->count();

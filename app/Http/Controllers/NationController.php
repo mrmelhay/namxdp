@@ -6,7 +6,7 @@ use App\Nation;
 use Illuminate\Http\Request;
 use Symfony\Component\CssSelector\Parser\Reader;
 
-class NationController extends BaseController
+class NationController extends BasesController
 {
 
     public function index()

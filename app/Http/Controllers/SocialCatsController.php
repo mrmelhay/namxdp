@@ -6,7 +6,7 @@ use App\SocialCategory;
 use App\SocialCats;
 use Illuminate\Http\Request;
 
-class SocialCatsController extends BaseController
+class SocialCatsController extends BasesController
 {
 
     public function index()
