@@ -30,7 +30,7 @@
                             @endforeach
                         </select><br>
 
-                        <input type="text" name="passSerial" id="passSerial" value="{{old('passSerial')}}" required="required" class="form-control" placeholder="Паспорт серия ва рақами"><br>
+                        <input type="text" name="passSerial" id="passSerial" value="{{old('passSerial')}}" required="required" class="form-control" placeholder="Паспорт серия ва раками"><br>
 
                         <input placeholder="Паспорт ким томонидан берилган" value="{{old('passGivenFrom')}}" type="text" name="passGivenFrom" id="passGivenFrom" required="required" class="form-control"><br>
 
@@ -74,7 +74,7 @@
 
                         <input type="text" name="unionOrderNumber" value="{{old('unionOrderNumber')}}" id="unionOrderNumber" required="required" class="form-control" placeholder="БПТ йиғилиш қарори рақами"><br>
 
-                        <input type="text" name="unionCertfNumber" value="{{old('unionCertfNumber')}}" id="unionCertfNumber" required="required" class="form-control" placeholder="Партия гувоҳномаси рақами"><br>
+                        <input type="text" name="unionCertfNumber" value="{{old('unionCertfNumber')}}" id="unionCertfNumber" required="required" class="form-control" placeholder="Партия гувохномаси рақами"><br>
 
                         <p class="sex_p_tag"><label for="">  Бадал тўлайди </label><input type="radio" name="isFeePaid" value="1" checked><label for="">  Бадал тўламайди </label><input value="0" type="radio" name="isFeePaid"></p>
 

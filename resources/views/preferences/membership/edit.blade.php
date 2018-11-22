@@ -84,9 +84,9 @@
                 @endif
 
                     @foreach($soc_cats as $cat)
-                        @if($cat->soc_id!=1001)
+                        {{--@if($cat->soc_id!=1001)--}}
                             <option value="{{$cat->soc_id}}">{{$cat->soc_name}}</option>
-                            @endif
+                            {{--@endif--}}
                     @endforeach
                 </select><br>
                 <div>

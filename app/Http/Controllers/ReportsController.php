@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Reports;
 use Illuminate\Http\Request;
 
-class ReportsController extends BaseController
+class ReportsController extends BasesController
 {
 
      public function index(Request $request){

@@ -239,3 +239,5 @@ Route::group(['middleware'=>'web'],function (){
 //    });
 
 });
+
+Route::get('/test','HomeController@test');

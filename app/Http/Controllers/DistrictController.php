@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\District;
 use Illuminate\Http\Request;
 
-class DistrictController extends BaseController
+class DistrictController extends BasesController
 {
 
     public function __construct()

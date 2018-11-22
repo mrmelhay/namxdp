@@ -6,7 +6,7 @@ use App\BptSpecies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class BptSpeciesController extends BaseController
+class BptSpeciesController extends BasesController
 {
 
     public function index()
