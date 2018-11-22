@@ -5,7 +5,7 @@
             <div>
                 <div class="btn-group" role="group" aria-label="...">
                     <button class="btn btn-primary btn-md" onclick="window.location='{{url('bpt/create')}}';">+ Бпт қўшиш</button>
-                    <a class="btn btn-default btn-md" target="_blank" href="{{url('export/bpt')}}">Експорт</a>
+                    <a class="btn btn-default btn-md" target="_blank" href="{{url('export/bpt')}}">Экспорт</a>
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
                         </th>
                         <th class="cell-300" scope="col" data-tablesaw-sortable-col data-tablesaw-priority="3">
                             <select name="bpt_speciality_id" id="bpt_speciality_id" data-plugin="select2">
-                                <option disabled selected>Сохани танлаш</option>
+                                <option disabled selected>Соҳани танлаш</option>
                                 @foreach($bpt_specs as $bpt_spec)
                                     <option value="{{$bpt_spec->id}}">{{$bpt_spec->bpt_spec_name}}</option>
                                 @endforeach

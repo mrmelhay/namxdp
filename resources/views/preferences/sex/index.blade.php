@@ -11,14 +11,12 @@
                 <tr>
                     <th><input type="checkbox"  name="region" id="region" /></th>
                     <th>ID</th>
-                    <th>Jins номи</th>
-                    <th>Action</th>
+                    <th>Жинс номи</th>
+                    <th>Aмаллар</th>
                 </thead>
                 <tbody>
                 @foreach($sexes as $sex)
-
                     <tr>
-
                         <td><input type="checkbox" value="{{ $sex->sex_id }}" class="selectable-item" name="region[]" id="region[]" /></td>
                         <td><a href="{{ url('/sex/'.$sex->sex_id) }}/edit">{{ $sex->sex_id}}</a></td>
                         <td>{{ $sex->sex_name }}</td>

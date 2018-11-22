@@ -3,6 +3,7 @@
 use App\Preferences;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 
@@ -59,10 +60,9 @@ Route::group(['middleware'=>'web'],function (){
 //        ini_set('display_errors', '1');
 //
 //        require('../public/SpreadsheetReader.php');
-//        $Reader = new SpreadsheetReader('../public/users.xlsx');
-////        dd($Reader);
+//        $Reader = new SpreadsheetReader('../public/654.xlsx');
 //        $dataGlobal = [];
-//        $i=0;
+//        $i=1;
 //        foreach ($Reader as $Row)
 //        {
 //            $data = [];
@@ -155,20 +155,6 @@ Route::group(['middleware'=>'web'],function (){
 //                        $t=\App\BPT::where('bpt_name',$Row[7])->first();
 //                        $data["bpt_id"] = $t->bpt_id;
 //                    }else{
-////                        $dat2='';
-////                        switch ($Row[11]) {
-////                            case "Наманган шаҳар":
-////                                $dat2=95;
-////                                break;
-////                            case "Поп тумани":
-////                                $dat2=88;
-////                                break;
-////                            case "Учқўрғон тумани":
-////                                $dat2=91;
-////                                break;
-////                            default:
-////                                $dat2=197;
-////                        }
 //                        $bpt_id=\App\BPT::insertGetId([
 //                            'bpt_name'=>$Row[7],
 //                            'bpt_speciality_id' => 4 ,
@@ -187,11 +173,9 @@ Route::group(['middleware'=>'web'],function (){
 //                if(strlen($Row[8]) > 2){
 //                    $data["region_id"] = 7;
 //                    $data["homeAddress"] = $Row[8];
-//                    $data["socialPositionId"] = 1001;
 //                }else{
 //                    $data["region_id"] = 7;
 //                    $data["homeAddress"] = "Наманган шаҳар";
-//                    $data["socialPositionId"] = 1001;
 //                }
 //                if(strlen($Row[9]) > 2){
 //                    $sex=str_replace(' ', '', $Row[9]);
@@ -224,12 +208,13 @@ Route::group(['middleware'=>'web'],function (){
 //            }
 //            if($i>0){
 //                $dataGlobal[] = $data;
-//                Log::info($data);
-//            }$i++;
-//            if($i==4456){//11125
+//                Log::info($i);
+//            }
+//            if($i==4455){//11125
 //                \App\Members::insert($dataGlobal);
 //                return 'ok';
 //            }
+//            $i++;
 //        }
 //        echo ini_get('display_errors');
 //    });

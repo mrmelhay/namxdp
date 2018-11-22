@@ -47,7 +47,7 @@ class MemberController extends BaseController
 
     public function create()
     {
-        $this->data['title'] = "Азоларни  руйхатга  олиш";
+        $this->data['title'] = "Аъзоларни  рўйхатга  олиш";
         $this->data['regions'] = $this->region;
         $this->data['nations'] = $this->nation;
         $this->data['bpts'] = $this->bpt;
@@ -64,7 +64,7 @@ class MemberController extends BaseController
     {
         if (is_numeric($id)) {
             $member = Members::findAndCheck($id);
-            $this->data['title'] = "Азоларни  руйхатга  олиш";
+            $this->data['title'] = "Аъзоларни  рўйхатга  олиш";
             $this->data['regions'] = $this->region;
             $this->data['bpts'] = $this->bpt;
             $this->data['member'] = $member;

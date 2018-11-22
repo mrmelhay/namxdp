@@ -10,26 +10,26 @@
             <li>
                 <div class="articles-item">
                     <i class="icon md-file" aria-hidden="true"></i>
-                    <h4 class="title"><a href="{{ url('reports/indexbptcheif') }}">БПТ раислари таркиби тўгрисида</a></h4>
+                    <h4 class="title"><a href="{{ url('reports/indexbptcheif') }}">БПТ раислари таркиби тўғрисида</a></h4>
 
                 </div>
             </li>
             <li>
                 <div class="articles-item">
                     <i class="icon md-file" aria-hidden="true"></i>
-                    <h4 class="title"><a href="{{ url('reports/indexbtpcount') }}">БПТлари сони тўгрисида</a></h4>
+                    <h4 class="title"><a href="{{ url('reports/indexbtpcount') }}">БПТлари сони тўғрисида</a></h4>
                 </div>
             </li>
             {{--<li>--}}
                 {{--<div class="articles-item">--}}
                     {{--<i class="icon md-file" aria-hidden="true"></i>--}}
-                    {{--<h4 class="title"><a href="{{ url('reports/indexbtpcount2') }}">БПТлари сони тўгрисида (Умумий)</a></h4>--}}
+                    {{--<h4 class="title"><a href="{{ url('reports/indexbtpcount2') }}">БПТлари сони тўғрисида (Умумий)</a></h4>--}}
                 {{--</div>--}}
             {{--</li>--}}
             <li>
                 <div class="articles-item">
                     <i class="icon md-file" aria-hidden="true"></i>
-                    <h4 class="title"><a href="{{ url('reports/indexbtpinfo') }}">БПТлари тўгрисида</a></h4>
+                    <h4 class="title"><a href="{{ url('reports/indexbtpinfo') }}">БПТлари тўғрисида</a></h4>
                 </div>
             </li>
             <li>
@@ -41,7 +41,7 @@
             <li>
                 <div class="articles-item">
                     <i class="icon md-file" aria-hidden="true"></i>
-                    <h4 class="title"><a href="{{ url('reports/indexbptspecial') }}">БПТларнинг сохалардаги тақсимот бўйича</a></h4>
+                    <h4 class="title"><a href="{{ url('reports/indexbptspecial') }}">БПТларнинг соҳалардаги тақсимот бўйича</a></h4>
                 </div>
             </li>
 

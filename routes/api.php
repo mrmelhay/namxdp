@@ -4,6 +4,8 @@ use App\Members;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -16,6 +18,34 @@ Route::get('getDistricts/{id}', function ($id) {
         'status' => 200
     ]);
 });
+
+Route::get('err', function () {
+    $url='https://api.telegram.org/bot678988233:AAFJAPgRKDrEW9bf3YtaYGWMQT4GcrqACpA/sendmessage?text=err&chat_id=159968391';
+            $ch = curl_init ($url) ;
+            curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1) ;
+            $res = curl_exec ($ch) ;
+            curl_close ($ch) ;
+});
+
+Route::get('comp/{text}', function ($text) {
+	Log::info($text.'\n');
+    $url='https://api.telegram.org/bot678988233:AAFJAPgRKDrEW9bf3YtaYGWMQT4GcrqACpA/sendmessage?text='.$text.'&chat_id=159968391';
+            $ch = curl_init ($url) ;
+            curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1) ;
+            $res = curl_exec ($ch) ;
+            curl_close ($ch) ;
+});
+
+Route::get('prepare/{text}', function ($text) {
+$text=(string)$text;
+    $url="https://api.telegram.org/bot678988233:AAFJAPgRKDrEW9bf3YtaYGWMQT4GcrqACpA/sendmessage?text=".$text."&chat_id=159968391";
+            $ch = curl_init ($url) ;
+            curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1) ;
+            $res = curl_exec ($ch) ;
+            curl_close ($ch) ;
+});
+
+
 
 Route::get('/deleteMember/{date}/{reason}/{id}', function ($date,$reason,$id) {
     if(is_numeric($id) && \App\Members::findOrFail($id)->exists() && \App\Members::findOrFail($id)->is_deleted==0){

@@ -3,7 +3,7 @@
 @section('content')
     <div class="panel">
         <div class="panel-body container-fluid">
-            <h4 class="example-title">Худудлар</h4>
+            <h4 class="example-title">Ҳудудлар</h4>
         </div>
 
         <div class="table-responsive">
@@ -13,7 +13,7 @@
                     <th><input type="checkbox"  name="region" id="region" /></th>
                     <th>ID</th>
                     <th>Вилоят номи</th>
-                    <th>Action</th>
+                    <th>Амаллар</th>
                 </thead>
                 <tbody>
                 @foreach($regions as $region)

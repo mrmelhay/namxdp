@@ -9,7 +9,7 @@ class SexController extends BaseController
 
     public function index()
     {
-        $this->data['title']="Jins";
+        $this->data['title']="Жинси";
         $this->data['sexes']=$this->sex;
         return view('preferences.sex.index', $this->data);
     }
