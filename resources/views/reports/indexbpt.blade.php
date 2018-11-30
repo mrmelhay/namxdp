@@ -33,9 +33,13 @@
 
                     @foreach($reports as $report)
                         <tr>
+
+
                             <td> {{ $report->region_name}} {{ $report->district_name}}</td>
                             <td> {{ $report->bptcount}}</td>
                             <td> {{ $report->ismember}}</td>
+
+
                             <td> {{ round($report->ismember/$report->bptcount)}}</td>
                             <td> {{ round($report->ismember/$report->bptcount)}}</td>
                             <td> {{ round($report->ismember/$report->bptcount)}}</td>
