@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Support\Facades\Validator;
 
-class PreferencesController extends BasesController
+class PreferencesController extends BaseController
 {
 
     public function __construct()

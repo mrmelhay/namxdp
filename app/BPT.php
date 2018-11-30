@@ -37,4 +37,8 @@ class BPT extends Model
     public function spec(){
         return $this->hasOne('App\BptSpecies' , 'id', 'bpt_speciality_id');
     }
+
+    public function members(){
+        return $this->hasMany('App\Members' , 'bpt_id', 'bpt_id');
+    }
 }

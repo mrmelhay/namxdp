@@ -69,25 +69,72 @@ class Reports extends Model
             return DB::select($sql);
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         if($r_id==2) {//gathering data for district
+            $d_id=Auth::user()->district_id;
             $sql = "select r.region_name,d.district_name,(select count(bp.bpt_id) from bpt bp) as bptcount,count(m.bpt_id) as ismember
                                 from members m
 								left join region r on r.region_id=m.region_id
 								left join users u on u.region_id=m.region_id
 								left join district d on d.district_id=m.district_id
 								left join bpt bp on bp.bpt_id=m.bpt_id
+								where m.district_id = $d_id
 								group by m.region_id,m.district_id
 								order by count(m.bpt_id) desc";
             return DB::select($sql);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         if($r_id==3) {//gathering data for republic
-            $sql = "select r.region_name,d.district_name,(select count(bp.bpt_id) from bpt bp) as bptcount,count(m.bpt_id) as ismember
+            $sql = "select r.region_name,r.region_id as regionId,(select count(bp.bpt_id) from bpt bp) as bptcount,count(m.bpt_id) as ismember
                                 from members m
 								left join region r on r.region_id=m.region_id
 								left join users u on u.region_id=m.region_id
-								left join district d on d.district_id=m.district_id
 								left join bpt bp on bp.bpt_id=m.bpt_id
-								group by m.region_id,m.district_id
+								group by m.region_id
 								order by count(m.bpt_id) desc";
             return DB::select($sql);
         }

@@ -6,7 +6,7 @@ use App\Council;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class CouncilController extends BasesController
+class CouncilController extends BaseController
 {
 
     public function index(){

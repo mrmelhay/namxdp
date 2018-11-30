@@ -1,6 +1,4 @@
-@extends('layouts.main')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="panel">
         <div class="example-wrap">
             <div class="example table-responsive">
@@ -24,8 +22,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($reports as $report)
-                        @php
+                    <?php $__currentLoopData = $reports; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $report): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <?php 
                             $_3_5 = 0;
                             $_0_3 = 0;
                             $_5_15 = 0;
@@ -34,8 +32,8 @@
                             $_40_60 = 0;
                             $_60_100 = 0;
                             $_100_ = 0;
-                        @endphp
-                        @php
+                         ?>
+                        <?php 
                             $cd = \App\BPT::where('bpt_region_id' , $report->regionId)->get();
                             foreach ($cd as $k){
                                 $c = $k->members->count();
@@ -55,25 +53,26 @@
                                     $_100_++;
                                 }
                             }
-                        @endphp
+                         ?>
                         <tr>
-                            <td> {{ $report->region_name}} {{ (isset($report->district_name))?$report->district_name:'' }}</td>
-                            <td> {{ $report->bptcount}}</td>
-                            <td> {{ $report->ismember}}</td>
-                            <td> {{ round($report->ismember/$report->bptcount)}}</td>
-                            <td> {{ round($_3_5) }}</td>
-                            <td> {{ round($_5_15)}}</td>
-                            <td> {{ round($_15_25)}}</td>
-                            <td> {{ round($_25_40)}}</td>
-                            <td> {{ round($_40_60)}}</td>
-                            <td> {{ round($_60_100)}}</td>
-                            <td> {{ round($_100_)}}</td>
+                            <td> <?php echo e($report->region_name); ?> <?php echo e((isset($report->district_name))?$report->district_name:''); ?></td>
+                            <td> <?php echo e($report->bptcount); ?></td>
+                            <td> <?php echo e($report->ismember); ?></td>
+                            <td> <?php echo e(round($report->ismember/$report->bptcount)); ?></td>
+                            <td> <?php echo e(round($_3_5)); ?></td>
+                            <td> <?php echo e(round($_5_15)); ?></td>
+                            <td> <?php echo e(round($_15_25)); ?></td>
+                            <td> <?php echo e(round($_25_40)); ?></td>
+                            <td> <?php echo e(round($_40_60)); ?></td>
+                            <td> <?php echo e(round($_60_100)); ?></td>
+                            <td> <?php echo e(round($_100_)); ?></td>
                         </tr>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.main', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

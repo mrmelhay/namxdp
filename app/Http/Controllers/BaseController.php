@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-class BasesController extends Controller
+class BaseController extends Controller
 {
     //
 
@@ -40,7 +40,6 @@ class BasesController extends Controller
     public $soc_cats=[];
     public $nation=[];
     public $district=[];
-    private $user;
 
     public function __construct()
     {
@@ -48,6 +47,7 @@ class BasesController extends Controller
         $this->rules=$this->validationRules();
         $this->countArchive=$this->getAllArchives();
         $this->region=$this->getAllRegions();
+        $this->bpt=$this->getAllBpt();
         $this->users=$this->getAllUsers();
         $this->council=$this->getAllCouncils();
         $this->sex=$this->getAllSexes();
@@ -56,8 +56,13 @@ class BasesController extends Controller
         $this->menus = $this->getAllMenus();
         $this->data['menus']=$this->menus;
         $this->district=$this->getAllDistricts();
-        $this->bpt=$this->getAllBpt();
-        $this->clients=Auth::user();
+        $this->middleware(function ($request, $next) {
+            $this->user = Auth::user();
+            $this->signed_in = Auth::check();
+            view()->share('user_role_id', Auth::user()->role_id);
+            view()->share('user__id', Auth::user()->id);
+            return $next($request);
+        });
     }
 
     public function getAllCouncils(){
@@ -89,20 +94,7 @@ class BasesController extends Controller
     }
 
     public function getAllBpt(){
-//
-//        $dataarray=[];
-//
-//        if(Auth::user()->role_id==3){
-//            $dataarray=BPT::where('is_deleted',0)->orderBy('bpt_id','desc')->get();
-//         }
-//        if(Auth::user()->role_id==1){
-//            $dataarray= BPT::where('is_deleted',0)->where('btp_region_id',Auth::user()->region_id)->orderBy('bpt_id','desc')->get();
-//        }
-//        if(Auth::user()->role_id==2){
-//            $dataarray=BPT::where('is_deleted',0)->where('bpt_district_id',Auth::user()->district_id)->orderBy('bpt_id','desc')->get();
-//        }
-//        return $dataarray;
-
+        return BPT::where('is_deleted',0)->orderBy('bpt_id','desc')->get();
     }
 
     public function getAllDistricts(){
@@ -127,7 +119,7 @@ class BasesController extends Controller
             'passExpireDate' => 'required|date',
             'specialist' => 'required|string|min:4',
             'workPlaceAndPosition' => 'required|string|min:5',
-            'phoneNumber' => 'required|min:20',
+            'phoneNumber' => 'required|string|min:20',
             'isLeader' => 'required|integer',
 //            'isXdpMember' => '',
             'region_id' => 'required|integer',
@@ -211,6 +203,7 @@ class BasesController extends Controller
     }
 
     public function search(Request $request){
+    $this->user = Auth::user();
         switch ($request->key):
             case '_bpt':
                 $data=[];
@@ -242,7 +235,6 @@ class BasesController extends Controller
                 foreach($request->all() as $key => $value){
                     if($value!==null && $key!='_token'&& $key!='_method'){
                         if($key=='fullName'){
-                            $user=Auth::user();
                             if($user->role_id==3){
                                 $members1 = \App\Members::where('fullName','like','%'.$value.'%')->orderBy('id','desc')->paginate(20);
                             }

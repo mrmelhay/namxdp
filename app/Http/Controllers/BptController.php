@@ -6,27 +6,14 @@ use App\BPT;
 use App\BptSpecies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
 
-class BptController extends BasesController
+class BptController extends BaseController
 {
 
     public function index()
     {
-        $dataarray=[];
-
-        if(Auth::user()->role_id==3){
-            $dataarray=BPT::where('is_deleted',0)->orderBy('bpt_id','desc')->get();
-        }
-        if(Auth::user()->role_id==1){
-            $dataarray= BPT::where('is_deleted',0)->where('btp_region_id',Auth::user()->region_id)->orderBy('bpt_id','desc')->get();
-        }
-        if(Auth::user()->role_id==2){
-            $dataarray=BPT::where('is_deleted',0)->where('bpt_district_id',Auth::user()->district_id)->orderBy('bpt_id','desc')->get();
-        }
-
-        $this->data['bpts']=$dataarray;
         $this->data['title']="Boshlang'ich partiya tashkilotlari";
+        $this->data['bpts']=$this->bpt;
         $this->data['bpt_specs']=BptSpecies::all();
         $this->data['regions']=$this->getAllRegions();
         $this->data['councils']=$this->getAllCouncils();
@@ -97,9 +84,9 @@ class BptController extends BasesController
         }
     }
 
-//    public function search(\Illuminate\Http\Request $request){
-//
-//    }
+    public function search(\Illuminate\Http\Request $request){
+
+    }
 
     protected function validationRule($method=false){
             return  [

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Province;
 use Illuminate\Http\Request;
 
-class ProvinceController extends BasesController
+class ProvinceController extends BaseController
 {
 
     public function __construct()

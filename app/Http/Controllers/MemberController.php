@@ -5,34 +5,32 @@ namespace App\Http\Controllers;
 use App\Members;
 use App\Preferences;
 use App\Reasons;
-use App\Bpt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class MemberController extends BasesController
+class MemberController extends BaseController
 {
     public function index()
     {
         if(Auth::user()->role_id==3){
             $this->data['members'] = get_own_members(Auth::user()->id);
             $this->data['countArchive'] = $this->countArchive;
-
-            $this->data['bpts'] = BPT::where('is_deleted',0)->orderBy('bpt_id','desc')->get();
+            $this->data['bpts'] = $this->bpt;
             $this->data['reasons'] = Reasons::all();
             return view('preferences.membership.index', $this->data);
         }
         if(Auth::user()->role_id==1){
             $this->data['members'] = get_own_members(Auth::user()->id);
             $this->data['countArchive'] = $this->countArchive;
-            $this->data['bpts'] = BPT::where('is_deleted',0)->where('bpt_region_id',Auth::user()->region_id)->where('bpt_district_id',Auth::user()->district_id)->orderBy('bpt_id','desc')->get();
+            $this->data['bpts'] = $this->bpt;
             $this->data['reasons'] = Reasons::all();
             return view('preferences.membership.index', $this->data);
         }
         if(Auth::user()->role_id==2){
             $this->data['members'] = get_own_members(Auth::user()->id);
             $this->data['countArchive'] = $this->countArchive;
-            $this->data['bpts'] = BPT::where('is_deleted',0)->where('bpt_region_id',Auth::user()->region_id)->orderBy('bpt_id','desc')->get();
+            $this->data['bpts'] = $this->bpt;
             $this->data['reasons'] = Reasons::all();
             return view('preferences.membership.index', $this->data);
         }
@@ -49,28 +47,10 @@ class MemberController extends BasesController
 
     public function create()
     {
-<<<<<<< HEAD
         $this->data['title'] = "Аъзоларни  рўйхатга  олиш";
-=======
-        $dataarray=[];
-        if(Auth::user()->role_id==3){
-            $dataarray=BPT::where('is_deleted',0)->orderBy('bpt_id','desc')->get();
-            $this->data['user_region']=0;
-        }
-        if(Auth::user()->role_id==1){
-            $dataarray= BPT::where('is_deleted',0)->where('bpt_district_id',Auth::user()->district_id)->orderBy('bpt_id','desc')->get();
-            $this->data['user_region']=Auth::user()->district_id;
-        }
-        if(Auth::user()->role_id==2){
-            $dataarray=BPT::where('is_deleted',0)->where('bpt_region_id',Auth::user()->region_id)->orderBy('bpt_id','desc')->get();
-            $this->data['user_region']=Auth::user()->region_id;
-        }
-        $this->data['title'] = "Азоларни  руйхатга  олиш";
->>>>>>> origin/master
         $this->data['regions'] = $this->region;
         $this->data['nations'] = $this->nation;
-        $this->data['bpts'] = $dataarray;
-
+        $this->data['bpts'] = $this->bpt;
         $this->data['soc_cats'] = $this->soc_cats;
         return view('preferences.membership.add', $this->data);
     }
@@ -116,23 +96,9 @@ class MemberController extends BasesController
 
     public function arxiv()
     {
-        $dataarray=[];
-        $archives=[];
-        if(Auth::user()->role_id==3){
-            $dataarray=BPT::where('is_deleted',0)->orderBy('bpt_id','desc')->get();
-            $archives = \App\Members::where('is_deleted', 1)->paginate(20);
-        }
-        if(Auth::user()->role_id==1){
-            $dataarray= BPT::where('is_deleted',0)->where('btp_region_id',Auth::user()->region_id)->orderBy('bpt_id','desc')->get();
-            $archives = \App\Members::where('is_deleted', 1)->where('region_id',Auth::user()->region_id)->paginate(20);
-        }
-        if(Auth::user()->role_id==2){
-            $dataarray=BPT::where('is_deleted',0)->where('bpt_district_id',Auth::user()->district_id)->orderBy('bpt_id','desc')->get();
-            $archives = \App\Members::where('is_deleted', 1)->where('district_id',Auth::user()->district_id)->paginate(20);
-        }
-
+        $archives = \App\Members::where('is_deleted', 1)->paginate(20);
         $bpt = new \App\Http\Controllers\BptController();
-        $bpts = $dataarray;
+        $bpts = $bpt->getAllBpt();
         return view('preferences.membership.archives', compact('archives', 'bpts'));
     }
 }
