@@ -53,14 +53,6 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <li role="presentation">
-                            <a href="javascript:void(0)" role="menuitem"><i class="icon md-account" aria-hidden="true"></i> Профиль</a>
-                        </li>
-
-                        <li role="presentation">
-                            <a href="javascript:void(0)" role="menuitem"><i class="icon md-settings" aria-hidden="true"></i> Созлаш</a>
-                        </li>
-                        <li class="divider" role="presentation"></li>
-                        <li role="presentation">
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();" role="menuitem"><i class="icon md-power" aria-hidden="true"></i> Чиқиш</a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -69,89 +61,105 @@
                         </li>
                     </ul>
                 </li>
+
                 <li class="dropdown">
-                    <a data-toggle="dropdown" href="javascript:void(0)" title="Notifications" aria-expanded="false"
+                    <a data-toggle="dropdown" id="checkBtn" href="javascript:void(0)" title="Notifications" aria-expanded="false"
                        data-animation="scale-up" role="button">
                         <i class="icon md-notifications" aria-hidden="true"></i>
-                        <span class="badge badge-danger up">5</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
-                        <li class="dropdown-menu-header" role="presentation">
-                            <h5>ҲАБАРНОМА</h5>
-                            <span class="label label-round label-danger">Янги 5</span>
-                        </li>
-                        <li class="list-group" role="presentation">
-                            <div data-role="container">
-                                <div data-role="content">
-                                    <a class="list-group-item" href="http://bleaksoft.ru/news/%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8%20friendlycms" target="_blank" role="menuitem">
-                                        <div class="media">
-                                            <div class="media-left padding-right-10">
-                                                <i class="icon md-receipt bg-red-600 white icon-circle" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="media-heading">Дастур янгиланди</h6>
-                                                <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">5 соат олдин</time>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="list-group-item" href="http://bleaksoft.ru/news/%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8%20friendlycms" target="_blank" role="menuitem">
-                                        <div class="media">
-                                            <div class="media-left padding-right-10">
-                                                <i class="icon md-account bg-green-600 white icon-circle" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="media-heading">Топшириқлар бажарилди</h6>
-                                                <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">2 кун олдин</time>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="list-group-item" href="http://bleaksoft.ru/news/%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8%20friendlycms" target="_blank" role="menuitem">
-                                        <div class="media">
-                                            <div class="media-left padding-right-10">
-                                                <i class="icon md-settings bg-red-600 white icon-circle" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="media-heading">Созламалар янгиланди</h6>
-                                                <time class="media-meta" datetime="2015-06-11T14:05:00+08:00">2 кун олдин</time>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="list-group-item" href="http://bleaksoft.ru/news/%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8%20friendlycms" target="_blank" role="menuitem">
-                                        <div class="media">
-                                            <div class="media-left padding-right-10">
-                                                <i class="icon md-calendar bg-blue-600 white icon-circle" aria-hidden="true"></i>
-                                            </div>
-                                            <div class="media-body">
-                                                <h6 class="media-heading">Тадбир бўлиб ўтади</h6>
-                                                <time class="media-meta" datetime="2015-06-10T13:50:18+08:00">3 кундан сўнг</time>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="list-group-item" href="http://bleaksoft.ru/news/%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8%20friendlycms" target="_blank" role="menuitem">
-                                        <div class="media">
-                                            <div class="media-left padding-right-10">
-                                                <i class="icon md-comment bg-orange-600 white icon-circle" aria-hidden="true"></i>
-                                            </div>
-
-                                        </div>
-                                    </a>
+                    @if($user_role_id!=3)
+                            <li class="dropdown-menu-header" role="presentation">
+                                <h5>XАБАРНОМА</h5>
+                            </li>
+                        @php  $nots = \App\Notification::getNews($user_role_id); @endphp
+                        @if(count($nots) > 0)
+                            @if(in_array($user_role_id, array(1,2))){{--if user is region|district--}}
+                            <li class="list-group" role="presentation">
+                                <div data-role="container">
+                                    <div data-role="content">
+                                        @foreach($nots as $note)
+                                            @if($note->message_type_id==1)
+                                                <div class="alert alert-success" role="alert" style="margin-bottom: 0; border-radius: 0;">
+                                                    <small> {{$note->created_at->diffForHumans()}}</small> <small  style="float: right;"> {{($note->sender_role_id==3)?'Республика':'Вилоят'}}</small> <br/><p style="color: black;">{!! $note->message !!}</p>
+                                                </div>
+                                            @else
+                                                <div class="alert alert-danger" role="alert" style="margin-bottom: 0; border-radius: 0;">
+                                                    <small> {{$note->created_at->diffForHumans()}}</small> <small  style="float: right;"> {{($note->sender_role_id==3)?'Республика':'Вилоят'}}</small> <br/><br/><p style="color: black;">{!! $note->message !!}</p>
+                                                </div>
+                                            @endif
+                                            <input type="hidden" value="{{$note->id}}" id="note{{$note->id}}">
+                                        @endforeach
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
+                            @endif
+                        @else
+                            <li class="dropdown-menu-header" role="presentation">
+                                <h5>Хабарлар йўқ</h5>
+                            </li>
+                        @endif
                         <li class="dropdown-menu-footer" role="presentation">
-                            <a class="dropdown-menu-footer-btn" href="javascript:void(0)" role="button">
-                                <i class="icon md-settings" aria-hidden="true"></i>
-                            </a>
-                            <a href="javascript:void(0)" role="menuitem">
-                                Барча ҳабарлар
+                            @if(in_array($user_role_id, array(1,3)))
+                                <a class="dropdown-menu-footer-btn" id="bt" role="button">
+                                    Xaбар жўнатиш
+                                </a>
+                            @endif
+                            @if(in_array($user_role_id, array(1,2)))
+                                <a href="{{url('/view-notifications')}}" target="_blank" role="menuitem">
+                                    Барча ҳабарлар
+                                </a>
+                            @endif
+                        </li>
+                    @else
+                        <li class="dropdown-menu-header" role="presentation">
+                            <a class="dropdown-menu-header-btn" id="bt" role="button">
+                                Xaбар жўнатиш
                             </a>
                         </li>
+                    @endif
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<!-- Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xaбар жўнатиш</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Xaбарнинг тури</label>
+                        <select class="form-control" name="message_type" id="message_type">
+                            <option value="1">Янгилик</option>
+                            <option value="2">Огохлантириш</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Xaбар мазмуни</label>
+                        <textarea class="form-control" rows="7" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                {{--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--}}
+                <button type="button" id="sendMessage" class="btn btn-primary">Юбориш</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <div class="site-menubar">
     <div class="site-menubar-body">

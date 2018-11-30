@@ -1,5 +1,4 @@
-<script src="<?php echo e(asset('vendor/jquery/jquery.js')); ?>"></script>
-<script src="<?php echo e(asset('vendor/bootstrap/bootstrap.js')); ?>"></script>
+
 <script src="<?php echo e(asset('vendor/animsition/animsition.js')); ?>"></script>
 <script src="<?php echo e(asset('vendor/asscroll/jquery-asScroll.js')); ?>"></script>
 <script src="<?php echo e(asset('vendor/mousewheel/jquery.mousewheel.js')); ?>"></script>
@@ -79,14 +78,70 @@
 <script src="<?php echo e(asset('js/components/multi-select.js')); ?>"></script>
 <script src="<?php echo e(asset('js/components/jquery-placeholder.js')); ?>"></script>
 <script src="<?php echo e(asset('js/forms/advanced.js')); ?>"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
+<script type="text/javascript" src="<?php echo e(asset('js/loading.min.js')); ?>"></script>
+<script type="text/javascript" src="<?php echo e(asset('vendor/toastr/toastr.js')); ?>"></script>
 
 <script>
     (function(document, window, $) {
         'use strict';
-        var Site = window.Site;
+       var Site = window.Site;
         $(document).ready(function() {
-            Site.run();
+           Site.run();
+            
+                
+                
+                
+                
+                
+                
+                    
+                    
+                        
+                        
+                        
+                        
+                    
+                    
+                
+                
+            
         });
     })(document, window, jQuery);
+    if (document.getElementById('bt')!==null) {
+        document.getElementById('bt').addEventListener('click', function (e) {
+            e.preventDefault()
+            console.log('okok')
+            $('#exampleModal').modal('toggle')
+        })
+    }
+    if (document.getElementById('sendMessage')!==null) {
+        document.getElementById('sendMessage').addEventListener('click', function (e) {
+            e.preventDefault()
+            H5_loading.show()
+            var text = document.getElementById('message-text').value;
+            var message_type = document.getElementById('message_type').value;
+            sendT(text,message_type)
+        })
+    }
+    function sendT(text , message_type)
+    {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', '<?php echo e(url("/sendT")); ?>/'+text+'/'+message_type, true);
+        xhr.send();
+        xhr.onreadystatechange = function() {
+            if (this.readyState != 4) return;
+            if (this.status != 200) {
+                H5_loading.hide()
+                toastr.options.timeOut = 3000;
+                toastr.error("Хатолик !")
+                return;
+            }
+            H5_loading.hide()
+            document.getElementById('message-text').value = '';
+            toastr.options.timeOut = 3000;
+            toastr.success("Юборилди!")
+            $('#exampleModal').modal('hide')
+        }
+    }
+
 </script>

@@ -224,7 +224,6 @@
             </div>
         </div>
     </div>
-    <script src="<?php echo e(asset('js/widgets/chart.js')); ?>"></script>
 
 <?php $__env->stopSection(); ?>
 

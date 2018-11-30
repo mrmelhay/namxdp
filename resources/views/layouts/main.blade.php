@@ -13,6 +13,7 @@
         </div>
     </div>
 </div>
+
 @include('commons.footer')
 @include('commons.scripts')
 </body>

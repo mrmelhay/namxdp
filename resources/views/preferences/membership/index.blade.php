@@ -172,10 +172,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="{{asset('vendor/jquery/jquery.js')}}"></script>
-    <script type="text/javascript" src="{{asset('vendor/bootstrap/bootstrap.js')}}"></script>
-    <script type="text/javascript" src="{{asset('vendor/bootbox/bootbox.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/loading.min.js')}}"></script>
     <script type="text/javascript">
 
         window.onload = function() {

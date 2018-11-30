@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Халқ демократик партияси</title>
     <link rel="apple-touch-icon" href="{!! asset('images/apple-touch-icon.png') !!}">
-    <link rel="shortcut icon" href="{!! asset('images/favicon.ico') !!} ">
+{{--    <link rel="shortcut icon" href="{!! asset('images/favicon.ico') !!} ">--}}
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-extend.min.css') }}">
@@ -70,6 +70,7 @@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic&subset=latin,cyrillic'>
     <script src="https://unpkg.com/imask"></script>
+
     <script src="{{ asset('vendor/jquery/jquery.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/bootstrap.js') }}"></script>
 
