@@ -13,7 +13,9 @@ class Reports extends Model
     protected $table="members";
 
 
+
     public  function getAllMemberBptCheif(){
+
         $sql="select r.region_name,d.district_name,(select count(mm.isLeader) from members mm where mm.isLeader=1) as lscount,(select count(mmm.sex_id) from members mmm where mmm.sex_id=1) as sxcount,
                                  (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Олий%\") as spccountoliy,
                                  (select count(mmal.specialist) from members mmal where mmal.specialist like \"%Ўрта%\") as spccounturta,

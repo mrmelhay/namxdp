@@ -17,6 +17,8 @@ class ReportsController extends BaseController
     public $_25_45 = 0;
     public $_40_60 = 0;
     public $_60_100 = 0;
+
+
     public $_100_ = 0;
 
 

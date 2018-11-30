@@ -69,6 +69,7 @@
                             <td> {{ round($_40_60)}}</td>
                             <td> {{ round($_60_100)}}</td>
                             <td> {{ round($_100_)}}</td>
+
                         </tr>
                     @endforeach
                     </tbody>
