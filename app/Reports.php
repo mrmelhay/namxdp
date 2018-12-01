@@ -68,7 +68,7 @@ class Reports extends Model
 								order by count(m.bpt_id) desc";
             return DB::select($sql);
         }
-        
+
         if($r_id==2) {//gathering data for district
             $d_id=Auth::user()->district_id;
             $sql = "select r.region_name,d.district_name,(select count(bp.bpt_id) from bpt bp) as bptcount,count(m.bpt_id) as ismember
